@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "binhlaig",
+  "homepage": "https://binhlaig.com",
+  "items": [
+    {
+      "name": "pos-dashboard",
+      "type": "registry:block",
+      "title": "POS Dashboard",
+      "description": "A responsive point-of-sale operations dashboard with sales metrics, inventory status and recent transactions.",
+      "files": [
+        {
+          "path": "registry/templates/pos-dashboard.tsx",
+          "type": "registry:component",
+          "target": "components/binhlaig/pos-dashboard.tsx"
+        }
+      ],
+      "categories": ["pos", "dashboard", "retail"],
+      "dependencies": [],
+      "registryDependencies": ["card", "badge", "button"]
+    },
+    {
+      "name": "restaurant-pos",
+      "type": "registry:block",
+      "title": "Restaurant POS",
+      "description": "A restaurant point-of-sale workspace with table management, live order status and checkout tools.",
+      "files": [
+        {
+          "path": "registry/templates/restaurant-pos.tsx",
+          "type": "registry:component",
+          "target": "components/binhlaig/restaurant-pos.tsx"
+        }
+      ],
+      "categories": ["restaurant", "pos", "hospitality"],
+      "dependencies": [],
+      "registryDependencies": ["card", "badge", "button", "tabs"]
+    }
+  ]
+}

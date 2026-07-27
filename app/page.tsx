@@ -1,65 +1,274 @@
-import Image from "next/image";
+const ArrowIcon = () => (
+  <svg viewBox="0 0 20 20" aria-hidden="true">
+    <path d="M4 10h11M11 5l5 5-5 5" />
+  </svg>
+);
+
+const CopyIcon = () => (
+  <svg viewBox="0 0 20 20" aria-hidden="true">
+    <rect x="7" y="7" width="9" height="9" rx="2" />
+    <path d="M13 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+  </svg>
+);
+
+const SparkIcon = () => (
+  <svg viewBox="0 0 20 20" aria-hidden="true">
+    <path d="M10 2l1.4 4.6L16 8l-4.6 1.4L10 14l-1.4-4.6L4 8l4.6-1.4L10 2Z" />
+    <path d="M16 13l.6 1.9 1.9.6-1.9.6L16 18l-.6-1.9-1.9-.6 1.9-.6L16 13Z" />
+  </svg>
+);
+
+const CheckIcon = () => (
+  <svg viewBox="0 0 20 20" aria-hidden="true">
+    <path d="m4 10 4 4 8-9" />
+  </svg>
+);
+
+function BrandMark() {
+  return (
+    <span className="brand-mark" aria-hidden="true">
+      <span>B</span>
+    </span>
+  );
+}
+
+const foundations = [
+  {
+    number: "01",
+    title: "Color system",
+    description:
+      "Deep navy, electric blue and calm neutrals create a confident software brand.",
+    meta: "8 color tokens",
+    accent: "blue",
+  },
+  {
+    number: "02",
+    title: "Typography",
+    description:
+      "Geist keeps product interfaces crisp, modern and easy to read at every size.",
+    meta: "9 type styles",
+    accent: "violet",
+  },
+  {
+    number: "03",
+    title: "Core components",
+    description:
+      "Buttons, badges, cards and inputs form the reusable base for every template.",
+    meta: "4 starters",
+    accent: "cyan",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main>
+      <header className="site-header">
+        <a className="brand" href="#" aria-label="Binhlaig UI home">
+          <BrandMark />
+          <span className="brand-copy">
+            <strong>Binhlaig</strong>
+            <small>Software &amp; IT Solutions</small>
+          </span>
+        </a>
+
+        <nav className="desktop-nav" aria-label="Primary navigation">
+          <a href="#foundations">Foundations</a>
+          <a href="/components">Components</a>
+          <a href="/templates">Templates</a>
+          <a href="#roadmap">Roadmap</a>
+        </nav>
+
+        <a className="header-cta" href="#components">
+          Explore UI
+          <ArrowIcon />
+        </a>
+      </header>
+
+      <section className="hero">
+        <div className="hero-glow hero-glow-one" />
+        <div className="hero-glow hero-glow-two" />
+        <div className="dot-grid" />
+
+        <div className="hero-copy">
+          <div className="eyebrow">
+            <span><SparkIcon /></span>
+            Binhlaig UI · Foundation v0.1
+          </div>
+
+          <h1>
+            Build beautiful
+            <span>interfaces, faster.</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p>
+            A thoughtful collection of accessible, responsive components and
+            production-ready templates for modern web products.
+          </p>
+
+          <div className="hero-actions">
+            <a className="button button-primary" href="#components">
+              Browse components
+              <ArrowIcon />
+            </a>
+            <a className="button button-secondary" href="#foundations">
+              View foundations
+            </a>
+          </div>
+
+          <div className="hero-proof">
+            <span className="proof-avatars">
+              <i>Bn</i><i>UI</i><i>+</i>
+            </span>
+            <span>
+              <strong>Made for real products</strong>
+              Responsive · Accessible · Customizable
+            </span>
+          </div>
+        </div>
+
+        <div className="showcase" aria-label="Component preview">
+          <div className="showcase-window">
+            <div className="window-bar">
+              <span className="window-dots"><i /><i /><i /></span>
+              <span className="window-title">component-preview.tsx</span>
+              <span className="window-status">Live</span>
+            </div>
+
+            <div className="preview-canvas">
+              <div className="preview-label">Interactive preview</div>
+              <div className="product-card">
+                <div className="product-icon"><SparkIcon /></div>
+                <span className="new-badge">New</span>
+                <h2>Motion Card</h2>
+                <p>A polished component with subtle motion and a clean API.</p>
+                <div className="product-actions">
+                  <button type="button">Get started <ArrowIcon /></button>
+                  <button className="icon-button" type="button" aria-label="Copy component">
+                    <CopyIcon />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="code-line">
+              <code><span>npx</span> binhlaig-ui add motion-card</code>
+              <button type="button" aria-label="Copy install command"><CopyIcon /></button>
+            </div>
+          </div>
+
+          <div className="floating-pill pill-top">
+            <span><CheckIcon /></span>
+            TypeScript ready
+          </div>
+          <div className="floating-pill pill-bottom">
+            <i />
+            Dark mode included
+          </div>
+        </div>
+      </section>
+
+      <section className="foundation-section" id="foundations">
+        <div className="section-heading">
+          <div>
+            <span className="section-kicker">The foundation</span>
+            <h2>One system. Every interface.</h2>
+          </div>
+          <p>
+            The first layer of Binhlaig UI establishes a consistent visual
+            language before the component library grows.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="foundation-grid">
+          {foundations.map((item) => (
+            <article className="foundation-card" key={item.number}>
+              <div className={`card-visual ${item.accent}`}>
+                <span className="card-number">{item.number}</span>
+                {item.number === "01" && (
+                  <div className="swatches">
+                    <i /><i /><i /><i />
+                  </div>
+                )}
+                {item.number === "02" && (
+                  <div className="type-sample">
+                    <strong>Aa</strong>
+                    <span>Geist Sans</span>
+                  </div>
+                )}
+                {item.number === "03" && (
+                  <div className="mini-components">
+                    <span>Button</span>
+                    <i><CheckIcon /></i>
+                  </div>
+                )}
+              </div>
+              <div className="card-content">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <span className="card-meta">{item.meta}</span>
+              </div>
+            </article>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="component-section" id="components">
+        <div className="component-copy">
+          <span className="section-kicker">Core components</span>
+          <h2>Small building blocks.<br />Serious product quality.</h2>
+          <p>
+            Every component is responsive by default, keyboard friendly and
+            ready to adapt to your brand.
+          </p>
+          <ul>
+            <li><CheckIcon /> TypeScript-first source code</li>
+            <li><CheckIcon /> Light and dark theme tokens</li>
+            <li><CheckIcon /> Copy, paste and customize</li>
+          </ul>
+        </div>
+
+        <div className="component-board">
+          <div className="board-row">
+            <span className="ui-button primary">Primary action</span>
+            <span className="ui-button neutral">Secondary</span>
+            <span className="ui-badge"><i /> Available</span>
+          </div>
+          <label className="input-demo">
+            <span>Email address</span>
+            <input type="email" placeholder="you@company.com" readOnly />
+          </label>
+          <div className="alert-demo">
+            <span><SparkIcon /></span>
+            <div>
+              <strong>Your foundation is ready</strong>
+              <p>Start building the first Binhlaig component collection.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="roadmap" id="roadmap">
+        <div>
+          <span className="section-kicker">Next step</span>
+          <h2>Foundation complete.<br />Components come next.</h2>
+        </div>
+        <div className="roadmap-steps">
+          <span className="active"><i>1</i>Brand foundation</span>
+          <span><i>2</i>Component library</span>
+          <span><i>3</i>Templates &amp; registry</span>
+        </div>
+      </section>
+
+      <footer>
+        <a className="brand footer-brand" href="#">
+          <BrandMark />
+          <span className="brand-copy">
+            <strong>Binhlaig UI</strong>
+            <small>Build with clarity.</small>
+          </span>
+        </a>
+        <p>Foundation v0.1 · Designed for modern web products.</p>
+      </footer>
+    </main>
   );
 }
