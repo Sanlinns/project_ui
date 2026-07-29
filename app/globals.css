@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --ink: #081227;
@@ -10,6 +11,14 @@
   --blue-dark: #1748c7;
   --violet: #7950f2;
   --cyan: #0ea5e9;
+}
+
+.dark {
+  --ink: #f8fafc;
+  --muted: #94a3b8;
+  --line: #1e293b;
+  --surface: #020617;
+  --soft: #0f172a;
 }
 
 * {
@@ -25,6 +34,12 @@ body {
   background: var(--surface);
   color: var(--ink);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+.header-actions {
+  align-items: center;
+  display: flex;
+  gap: 10px;
 }
 
 a {
@@ -66,34 +81,6 @@ svg {
   align-items: center;
   display: inline-flex;
   gap: 11px;
-}
-
-.brand-mark {
-  align-items: center;
-  background: linear-gradient(145deg, #5e8cff 0%, #2864eb 48%, #163ca7 100%);
-  border-radius: 11px;
-  box-shadow: 0 8px 20px rgba(37, 99, 235, .24);
-  color: white;
-  display: inline-flex;
-  font-size: 20px;
-  font-weight: 800;
-  height: 39px;
-  justify-content: center;
-  letter-spacing: -2px;
-  position: relative;
-  width: 39px;
-}
-
-.brand-mark::after {
-  background: #83e5ff;
-  border: 2px solid #3d6fec;
-  border-radius: 50%;
-  content: "";
-  height: 9px;
-  position: absolute;
-  right: -2px;
-  top: -2px;
-  width: 9px;
 }
 
 .brand-copy {
@@ -1002,16 +989,65 @@ footer {
   padding-top: 32px;
 }
 
-.footer-brand .brand-mark {
-  border-radius: 8px;
-  font-size: 15px;
-  height: 32px;
-  width: 32px;
-}
-
 footer p {
   color: #929aaa;
   font-size: 10px;
+}
+
+.dark .site-header { background: #020617; }
+.dark .desktop-nav a,
+.dark .brand-copy small { color: #94a3b8; }
+.dark .header-cta { background: #2563eb; }
+.dark .hero {
+  background: radial-gradient(circle at 73% 36%, rgba(59, 130, 246, .16), transparent 23%),
+    linear-gradient(180deg, #020617 0%, #0f172a 100%);
+  border-color: #1e293b;
+}
+.dark .dot-grid { background-image: radial-gradient(#475569 .8px, transparent .8px); }
+.dark .eyebrow,
+.dark .button-secondary,
+.dark .showcase-window,
+.dark .product-card,
+.dark .floating-pill,
+.dark .foundation-card {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f8fafc;
+}
+.dark .hero-copy > p,
+.dark .product-card p,
+.dark .card-content p,
+.dark .section-heading > p { color: #94a3b8; }
+.dark .proof-avatars i { border-color: #0f172a; }
+.dark .hero-proof strong { color: #e2e8f0; }
+.dark .window-bar { border-color: #334155; }
+.dark .preview-canvas {
+  background: linear-gradient(rgba(51, 65, 85, .5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(51, 65, 85, .5) 1px, transparent 1px), #111827;
+  background-size: 28px 28px;
+}
+.dark .product-actions button { background: #2563eb; }
+.dark .product-actions .icon-button,
+.dark .mini-components > i,
+.dark .ui-button.neutral,
+.dark .input-demo input,
+.dark .alert-demo > span {
+  background: #1e293b;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+.dark .card-visual.blue { background: linear-gradient(145deg, #102046, #0f172a); }
+.dark .card-visual.violet { background: linear-gradient(145deg, #24164d, #0f172a); }
+.dark .card-visual.cyan { background: linear-gradient(145deg, #083344, #0f172a); }
+.dark .component-board { background: #0f172a; border-color: #334155; }
+.dark .input-demo span { color: #cbd5e1; }
+.dark .alert-demo { background: #172554; border-color: #1e3a8a; }
+.dark .roadmap-steps span { color: #94a3b8; }
+.dark .roadmap-steps i { background: #1e293b; }
+.dark .roadmap-steps .active {
+  background: #172554;
+  border-color: #1e3a8a;
+  color: #93c5fd;
 }
 
 @media (max-width: 980px) {

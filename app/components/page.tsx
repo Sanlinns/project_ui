@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { BrandLogo } from "@/components/brand-logo";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const componentCode = {
   button: `export function Button({
@@ -15,19 +17,19 @@ const componentCode = {
     <button className={\`rounded-lg px-4 py-2 font-semibold
       \${variant === "primary"
         ? "bg-blue-600 text-white"
-        : "border border-slate-200 bg-white text-slate-700"}\`}>
+        : "border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200"}\`}>
       {children}
     </button>
   );
 }`,
   card: `export function ProductCard() {
   return (
-    <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <article className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm">
       <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs text-emerald-700">
         New
       </span>
       <h3 className="mt-5 text-lg font-semibold">Analytics dashboard</h3>
-      <p className="mt-2 text-sm text-slate-500">
+      <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
         Clear insights for growing teams.
       </p>
     </article>
@@ -36,13 +38,13 @@ const componentCode = {
   input: `export function Input() {
   return (
     <label className="flex flex-col gap-2">
-      <span className="text-sm font-semibold text-slate-700">
+      <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">
         Email address
       </span>
       <input
         type="email"
         placeholder="you@company.com"
-        className="rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+        className="rounded-lg border border-slate-300 dark:border-slate-700 px-4 py-3 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
       />
     </label>
   );
@@ -53,7 +55,7 @@ const componentCode = {
       className="rounded-xl border border-emerald-200 bg-emerald-50 p-4"
       role="status"
     >
-      <strong className="text-sm text-slate-900">Changes saved</strong>
+      <strong className="text-sm text-slate-900 dark:text-slate-100">Changes saved</strong>
       <p className="mt-1 text-sm text-emerald-800">
         Your settings have been updated.
       </p>
@@ -144,18 +146,6 @@ const ArrowIcon = ({ className = "h-4 w-4" }: IconProps) => (
   </svg>
 );
 
-function BrandMark() {
-  return (
-    <span
-      className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-400 via-blue-600 to-blue-800 text-xl font-extrabold text-white shadow-lg shadow-blue-500/25"
-      aria-hidden="true"
-    >
-      B
-      <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-blue-500 bg-cyan-300" />
-    </span>
-  );
-}
-
 const categories = [
   { id: "buttons", label: "Buttons", count: 4 },
   { id: "cards", label: "Cards", count: 2 },
@@ -167,7 +157,7 @@ const primaryButton =
   "inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-200";
 
 const codeButton =
-  "inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-600 shadow-sm transition hover:border-blue-200 hover:text-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-100";
+  "inline-flex items-center gap-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 text-xs font-semibold text-slate-600 dark:text-slate-300 shadow-sm transition hover:border-blue-200 hover:text-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-100";
 
 export default function ComponentsPage() {
   const [activeCode, setActiveCode] = useState<ComponentKey | null>(null);
@@ -199,29 +189,24 @@ export default function ComponentsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-950">
-      <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
+    <main className="min-h-screen bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-slate-50">
+      <header className="sticky top-0 z-40 overflow-visible border-b border-slate-200/80 bg-white/90 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/90">
         <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link
-            className="inline-flex items-center gap-3"
-            href="/"
-            aria-label="Binhlaig UI home"
-          >
-            <BrandMark />
+          <BrandLogo>
             <span className="flex flex-col leading-none">
               <strong className="text-lg tracking-tight">Binhlaig</strong>
               <small className="mt-1.5 hidden text-[8px] uppercase tracking-[0.18em] text-slate-400 sm:block">
                 Software &amp; IT Solutions
               </small>
             </span>
-          </Link>
+          </BrandLogo>
 
           <nav
             className="hidden items-center gap-8 md:flex"
             aria-label="Primary navigation"
           >
             <Link
-              className="text-sm font-medium text-slate-500 transition hover:text-blue-600"
+              className="text-sm font-medium text-slate-500 dark:text-slate-400 transition hover:text-blue-600"
               href="/#foundations"
             >
               Foundations
@@ -233,30 +218,33 @@ export default function ComponentsPage() {
               Components
             </Link>
             <Link
-              className="text-sm font-medium text-slate-500 transition hover:text-blue-600"
+              className="text-sm font-medium text-slate-500 dark:text-slate-400 transition hover:text-blue-600"
               href="/templates"
             >
               Templates
             </Link>
             <Link
-              className="text-sm font-medium text-slate-500 transition hover:text-blue-600"
+              className="text-sm font-medium text-slate-500 dark:text-slate-400 transition hover:text-blue-600"
               href="/#roadmap"
             >
               Roadmap
             </Link>
           </nav>
 
-          <a
-            className="inline-flex items-center gap-2 rounded-xl  px-4 py-3 text-xs font-semibold text-white transition hover:bg-blue-500"
-            href="#buttons"
-          >
-            Browse library
-            <ArrowIcon />
-          </a>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <a
+              className="inline-flex items-center gap-2 rounded-xl bg-slate-950 px-3 py-3 text-xs font-semibold text-white transition hover:bg-blue-500 dark:bg-blue-600 sm:px-4"
+              href="#buttons"
+            >
+              <span className="hidden sm:inline">Browse library</span>
+              <ArrowIcon />
+            </a>
+          </div>
         </div>
       </header>
 
-      <section className="relative overflow-hidden border-b border-slate-200 bg-white px-4 py-20 text-center sm:px-6 sm:py-24">
+      {/* <section className="relative overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-20 text-center sm:px-6 sm:py-24">
         <div className="absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-200/40 blur-3xl" />
         <div className="absolute bottom-0 left-1/4 h-52 w-52 rounded-full bg-cyan-100/60 blur-3xl" />
 
@@ -264,12 +252,12 @@ export default function ComponentsPage() {
           <span className="text-xs font-bold uppercase tracking-[0.18em] text-blue-600">
             Component library · v0.2
           </span>
-          <h1 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-[-0.055em] text-slate-950 sm:text-6xl lg:text-7xl">
+          <h1 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-[-0.055em] text-slate-950 dark:text-slate-50 sm:text-6xl lg:text-7xl">
             Beautiful building blocks.
             <br />
             Ready for your next product.
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-500 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-500 dark:text-slate-400 sm:text-lg">
             Accessible React components with clean TypeScript source. Preview,
             copy and customize every detail.
           </p>
@@ -284,7 +272,7 @@ export default function ComponentsPage() {
                 className="flex min-w-24 flex-col px-4 sm:min-w-36 sm:px-7"
                 key={label}
               >
-                <strong className="text-xl font-bold tracking-tight text-slate-950">
+                <strong className="text-xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
                   {value}
                 </strong>
                 <small className="mt-1 text-[9px] uppercase tracking-[0.14em] text-slate-400">
@@ -294,10 +282,10 @@ export default function ComponentsPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-12 lg:px-8 lg:py-20">
-        <aside className="top-24 z-20 self-start overflow-x-auto bg-slate-50 lg:sticky lg:overflow-visible">
+        <aside className="top-24 z-20 self-start overflow-x-auto bg-slate-50 dark:bg-slate-950 lg:sticky lg:overflow-visible">
           <span className="hidden px-3 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400 lg:block">
             Components
           </span>
@@ -308,12 +296,12 @@ export default function ComponentsPage() {
           >
             {categories.map((category) => (
               <a
-                className="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-600 transition hover:bg-blue-50 hover:text-blue-600"
+                className="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300 transition hover:bg-blue-50 hover:text-blue-600"
                 href={`#${category.id}`}
                 key={category.id}
               >
                 <span>{category.label}</span>
-                <i className="flex h-6 min-w-6 items-center justify-center rounded-md bg-slate-200 px-1.5 text-[10px] not-italic text-slate-500">
+                <i className="flex h-6 min-w-6 items-center justify-center rounded-md bg-slate-200 px-1.5 text-[10px] not-italic text-slate-500 dark:text-slate-400">
                   {category.count}
                 </i>
               </a>
@@ -345,14 +333,14 @@ export default function ComponentsPage() {
               <button className={primaryButton}>
                 Get started <ArrowIcon />
               </button>
-              <button className="rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-blue-200 hover:text-blue-600">
+              <button className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-5 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 shadow-sm transition hover:border-blue-200 hover:text-blue-600">
                 Learn more
               </button>
-              <button className="rounded-xl px-5 py-3 text-sm font-semibold text-slate-600 transition hover:bg-slate-100">
+              <button className="rounded-xl px-5 py-3 text-sm font-semibold text-slate-600 dark:text-slate-300 transition hover:bg-slate-100 dark:bg-slate-800">
                 Cancel
               </button>
               <button
-                className="cursor-not-allowed rounded-xl bg-slate-100 px-5 py-3 text-sm font-semibold text-slate-400"
+                className="cursor-not-allowed rounded-xl bg-slate-100 dark:bg-slate-800 px-5 py-3 text-sm font-semibold text-slate-400"
                 disabled
               >
                 Disabled
@@ -369,7 +357,7 @@ export default function ComponentsPage() {
             />
 
             <PreviewPanel className="grid-cols-1 md:grid-cols-2">
-              <article className="relative w-full rounded-2xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-200/50">
+              <article className="relative w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-xl shadow-slate-200/50">
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
                   <CodeIcon />
                 </span>
@@ -379,7 +367,7 @@ export default function ComponentsPage() {
                 <h3 className="mt-5 text-lg font-semibold">
                   Analytics dashboard
                 </h3>
-                <p className="mt-2 text-sm leading-6 text-slate-500">
+                <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">
                   Clear insights and real-time metrics for growing teams.
                 </p>
                 <button className="mt-5 inline-flex items-center gap-2 text-xs font-bold text-blue-600">
@@ -387,8 +375,8 @@ export default function ComponentsPage() {
                 </button>
               </article>
 
-              <article className="relative min-h-64 w-full overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-200/50">
-                <span className="text-xs text-slate-500">Monthly revenue</span>
+              <article className="relative min-h-64 w-full overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-xl shadow-slate-200/50">
+                <span className="text-xs text-slate-500 dark:text-slate-400">Monthly revenue</span>
                 <strong className="mt-2 block text-3xl tracking-tight">
                   ¥1,248,000
                 </strong>
@@ -420,11 +408,11 @@ export default function ComponentsPage() {
 
             <PreviewPanel className="grid-cols-1 items-start md:grid-cols-2">
               <label className="flex w-full flex-col gap-2">
-                <span className="text-sm font-semibold text-slate-700">
+                <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">
                   Email address
                 </span>
                 <input
-                  className="rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+                  className="rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
                   type="email"
                   placeholder="you@company.com"
                 />
@@ -434,11 +422,11 @@ export default function ComponentsPage() {
               </label>
 
               <label className="flex w-full flex-col gap-2">
-                <span className="text-sm font-semibold text-slate-700">
+                <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">
                   Company
                 </span>
                 <input
-                  className="rounded-xl border border-emerald-300 bg-white px-4 py-3 text-sm outline-none ring-4 ring-emerald-50"
+                  className="rounded-xl border border-emerald-300 bg-white dark:bg-slate-900 px-4 py-3 text-sm outline-none ring-4 ring-emerald-50"
                   type="text"
                   value="Binhlaig"
                   readOnly
@@ -463,7 +451,7 @@ export default function ComponentsPage() {
                 className="flex w-full max-w-lg items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4"
                 role="status"
               >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-emerald-600">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white dark:bg-slate-900 text-emerald-600">
                   <CheckIcon className="h-4 w-4" />
                 </span>
                 <div>
@@ -499,23 +487,22 @@ export default function ComponentsPage() {
           </p>
         </div>
         <Link
-          className="inline-flex items-center gap-2 rounded-xl  px-5 py-3 text-sm font-semibold text-slate-950"
+          className="inline-flex items-center gap-2 rounded-xl  px-5 py-3 text-sm font-semibold text-slate-950 dark:text-slate-50"
           href="/#roadmap"
         >
           See the roadmap <ArrowIcon />
         </Link>
       </section>
 
-      <footer className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-5 border-t border-slate-200 px-4 py-8 sm:flex-row sm:items-center sm:px-6 lg:px-8">
-        <Link className="inline-flex items-center gap-3" href="/">
-          <BrandMark />
+      <footer className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-5 border-t border-slate-200 dark:border-slate-800 px-4 py-8 sm:flex-row sm:items-center sm:px-6 lg:px-8">
+        <BrandLogo>
           <span className="flex flex-col leading-none">
             <strong>Binhlaig UI</strong>
             <small className="mt-1.5 text-[9px] uppercase tracking-[0.15em] text-slate-400">
               Build with clarity.
             </small>
           </span>
-        </Link>
+        </BrandLogo>
         <p className="text-xs text-slate-400">
           Component library v0.2 · Designed for modern web products.
         </p>
@@ -536,7 +523,7 @@ export default function ComponentsPage() {
           >
             <div className="flex items-center justify-between">
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">
+                <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
                   Component source
                 </span>
                 <h2 className="mt-1 text-xl font-semibold" id="code-title">
@@ -573,14 +560,14 @@ export default function ComponentsPage() {
           onMouseDown={() => setDialogOpen(false)}
         >
           <section
-            className="relative w-full max-w-md rounded-3xl bg-white p-8 text-center shadow-2xl"
+            className="relative w-full max-w-md rounded-3xl bg-white dark:bg-slate-900 p-8 text-center shadow-2xl"
             role="dialog"
             aria-modal="true"
             aria-labelledby="demo-dialog-title"
             onMouseDown={(event) => event.stopPropagation()}
           >
             <button
-              className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-slate-500 transition hover:bg-slate-200"
+              className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 transition hover:bg-slate-200"
               onClick={() => setDialogOpen(false)}
               aria-label="Close dialog"
             >
@@ -596,7 +583,7 @@ export default function ComponentsPage() {
             >
               Project created
             </h2>
-            <p className="mt-3 text-sm leading-6 text-slate-500">
+            <p className="mt-3 text-sm leading-6 text-slate-500 dark:text-slate-400">
               Your Binhlaig UI workspace is ready. Start adding components to
               build your product.
             </p>
@@ -631,7 +618,7 @@ function SectionHeader({
           {eyebrow}
         </span>
         <h2 className="mt-2 text-3xl font-semibold tracking-tight">{title}</h2>
-        <p className="mt-2 text-sm text-slate-500">{description}</p>
+        <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{description}</p>
       </div>
       <button className={codeButton} onClick={onCode}>
         <CodeIcon className="h-4 w-4" /> View code
@@ -649,7 +636,7 @@ function PreviewPanel({
 }) {
   return (
     <div
-      className={`grid min-h-64 place-items-center gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10 ${className}`}
+      className={`grid min-h-64 place-items-center gap-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm sm:p-10 ${className}`}
     >
       {children}
     </div>

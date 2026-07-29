@@ -1,3 +1,6 @@
+import { BrandLogo } from "@/components/brand-logo";
+import { ThemeToggle } from "@/components/theme-toggle";
+
 const ArrowIcon = () => (
   <svg viewBox="0 0 20 20" aria-hidden="true">
     <path d="M4 10h11M11 5l5 5-5 5" />
@@ -23,14 +26,6 @@ const CheckIcon = () => (
     <path d="m4 10 4 4 8-9" />
   </svg>
 );
-
-function BrandMark() {
-  return (
-    <span className="brand-mark" aria-hidden="true">
-      <span>B</span>
-    </span>
-  );
-}
 
 const foundations = [
   {
@@ -63,13 +58,12 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="#" aria-label="Binhlaig UI home">
-          <BrandMark />
+        <BrandLogo className="brand">
           <span className="brand-copy">
             <strong>Binhlaig</strong>
             <small>Software &amp; IT Solutions</small>
           </span>
-        </a>
+        </BrandLogo>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
           <a href="#foundations">Foundations</a>
@@ -78,10 +72,13 @@ export default function Home() {
           <a href="#roadmap">Roadmap</a>
         </nav>
 
-        <a className="header-cta" href="#components">
-          Explore UI
-          <ArrowIcon />
-        </a>
+        <div className="header-actions">
+          <ThemeToggle />
+          <a className="header-cta" href="#components">
+            Explore UI
+            <ArrowIcon />
+          </a>
+        </div>
       </header>
 
       <section className="hero">
@@ -260,13 +257,12 @@ export default function Home() {
       </section>
 
       <footer>
-        <a className="brand footer-brand" href="#">
-          <BrandMark />
+        <BrandLogo className="brand footer-brand">
           <span className="brand-copy">
             <strong>Binhlaig UI</strong>
             <small>Build with clarity.</small>
           </span>
-        </a>
+        </BrandLogo>
         <p>Foundation v0.1 · Designed for modern web products.</p>
       </footer>
     </main>

@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { BrandLogo } from "@/components/brand-logo";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 type Category = "All" | "POS" | "Restaurant" | "Retail" | "Fashion";
 type Template = {
@@ -109,18 +111,6 @@ const TerminalIcon = ({ className = "h-5 w-5" }: IconProps) => (
   </svg>
 );
 
-function BrandMark() {
-  return (
-    <span
-      className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-400 via-blue-600 to-blue-800 text-xl font-extrabold text-white shadow-lg shadow-blue-500/25"
-      aria-hidden="true"
-    >
-      B
-      <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-blue-500 bg-cyan-300" />
-    </span>
-  );
-}
-
 function Badge({ children }: { children: Template["badges"][number] }) {
   const styles = {
     Free: "bg-emerald-50 text-emerald-700 ring-emerald-600/10",
@@ -188,7 +178,7 @@ function DashboardPreview({
 
   return (
     <div
-      className={`overflow-hidden bg-slate-100 ${expanded ? "min-h-[320px] rounded-2xl sm:min-h-[430px]" : "h-60"}`}
+      className={`overflow-hidden bg-slate-100 dark:bg-slate-800 ${expanded ? "min-h-[320px] rounded-2xl sm:min-h-[430px]" : "h-60"}`}
     >
       <div className="flex h-full">
         <aside className="hidden w-28 shrink-0 bg-slate-950 p-3 text-white sm:block">
@@ -199,7 +189,7 @@ function DashboardPreview({
           <div className="mt-7 grid gap-2">
             {config.nav.map((item, index) => (
               <span
-                className={`rounded-md px-2 py-2 text-[7px] ${index === 0 ? "bg-white/10 text-white" : "text-slate-500"}`}
+                className={`rounded-md px-2 py-2 text-[7px] ${index === 0 ? "bg-white/10 text-white" : "text-slate-500 dark:text-slate-400"}`}
                 key={item}
               >
                 {item}
@@ -213,7 +203,7 @@ function DashboardPreview({
               <span className="text-[7px] uppercase tracking-widest text-slate-400">
                 {config.label}
               </span>
-              <strong className="mt-1 block text-sm tracking-tight text-slate-900 sm:text-base">
+              <strong className="mt-1 block text-sm tracking-tight text-slate-900 dark:text-slate-100 sm:text-base">
                 {config.amount}
               </strong>
             </div>
@@ -221,18 +211,18 @@ function DashboardPreview({
           </div>
           <div className="mt-4 grid grid-cols-3 gap-2">
             {["Revenue", "Orders", "Growth"].map((item, index) => (
-              <div className="rounded-lg bg-white p-2 shadow-sm" key={item}>
+              <div className="rounded-lg bg-white dark:bg-slate-900 p-2 shadow-sm" key={item}>
                 <span className="block text-[6px] text-slate-400">{item}</span>
-                <strong className="mt-1 block text-[9px] text-slate-700">
+                <strong className="mt-1 block text-[9px] text-slate-700 dark:text-slate-200">
                   {index === 0 ? "+12.4%" : index === 1 ? "1,284" : "8.2%"}
                 </strong>
               </div>
             ))}
           </div>
           <div className="mt-2 grid grid-cols-[1.5fr_1fr] gap-2">
-            <div className="rounded-lg bg-white p-3 shadow-sm">
+            <div className="rounded-lg bg-white dark:bg-slate-900 p-3 shadow-sm">
               <div className="flex items-center justify-between">
-                <span className="text-[7px] font-semibold text-slate-600">
+                <span className="text-[7px] font-semibold text-slate-600 dark:text-slate-300">
                   Weekly activity
                 </span>
                 <span className={`text-[6px] ${config.text}`}>Live</span>
@@ -247,15 +237,15 @@ function DashboardPreview({
                 ))}
               </div>
             </div>
-            <div className="rounded-lg bg-white p-3 shadow-sm">
-              <span className="text-[7px] font-semibold text-slate-600">
+            <div className="rounded-lg bg-white dark:bg-slate-900 p-3 shadow-sm">
+              <span className="text-[7px] font-semibold text-slate-600 dark:text-slate-300">
                 Recent
               </span>
               <div className="mt-3 grid gap-2">
                 {[0, 1, 2].map((item) => (
                   <span className="flex items-center gap-2" key={item}>
                     <i className={`h-4 w-4 rounded-md ${config.soft}`} />
-                    <i className="h-1.5 flex-1 rounded bg-slate-100" />
+                    <i className="h-1.5 flex-1 rounded bg-slate-100 dark:bg-slate-800" />
                   </span>
                 ))}
               </div>
@@ -316,49 +306,51 @@ export default function TemplatesPage() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-950">
-      <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
+    <main className="min-h-screen bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-slate-50">
+      <header className="sticky top-0 z-40 overflow-visible border-b border-slate-200/80 bg-white/90 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/90">
         <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link className="inline-flex items-center gap-3" href="/" aria-label="Binhlaig UI home">
-            <BrandMark />
+          <BrandLogo>
             <span className="flex flex-col leading-none">
               <strong className="text-lg tracking-tight">Binhlaig</strong>
               <small className="mt-1.5 hidden text-[8px] uppercase tracking-[0.18em] text-slate-400 sm:block">
                 Software &amp; IT Solutions
               </small>
             </span>
-          </Link>
+          </BrandLogo>
           <nav className="hidden items-center gap-7 md:flex" aria-label="Primary navigation">
-            <Link className="text-sm font-medium text-slate-500 transition hover:text-blue-600" href="/#foundations">
+            <Link className="text-sm font-medium text-slate-500 dark:text-slate-400 transition hover:text-blue-600" href="/#foundations">
               Foundations
             </Link>
-            <Link className="text-sm font-medium text-slate-500 transition hover:text-blue-600" href="/components">
+            <Link className="text-sm font-medium text-slate-500 dark:text-slate-400 transition hover:text-blue-600" href="/components">
               Components
             </Link>
             <Link className="text-sm font-semibold text-blue-600" href="/templates" aria-current="page">
               Templates
             </Link>
-            <Link className="text-sm font-medium text-slate-500 transition hover:text-blue-600" href="/#roadmap">
+            <Link className="text-sm font-medium text-slate-500 dark:text-slate-400 transition hover:text-blue-600" href="/#roadmap">
               Roadmap
             </Link>
           </nav>
-          <a
-            className="inline-flex items-center gap-2 rounded-xl bg-slate-950 px-3 py-2.5 text-xs font-semibold text-white transition hover:bg-blue-600 sm:px-4 sm:py-3"
-            href="#registry"
-          >
-            <TerminalIcon className="h-4 w-4" />
-            <span className="hidden sm:inline">Use registry</span>
-          </a>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <a
+              className="inline-flex items-center gap-2 rounded-xl bg-slate-950 px-3 py-2.5 text-xs font-semibold text-white transition hover:bg-blue-600 dark:bg-blue-600 sm:px-4 sm:py-3"
+              href="#registry"
+            >
+              <TerminalIcon className="h-4 w-4" />
+              <span className="hidden sm:inline">Use registry</span>
+            </a>
+          </div>
         </div>
-        <nav className="flex justify-center gap-5 border-t border-slate-100 px-4 py-2 md:hidden" aria-label="Mobile navigation">
-          <Link className="text-xs font-medium text-slate-500" href="/#foundations">Foundations</Link>
-          <Link className="text-xs font-medium text-slate-500" href="/components">Components</Link>
+        <nav className="flex justify-center gap-5 border-t border-slate-100 dark:border-slate-800 px-4 py-2 md:hidden" aria-label="Mobile navigation">
+          <Link className="text-xs font-medium text-slate-500 dark:text-slate-400" href="/#foundations">Foundations</Link>
+          <Link className="text-xs font-medium text-slate-500 dark:text-slate-400" href="/components">Components</Link>
           <Link className="text-xs font-semibold text-blue-600" href="/templates" aria-current="page">Templates</Link>
-          <Link className="text-xs font-medium text-slate-500" href="/#roadmap">Roadmap</Link>
+          <Link className="text-xs font-medium text-slate-500 dark:text-slate-400" href="/#roadmap">Roadmap</Link>
         </nav>
       </header>
 
-      <section className="relative overflow-hidden border-b border-slate-200 bg-white px-4 py-16 text-center sm:px-6 sm:py-24">
+      <section className="relative overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-16 text-center sm:px-6 sm:py-24">
         <div className="absolute left-1/2 top-0 h-80 w-80 -translate-x-1/2 rounded-full bg-blue-100/80 blur-3xl" />
         <div className="absolute bottom-0 right-1/4 h-52 w-52 rounded-full bg-indigo-100/70 blur-3xl" />
         <div className="relative mx-auto max-w-4xl">
@@ -368,7 +360,7 @@ export default function TemplatesPage() {
           <h1 className="mx-auto mt-5 max-w-4xl text-4xl font-semibold leading-[1.03] tracking-[-0.055em] sm:text-6xl lg:text-7xl">
             Start with a complete product. Make it yours.
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-500 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-500 dark:text-slate-400 sm:text-lg">
             Production-ready screens for commerce teams. Preview the flow,
             install from the registry, then customize every detail.
           </p>
@@ -376,7 +368,7 @@ export default function TemplatesPage() {
             <span className="sr-only">Search templates</span>
             <SearchIcon className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
             <input
-              className="w-full rounded-2xl border border-slate-200 bg-white py-4 pl-12 pr-4 text-sm shadow-xl shadow-slate-200/50 outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+              className="w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-4 pl-12 pr-4 text-sm shadow-xl shadow-slate-200/50 outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
               type="search"
               placeholder="Search POS, restaurant, retail..."
               value={query}
@@ -402,7 +394,7 @@ export default function TemplatesPage() {
                 className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition focus:outline-none focus:ring-4 focus:ring-blue-100 ${
                   category === item
                     ? "bg-slate-950 text-white"
-                    : "border border-slate-200 bg-white text-slate-600 hover:border-blue-200 hover:text-blue-600"
+                    : "border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:border-blue-200 hover:text-blue-600"
                 }`}
                 key={item}
                 type="button"
@@ -419,7 +411,7 @@ export default function TemplatesPage() {
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             {filteredTemplates.map((template) => (
               <article
-                className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/60"
+                className="group overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/60"
                 key={template.id}
               >
                 <DashboardPreview variant={template.preview} />
@@ -439,10 +431,10 @@ export default function TemplatesPage() {
                       ))}
                     </div>
                   </div>
-                  <p className="mt-3 text-sm leading-6 text-slate-500">
+                  <p className="mt-3 text-sm leading-6 text-slate-500 dark:text-slate-400">
                     {template.description}
                   </p>
-                  <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-4">
+                  <div className="mt-5 flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4">
                     <span className="text-xs text-slate-400">Next.js · TypeScript</span>
                     <button
                       className="inline-flex items-center gap-2 rounded-xl bg-slate-950 px-4 py-2.5 text-xs font-semibold text-white transition hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-100"
@@ -457,16 +449,16 @@ export default function TemplatesPage() {
             ))}
           </div>
         ) : (
-          <div className="mt-8 rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-20 text-center">
-            <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-400">
+          <div className="mt-8 rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-6 py-20 text-center">
+            <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400">
               <SearchIcon />
             </span>
             <h3 className="mt-4 text-lg font-semibold">No templates found</h3>
-            <p className="mt-2 text-sm text-slate-500">
+            <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
               Try another search or reset the category to see every template.
             </p>
             <button
-              className="mt-5 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-blue-600 shadow-sm"
+              className="mt-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-2.5 text-xs font-semibold text-blue-600 shadow-sm"
               type="button"
               onClick={() => {
                 setQuery("");
@@ -513,16 +505,15 @@ export default function TemplatesPage() {
         </div>
       </section>
 
-      <footer className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-5 border-t border-slate-200 px-4 py-8 sm:flex-row sm:items-center sm:px-6 lg:px-8">
-        <Link className="inline-flex items-center gap-3" href="/">
-          <BrandMark />
+      <footer className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-5 border-t border-slate-200 dark:border-slate-800 px-4 py-8 sm:flex-row sm:items-center sm:px-6 lg:px-8">
+        <BrandLogo>
           <span className="flex flex-col leading-none">
             <strong>Binhlaig UI</strong>
             <small className="mt-1.5 text-[9px] uppercase tracking-[0.15em] text-slate-400">
               Software &amp; IT Solutions
             </small>
           </span>
-        </Link>
+        </BrandLogo>
         <p className="text-xs text-slate-400">
           Templates &amp; Registry · Built for modern product teams.
         </p>
@@ -536,7 +527,7 @@ export default function TemplatesPage() {
           }}
         >
           <section
-            className="my-auto w-full max-w-5xl rounded-3xl bg-white p-4 shadow-2xl sm:p-6"
+            className="my-auto w-full max-w-5xl rounded-3xl bg-white dark:bg-slate-900 p-4 shadow-2xl sm:p-6"
             role="dialog"
             aria-modal="true"
             aria-labelledby="template-dialog-title"
@@ -552,7 +543,7 @@ export default function TemplatesPage() {
               </div>
               <button
                 ref={closeButtonRef}
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-500 transition hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-blue-100"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 transition hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-blue-100"
                 type="button"
                 aria-label={`Close ${selected.title} preview`}
                 onClick={() => setSelected(null)}
