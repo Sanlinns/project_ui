@@ -297,7 +297,7 @@ export default function ComponentsPage() {
             {categories.map((category) => (
               <a
                 className="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300 transition hover:bg-blue-50 hover:text-blue-600"
-                href={`#${category.id}`}
+                href={`/components/${category.id}`}
                 key={category.id}
               >
                 <span>{category.label}</span>
