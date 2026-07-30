@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "title": "Badge",
+  "description": "A reusable Binhlaig UI badge component.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "registry/default/badge/badge.tsx",
+      "content": "import * as React from \"react\";\r\nimport {\r\n  cva,\r\n  type VariantProps,\r\n} from \"class-variance-authority\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst badgeVariants = cva(\r\n  [\r\n    \"inline-flex w-fit shrink-0 items-center justify-center gap-1\",\r\n    \"rounded-full border px-2.5 py-1\",\r\n    \"text-xs font-medium leading-none\",\r\n    \"transition-colors\",\r\n    \"[&_svg]:size-3 [&_svg]:shrink-0\",\r\n  ].join(\" \"),\r\n  {\r\n    variants: {\r\n      variant: {\r\n        default:\r\n          \"border-transparent bg-blue-600 text-white\",\r\n\r\n        secondary:\r\n          \"border-transparent bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200\",\r\n\r\n        success:\r\n          \"border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-300\",\r\n\r\n        warning:\r\n          \"border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-500/20 dark:bg-amber-500/10 dark:text-amber-300\",\r\n\r\n        destructive:\r\n          \"border-red-200 bg-red-50 text-red-700 dark:border-red-500/20 dark:bg-red-500/10 dark:text-red-300\",\r\n\r\n        outline:\r\n          \"border-slate-300 bg-transparent text-slate-700 dark:border-slate-700 dark:text-slate-300\",\r\n      },\r\n    },\r\n    defaultVariants: {\r\n      variant: \"default\",\r\n    },\r\n  },\r\n);\r\n\r\ntype BadgeProps = React.ComponentProps<\"span\"> &\r\n  VariantProps<typeof badgeVariants>;\r\n\r\nfunction Badge({\r\n  className,\r\n  variant,\r\n  ...props\r\n}: BadgeProps) {\r\n  return (\r\n    <span\r\n      data-slot=\"badge\"\r\n      className={cn(\r\n        badgeVariants({ variant }),\r\n        className,\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nexport { Badge, badgeVariants };\r\nexport type { BadgeProps };",
+      "type": "registry:ui",
+      "target": "@ui/badge.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

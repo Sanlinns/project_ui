@@ -1,8 +1,80 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "binhlaig",
-  "homepage": "https://binhlaig.com",
+  "homepage": "https://ui.binhlaig.com",
   "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A reusable Binhlaig UI button component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/default/button/button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "A flexible Binhlaig UI card component.",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/default/card/card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "A compact Binhlaig UI status badge.",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/default/badge/badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Accessible tabs built with Base UI.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/default/tabs/tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tabs.tsx"
+        }
+      ]
+    },
     {
       "name": "pos-dashboard",
       "type": "registry:block",
@@ -15,9 +87,17 @@
           "target": "components/binhlaig/pos-dashboard.tsx"
         }
       ],
-      "categories": ["pos", "dashboard", "retail"],
+      "categories": [
+        "pos",
+        "dashboard",
+        "retail"
+      ],
       "dependencies": [],
-      "registryDependencies": ["card", "badge", "button"]
+      "registryDependencies": [
+        "https://ui.binhlaig.com/r/card.json",
+        "https://ui.binhlaig.com/r/badge.json",
+        "https://ui.binhlaig.com/r/button.json"
+      ]
     },
     {
       "name": "restaurant-pos",
@@ -31,9 +111,18 @@
           "target": "components/binhlaig/restaurant-pos.tsx"
         }
       ],
-      "categories": ["restaurant", "pos", "hospitality"],
+      "categories": [
+        "restaurant",
+        "pos",
+        "hospitality"
+      ],
       "dependencies": [],
-      "registryDependencies": ["card", "badge", "button", "tabs"]
+      "registryDependencies": [
+        "https://ui.binhlaig.com/r/card.json",
+        "https://ui.binhlaig.com/r/badge.json",
+        "https://ui.binhlaig.com/r/button.json",
+        "https://ui.binhlaig.com/r/tabs.json"
+      ]
     }
   ]
 }

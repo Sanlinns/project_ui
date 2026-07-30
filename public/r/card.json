@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card",
+  "title": "Card",
+  "description": "A reusable Binhlaig UI card component.",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/card/card.tsx",
+      "content": "import * as React from \"react\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nfunction Card({\r\n  className,\r\n  ...props\r\n}: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"card\"\r\n      className={cn(\r\n        \"flex flex-col rounded-2xl border\",\r\n        \"border-slate-200 bg-white text-slate-950\",\r\n        \"shadow-sm shadow-slate-950/5\",\r\n        \"dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nfunction CardHeader({\r\n  className,\r\n  ...props\r\n}: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"card-header\"\r\n      className={cn(\r\n        \"grid gap-1.5 px-6 pt-6\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nfunction CardTitle({\r\n  className,\r\n  ...props\r\n}: React.ComponentProps<\"h3\">) {\r\n  return (\r\n    <h3\r\n      data-slot=\"card-title\"\r\n      className={cn(\r\n        \"text-base font-semibold leading-none tracking-tight\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nfunction CardDescription({\r\n  className,\r\n  ...props\r\n}: React.ComponentProps<\"p\">) {\r\n  return (\r\n    <p\r\n      data-slot=\"card-description\"\r\n      className={cn(\r\n        \"text-sm leading-6 text-slate-500 dark:text-slate-400\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nfunction CardAction({\r\n  className,\r\n  ...props\r\n}: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"card-action\"\r\n      className={cn(\r\n        \"col-start-2 row-span-2 row-start-1 self-start justify-self-end\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nfunction CardContent({\r\n  className,\r\n  ...props\r\n}: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"card-content\"\r\n      className={cn(\"px-6 py-6\", className)}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nfunction CardFooter({\r\n  className,\r\n  ...props\r\n}: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"card-footer\"\r\n      className={cn(\r\n        \"flex items-center gap-3 border-t border-slate-200 px-6 py-4\",\r\n        \"dark:border-slate-800\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nexport {\r\n  Card,\r\n  CardAction,\r\n  CardContent,\r\n  CardDescription,\r\n  CardFooter,\r\n  CardHeader,\r\n  CardTitle,\r\n};",
+      "type": "registry:ui",
+      "target": "@ui/card.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}
