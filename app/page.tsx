@@ -59,9 +59,8 @@ export default function Home() {
     <main>
       <header className="site-header">
         <BrandLogo className="brand">
-          <span className="brand-copy">
-            <strong>Binhlaig</strong>
-            <small>Software &amp; IT Solutions</small>
+          <span className="brand-copy"> 
+            <strong>Binhlaig UI</strong>
           </span>
         </BrandLogo>
 

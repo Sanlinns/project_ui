@@ -12,7 +12,7 @@ export function BrandLogo({
     <Link className={className} href="/" aria-label="Binhlaig home">
       <Image
         className="h-10 w-auto object-contain dark:hidden"
-        src="/logo/bg_dark.png"
+        src="/logo/ui_icon.png"
         alt="Binhlaig logo"
         width={1254}
         height={1254}
@@ -21,7 +21,7 @@ export function BrandLogo({
       />
       <Image
         className="hidden h-10 w-auto object-contain dark:block"
-        src="/logo/bg_darkmode.png"
+        src="/logo/ui_dark_icon.png"
         alt="Binhlaig UI brand logo"
         width={1254}
         height={1254}

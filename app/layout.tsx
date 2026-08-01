@@ -21,10 +21,11 @@ export const metadata: Metadata = {
     "codex-preview": "development",
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/logo/ui_icon.png",
+    shortcut: "/logo/ui_icon.png",
   },
 };
+
 
 export default function RootLayout({
   children,
