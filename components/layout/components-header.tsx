@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { ComponentSearch } from "../ComponentSearch";
+import { BrandLogo } from "../brand-logo";
 
 const navItems = [
   { label: "Docs", href: "/docs" },
@@ -51,24 +52,12 @@ export function ComponentsHeader() {
       <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-background/85 backdrop-blur-xl">
         <div className="mx-auto flex h-16 w-full max-w-[1440px] items-center gap-4 px-4 sm:px-6 lg:px-8">
           {/* Brand */}
-          <Link
-            href="/"
-            className="flex shrink-0 items-center gap-2.5 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            <span className="flex size-9 items-center justify-center rounded-xl bg-primary text-base font-bold text-primary-foreground shadow-sm">
-              B
-            </span>
 
-            <span className="hidden items-center gap-1.5 sm:flex">
-              <span className="text-base font-semibold tracking-tight text-foreground">
-                Binhlaig
-              </span>
-
-              <span className="rounded-md border border-border bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
-                UI
-              </span>
+          <BrandLogo className="brand">
+            <span className="brand-copy">
+              <strong>Binhlaig UI</strong>
             </span>
-          </Link>
+          </BrandLogo>
 
           {/* Desktop navigation */}
           <nav className="hidden items-center gap-1 lg:flex">
@@ -97,8 +86,8 @@ export function ComponentsHeader() {
 
 
             {/* Search input */}
-            <ComponentSearch/>
-           
+            <ComponentSearch />
+
 
             {/* Mobile search */}
             <button
