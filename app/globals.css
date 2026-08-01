@@ -1,4 +1,4 @@
-@import "tailwindcss";
+ @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @custom-variant dark (&:where(.dark, .dark *));
@@ -1370,4 +1370,4 @@ footer p {
   html {
     @apply font-sans;
   }
-}
+} 
