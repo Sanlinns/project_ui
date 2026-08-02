@@ -38,7 +38,7 @@ const sidebarGroups: SidebarGroup[] = [
       },
       {
         title: "Installation",
-        href: "/components/installation",
+        href: "/docs/installation",
       },
       {
         title: "Theming",
@@ -68,11 +68,11 @@ const sidebarGroups: SidebarGroup[] = [
       },
       {
         title: "Button",
-        href: "/components/button",
+        href: "/docs/components/buttons",
       },
       {
         title: "Card",
-        href: "/components/card",
+        href: "/docs/components/card",
       },
       {
         title: "Chip",

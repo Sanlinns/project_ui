@@ -192,8 +192,8 @@ export default function Home() {
                   </div>
                 )}
                 {item.number === "03" && (
-                  <div className="mini-components">
-                    <span>Button</span>
+                  <div className="mini-components "> 
+                    <span className="bg-red-600">Button</span>
                     <i><CheckIcon /></i>
                   </div>
                 )}
