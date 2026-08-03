@@ -49,19 +49,21 @@ cd my-app`;
 
 const initCode = `npx binhlaig-ui@latest init`;
 
-const initYesCode = `npx binhlaig-ui@latest init --yes`;
+const nativeInitCode = `npx binhlaig-ui@latest init --installer native`
 
-const addButtonCode = `npx binhlaig-ui@latest add button`;
+const shadcnInitCode = `npx binhlaig-ui@latest init --installer shadcn`;
 
-const addMultipleCode = `npx binhlaig-ui@latest add button
-npx binhlaig-ui@latest add card
-npx binhlaig-ui@latest add input
-npx binhlaig-ui@latest add badge
-npx binhlaig-ui@latest add tabs`;
+const initYesCode = `npx binhlaig-ui@latest init --installer native --yes`;
+
+const addButtonCode = `npx binhlaig-ui@latest add button --installer native`;
+
+const addButtonShadcnCode = `npx binhlaig-ui@latest add button --installer shadcn`;
+
+const addMultipleCode = `npx binhlaig-ui@latest add button card input badge tabs --installer native`;
 
 const listCode = `npx binhlaig-ui@latest list`;
 
-const overwriteCode = `npx binhlaig-ui@latest add button --overwrite`;
+const overwriteCode = `npx binhlaig-ui@latest add button --installer native --overwrite`;
 
 const importButtonCode = `import { Button } from "@/components/ui/button";
 
@@ -177,7 +179,7 @@ const folderStructureCode = `my-app/
 │       └── input.tsx
 ├── lib/
 │   └── utils.ts
-├── components.json
+├── binhlaig.json
 ├── package.json
 └── tsconfig.json`;
 
@@ -434,8 +436,7 @@ export default function InstallationPage() {
               </h1>
 
               <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg dark:text-slate-400">
-                Install Binhlaig UI in your Next.js project and
-                start using reusable components in a few steps.
+                Initialize with Native Beta or Shadcn Stable, then copy reusable components directly into your Next.js project.
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -499,19 +500,19 @@ export default function InstallationPage() {
                 <RequirementCard
                   icon={<Laptop className="size-5" />}
                   title="Node.js"
-                  description="Node.js version 20 or newer is recommended."
+                  description="Node.js 20 or newer is required by the CLI."
                 />
 
                 <RequirementCard
                   icon={<Code2 className="size-5" />}
                   title="Next.js"
-                  description="A Next.js project using the App Router and TypeScript."
+                  description="A Next.js App Router project with TypeScript is recommended."
                 />
 
                 <RequirementCard
                   icon={<Palette className="size-5" />}
                   title="Tailwind CSS"
-                  description="Tailwind CSS configured in your Next.js project."
+                  description="Tailwind CSS v4; Native init adds the required theme styles automatically."
                 />
               </div>
 
@@ -567,7 +568,7 @@ export default function InstallationPage() {
               <SectionTitle
                 id="initialize"
                 title="Initialize Binhlaig UI"
-                description="Initialize the Binhlaig UI configuration inside your project."
+                description="Choose Native Beta or Shadcn Stable and initialize the project."
               />
 
               <div className="mt-6 flex items-start gap-4">
@@ -579,12 +580,37 @@ export default function InstallationPage() {
                   </h3>
 
                   <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
-                    Run this command from the root directory of your
-                    Next.js project.
+                    Run this command from the root of your Next.js project. The CLI first asks which installer you want to use.
                   </p>
 
                   <div className="mt-5">
                     <CodeBlock code={initCode} />
+                  </div>
+
+                  <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                    <div className="rounded-2xl border border-amber-200 bg-amber-50/60 p-5 dark:border-amber-500/20 dark:bg-amber-500/10">
+                      <p className="font-semibold text-amber-950 dark:text-amber-200">
+                        Binhlaig Native Beta
+                      </p>
+                      <p className="mt-2 text-sm leading-6 text-amber-800/80 dark:text-amber-200/70">
+                        Creates the Binhlaig config, utility file, UI folder, theme CSS, and shared dependencies.
+                      </p>
+                      <div className="mt-4">
+                        <CodeBlock code={nativeInitCode} />
+                      </div>
+                    </div>
+
+                    <div className="rounded-2xl border border-emerald-200 bg-emerald-50/60 p-5 dark:border-emerald-500/20 dark:bg-emerald-500/10">
+                      <p className="font-semibold text-emerald-950 dark:text-emerald-200">
+                        Shadcn CLI Stable
+                      </p>
+                      <p className="mt-2 text-sm leading-6 text-emerald-800/80 dark:text-emerald-200/70">
+                        Uses the Shadcn initialization flow and component library selection.
+                      </p>
+                      <div className="mt-4">
+                        <CodeBlock code={shadcnInitCode} />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -594,15 +620,11 @@ export default function InstallationPage() {
 
                 <div className="min-w-0 flex-1">
                   <h3 className="font-semibold text-slate-950 dark:text-white">
-                    Skip confirmation questions
+                    Run Native init directly
                   </h3>
 
                   <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
-                    Use the{" "}
-                    <code className="rounded bg-slate-100 px-1.5 py-0.5 text-xs dark:bg-slate-900">
-                      --yes
-                    </code>{" "}
-                    option to use the default configuration.
+                    Use the Native installer directly without opening the installer selection menu.
                   </p>
 
                   <div className="mt-5">
@@ -616,8 +638,7 @@ export default function InstallationPage() {
                   title="Initialization completed"
                   variant="success"
                 >
-                  The initialization command creates the configuration,
-                  utility files and required styles used by Binhlaig UI.
+                  Native init creates binhlaig.json, components/ui, lib/utils.ts, required Tailwind theme styles, and installs shared dependencies.
                 </InfoBox>
               </div>
             </section>
@@ -639,11 +660,19 @@ export default function InstallationPage() {
                   </h3>
 
                   <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
-                    Add the Button component using the Binhlaig UI CLI.
+                    Add the Button component with Binhlaig Native Beta.
                   </p>
 
                   <div className="mt-5">
                     <CodeBlock code={addButtonCode} />
+                  </div>
+
+                  <p className="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                    Prefer the stable compatibility installer? Use:
+                  </p>
+
+                  <div className="mt-4">
+                    <CodeBlock code={addButtonShadcnCode} />
                   </div>
                 </div>
               </div>
@@ -654,7 +683,7 @@ export default function InstallationPage() {
                 </h3>
 
                 <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
-                  Run the add command for each component you need.
+                  You can install multiple components with one Native command.
                 </p>
 
                 <div className="mt-5">
@@ -831,11 +860,11 @@ export default function InstallationPage() {
                   <Settings2 className="size-5 text-blue-600 dark:text-blue-400" />
 
                   <p className="mt-3 font-medium text-slate-950 dark:text-white">
-                    components.json
+                    binhlaig.json
                   </p>
 
                   <p className="mt-1 text-sm leading-6 text-slate-500">
-                    Component installation configuration.
+                    Native installer configuration and project aliases.
                   </p>
                 </div>
               </div>
@@ -906,6 +935,10 @@ export default function InstallationPage() {
                     name: "Tabs",
                     href: "/components/tabs",
                   },
+                  {
+                    name: "Alert Dialog",
+                    href: "/components/alert-dialog",
+                  },
                 ].map((component) => (
                   <Link
                     key={component.name}
@@ -969,7 +1002,7 @@ export default function InstallationPage() {
                       <Folder className="size-5 text-blue-500" />
 
                       <span className="font-medium text-slate-950 dark:text-white">
-                        components.json is missing
+                        binhlaig.json is missing
                       </span>
                     </div>
 
