@@ -6,6 +6,9 @@
   "dependencies": [
     "@base-ui/react"
   ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "registry/default/tabs/tabs.tsx",

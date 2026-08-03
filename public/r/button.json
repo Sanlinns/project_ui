@@ -4,8 +4,11 @@
   "title": "Button",
   "description": "A reusable Binhlaig UI button component.",
   "dependencies": [
-    "@radix-ui/react-slot",
+    "@base-ui/react",
     "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
   ],
   "files": [
     {

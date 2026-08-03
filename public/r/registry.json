@@ -9,8 +9,11 @@
       "title": "Button",
       "description": "A reusable Binhlaig UI button component.",
       "dependencies": [
-        "@radix-ui/react-slot",
+        "@base-ui/react",
         "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -42,6 +45,9 @@
       "dependencies": [
         "class-variance-authority"
       ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "registry/default/badge/badge.tsx",
@@ -56,6 +62,9 @@
       "title": "Input",
       "description": "A reusable Binhlaig UI input component.",
       "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "registry/default/input/input.tsx",
@@ -71,6 +80,9 @@
       "description": "A reusable Binhlaig UI tabs component.",
       "dependencies": [
         "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -89,13 +101,31 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
           "path": "registry/default/alert-dialog/alert-dialog.tsx",
           "type": "registry:ui",
           "target": "@ui/alert-dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utilities",
+      "description": "Shared utility functions for Binhlaig UI components.",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/default/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/utils.ts"
         }
       ]
     }

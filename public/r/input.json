@@ -4,6 +4,9 @@
   "title": "Input",
   "description": "A reusable Binhlaig UI input component.",
   "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "registry/default/input/input.tsx",
