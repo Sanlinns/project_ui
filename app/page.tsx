@@ -66,7 +66,7 @@ export default function Home() {
 
         <nav className="desktop-nav" aria-label="Primary navigation">
           <a href="#foundations">Foundations</a>
-          <a href="/components">Components</a>
+          <a href="/docs/components">Components</a>
           <a href="/templates">Templates</a>
           <a href="#roadmap">Roadmap</a>
         </nav>
