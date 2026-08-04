@@ -64,7 +64,7 @@ const sidebarGroups: SidebarGroup[] = [
       },
       {
         title: "Badge",
-        href: "/components/badge",
+        href: "/docs/components/badge",
       },
       {
         title: "Button",
@@ -102,7 +102,7 @@ const sidebarGroups: SidebarGroup[] = [
       },
       {
         title: "Input",
-        href: "/components/input",
+        href: "/docs/components/input",
       },
       {
         title: "Radio Group",
@@ -129,6 +129,10 @@ const sidebarGroups: SidebarGroup[] = [
       {
         title: "Dialog",
         href: "/components/dialog",
+      },
+      {
+        title: "Alert Dialog",
+        href: "/docs/components/alert-dialog",
       },
       {
         title: "Drawer",

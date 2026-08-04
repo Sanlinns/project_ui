@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "title": "Textarea",
+  "description": "Displays a styled multiline text input.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/default/textarea/textarea.tsx",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\nimport { cva, type VariantProps } from \"class-variance-authority\"\r\n\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nconst textareaVariants = cva(\r\n  [\r\n    \"flex w-full rounded-xl border bg-background px-3 py-2\",\r\n    \"text-sm text-foreground shadow-sm outline-none transition\",\r\n    \"placeholder:text-muted-foreground\",\r\n    \"focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/20\",\r\n    \"disabled:cursor-not-allowed disabled:opacity-50\",\r\n    \"aria-invalid:border-destructive aria-invalid:ring-destructive/20\",\r\n    \"dark:aria-invalid:ring-destructive/30\",\r\n  ],\r\n  {\r\n    variants: {\r\n      size: {\r\n        sm: \"min-h-20 text-xs\",\r\n        default: \"min-h-28 text-sm\",\r\n        lg: \"min-h-36 text-base\",\r\n      },\r\n      resize: {\r\n        none: \"resize-none\",\r\n        vertical: \"resize-y\",\r\n        horizontal: \"resize-x\",\r\n        both: \"resize\",\r\n      },\r\n    },\r\n    defaultVariants: {\r\n      size: \"default\",\r\n      resize: \"vertical\",\r\n    },\r\n  }\r\n)\r\n\r\ntype TextareaProps = React.ComponentProps<\"textarea\"> &\r\n  VariantProps<typeof textareaVariants>\r\n\r\nfunction Textarea({\r\n  className,\r\n  size,\r\n  resize,\r\n  ...props\r\n}: TextareaProps) {\r\n  return (\r\n    <textarea\r\n      data-slot=\"textarea\"\r\n      className={cn(\r\n        textareaVariants({\r\n          size,\r\n          resize,\r\n        }),\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nexport { Textarea, textareaVariants }",
+      "type": "registry:ui",
+      "target": "components/ui/textarea.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}
