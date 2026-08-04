@@ -34,6 +34,7 @@ import {
 } from "@/components/ui/card";
 
 type PreviewTab = "preview" | "code";
+type InstallerTab = "native" | "shadcn";
 
 type CodePreviewProps = {
   children: React.ReactNode;
@@ -41,7 +42,13 @@ type CodePreviewProps = {
   className?: string;
 };
 
-const installCode = `npx binhlaig-ui@latest add card`;
+const nativeInstallCode = `npx binhlaig-ui@latest add card --installer native`;
+
+const shadcnInstallCode = `npx binhlaig-ui@latest add card --installer shadcn`;
+
+const initCode = `npx binhlaig-ui@latest init`;
+
+const overwriteCode = `npx binhlaig-ui@latest add card --installer native --overwrite`;
 
 const importCode = `import {
   Card,
@@ -539,8 +546,14 @@ function SectionTitle({
 }
 
 export default function CardDocumentationPage() {
+  const [installer, setInstaller] = useState<InstallerTab>("native");
   const [installCopied, setInstallCopied] = useState(false);
   const [importCopied, setImportCopied] = useState(false);
+
+  const installCode =
+    installer === "native"
+      ? nativeInstallCode
+      : shadcnInstallCode;
 
   const copyInstallCode = async () => {
     try {
@@ -649,32 +662,85 @@ export default function CardDocumentationPage() {
               <SectionTitle
                 id="installation"
                 title="Installation"
-                description="Add the Card component to your project using the Binhlaig UI CLI."
+                description="Add the latest Card component using either the Binhlaig Native installer or the Shadcn CLI installer."
               />
 
-              <div className="mt-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
-                <div className="flex items-center justify-between border-b border-slate-800 px-4 py-2">
-                  <span className="text-xs text-slate-500">
-                    Terminal
-                  </span>
+              <div className="mt-6 rounded-2xl border border-blue-200 bg-blue-50/70 p-4 text-sm text-blue-900 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-200">
+                <p className="font-semibold">Initialize Binhlaig UI first</p>
+                <p className="mt-1 leading-6 text-blue-800/80 dark:text-blue-200/70">
+                  The init command prepares the shared Binhlaig theme,
+                  utilities, component directory and required dependencies.
+                </p>
+                <div className="mt-4 overflow-hidden rounded-xl border border-slate-800 bg-slate-950">
+                  <pre className="overflow-x-auto p-4 font-mono text-sm text-slate-300">
+                    <code>{initCode}</code>
+                  </pre>
+                </div>
+              </div>
+
+              <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+                <div className="flex border-b border-slate-200 p-1 dark:border-slate-800">
+                  <button
+                    type="button"
+                    onClick={() => setInstaller("native")}
+                    className={cn(
+                      "flex-1 rounded-xl px-4 py-2.5 text-sm font-medium transition",
+                      installer === "native"
+                        ? "bg-blue-600 text-white shadow-sm"
+                        : "text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-900 dark:hover:text-white",
+                    )}
+                  >
+                    Native Beta
+                  </button>
 
                   <button
                     type="button"
-                    onClick={copyInstallCode}
-                    className="inline-flex size-8 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-900 hover:text-white"
-                    aria-label="Copy installation command"
-                  >
-                    {installCopied ? (
-                      <Check className="size-4 text-emerald-400" />
-                    ) : (
-                      <Clipboard className="size-4" />
+                    onClick={() => setInstaller("shadcn")}
+                    className={cn(
+                      "flex-1 rounded-xl px-4 py-2.5 text-sm font-medium transition",
+                      installer === "shadcn"
+                        ? "bg-slate-950 text-white shadow-sm dark:bg-white dark:text-slate-950"
+                        : "text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-900 dark:hover:text-white",
                     )}
+                  >
+                    Shadcn Stable
                   </button>
                 </div>
 
-                <pre className="overflow-x-auto p-5 font-mono text-sm text-slate-300">
-                  <code>{installCode}</code>
-                </pre>
+                <div className="border-b border-slate-800 bg-slate-950">
+                  <div className="flex items-center justify-between px-4 py-2">
+                    <span className="text-xs text-slate-500">Terminal</span>
+                    <button
+                      type="button"
+                      onClick={copyInstallCode}
+                      className="inline-flex size-8 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-900 hover:text-white"
+                      aria-label="Copy installation command"
+                    >
+                      {installCopied ? (
+                        <Check className="size-4 text-emerald-400" />
+                      ) : (
+                        <Clipboard className="size-4" />
+                      )}
+                    </button>
+                  </div>
+                  <pre className="overflow-x-auto border-t border-slate-800 p-5 font-mono text-sm text-slate-300">
+                    <code>{installCode}</code>
+                  </pre>
+                </div>
+
+                <div className="p-4 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                  {installer === "native" ? (
+                    <p>
+                      Native Beta fetches the Card directly from the
+                      Binhlaig registry and writes it into your project.
+                    </p>
+                  ) : (
+                    <p>
+                      Shadcn Stable uses the Shadcn CLI engine, but still
+                      installs the same Binhlaig Card registry source.
+                    </p>
+                  )}
+                </div>
               </div>
             </section>
 
@@ -1077,6 +1143,28 @@ export default function CardDocumentationPage() {
               </div>
             </section>
 
+            {/* Overwrite */}
+            <section>
+              <SectionTitle
+                id="overwrite"
+                title="Update or Overwrite"
+                description="Replace an older Card source file with the latest registry version."
+              />
+
+              <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50/70 p-4 text-sm text-amber-900 dark:border-amber-500/20 dark:bg-amber-500/10 dark:text-amber-200">
+                <p className="font-semibold">Existing Card code will be replaced</p>
+                <p className="mt-1 leading-6 text-amber-800/80 dark:text-amber-200/70">
+                  Save your custom changes before running the overwrite command.
+                </p>
+              </div>
+
+              <div className="mt-5 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                <pre className="overflow-x-auto p-5 font-mono text-sm text-slate-300">
+                  <code>{overwriteCode}</code>
+                </pre>
+              </div>
+            </section>
+
             {/* API Reference */}
             <section>
               <SectionTitle
@@ -1205,6 +1293,7 @@ export default function CardDocumentationPage() {
               ["Notification Card", "#notification-card"],
               ["Horizontal Card", "#horizontal-card"],
               ["Custom Style", "#custom-style"],
+              ["Update or Overwrite", "#overwrite"],
               ["API Reference", "#api-reference"],
             ].map(([label, href]) => (
               <a
