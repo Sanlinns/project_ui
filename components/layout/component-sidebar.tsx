@@ -118,7 +118,11 @@ const sidebarGroups: SidebarGroup[] = [
       },
       {
         title: "Textarea",
-        href: "/components/textarea",
+        href: "/docs/components/textarea",
+      },
+        {
+        title: "form",
+        href: "/docs/components/form",
       },
     ],
   },
@@ -144,7 +148,7 @@ const sidebarGroups: SidebarGroup[] = [
       },
       {
         title: "Popover",
-        href: "/components/popover",
+        href: "/docs/components/popover",
       },
       {
         title: "Tooltip",
