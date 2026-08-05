@@ -39,11 +39,11 @@ type InstallerTab = "native" | "shadcn"
 
 const initCode = `npx binhlaig-ui@latest init`
 const nativeInstallCode =
-  `npx binhlaig-ui@latest add form --installer native`
+  `npx binhlaig-ui@latest add form`
 const shadcnInstallCode =
-  `npx binhlaig-ui@latest add form --installer shadcn`
+  `npx binhlaig-ui@latest add form`
 const overwriteCode =
-  `npx binhlaig-ui@latest add form --installer native --overwrite`
+  `npx binhlaig-ui@latest add form --overwrite`
 
 const importCode = `import {
   Form,

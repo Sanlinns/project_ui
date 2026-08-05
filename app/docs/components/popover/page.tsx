@@ -33,11 +33,11 @@ type InstallerTab = "native" | "shadcn"
 
 const initCode = `npx binhlaig-ui@latest init`
 const nativeInstallCode =
-  `npx binhlaig-ui@latest add popover --installer native`
+  `npx binhlaig-ui@latest add popover`
 const shadcnInstallCode =
-  `npx binhlaig-ui@latest add popover --installer shadcn`
+  `npx binhlaig-ui@latest add popover`
 const overwriteCode =
-  `npx binhlaig-ui@latest add popover --installer native --overwrite`
+  `npx binhlaig-ui@latest add popover --overwrite`
 
 const importCode = `import {
   Popover,

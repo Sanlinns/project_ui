@@ -60,7 +60,7 @@ const sidebarGroups: SidebarGroup[] = [
       },
       {
         title: "Avatar",
-        href: "/components/avatar",
+        href: "/docs/components/avatar",
       },
       {
         title: "Badge",
@@ -98,7 +98,7 @@ const sidebarGroups: SidebarGroup[] = [
     items: [
       {
         title: "Checkbox",
-        href: "/components/checkbox",
+        href: "/docs/components/checkbox",
       },
       {
         title: "Input",
@@ -121,7 +121,7 @@ const sidebarGroups: SidebarGroup[] = [
         href: "/docs/components/textarea",
       },
         {
-        title: "form",
+        title: "Form",
         href: "/docs/components/form",
       },
     ],
@@ -132,7 +132,7 @@ const sidebarGroups: SidebarGroup[] = [
     items: [
       {
         title: "Dialog",
-        href: "/components/dialog",
+        href: "/docs/components/dialog",
       },
       {
         title: "Alert Dialog",
@@ -140,7 +140,7 @@ const sidebarGroups: SidebarGroup[] = [
       },
       {
         title: "Drawer",
-        href: "/components/drawer",
+        href: "/docs/components/drawer",
       },
       {
         title: "Dropdown",
@@ -162,7 +162,7 @@ const sidebarGroups: SidebarGroup[] = [
     items: [
       {
         title: "Alert",
-        href: "/components/alert",
+        href: "/docs/components/alert",
       },
       {
         title: "Progress",
@@ -181,6 +181,13 @@ const sidebarGroups: SidebarGroup[] = [
         href: "/components/toast",
         badge: "New",
       },
+    ],
+  },
+  {
+    title: "Navigation",
+    icon: Component,
+    items: [
+      { title: "Breadcrumb", href: "/docs/components/breadcrumb" },
     ],
   },
 ];

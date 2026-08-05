@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert",
+  "title": "Alert",
+  "description": "A message block for status updates, notices, warnings and errors.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/default/alert/alert.tsx",
+      "content": "import * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\r\n\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nconst alertVariants = cva(\r\n  [\r\n    \"relative grid w-full gap-y-1 rounded-2xl border px-4 py-3.5 text-sm\",\r\n    \"has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-3\",\r\n    \"[&>svg]:mt-0.5 [&>svg]:size-4\",\r\n  ].join(\" \"),\r\n  {\r\n    variants: {\r\n      variant: {\r\n        default:\r\n          \"border-border bg-background text-foreground\",\r\n        info:\r\n          \"border-blue-200 bg-blue-50 text-blue-950 dark:border-blue-500/25 dark:bg-blue-500/10 dark:text-blue-100\",\r\n        success:\r\n          \"border-emerald-200 bg-emerald-50 text-emerald-950 dark:border-emerald-500/25 dark:bg-emerald-500/10 dark:text-emerald-100\",\r\n        warning:\r\n          \"border-amber-200 bg-amber-50 text-amber-950 dark:border-amber-500/25 dark:bg-amber-500/10 dark:text-amber-100\",\r\n        destructive:\r\n          \"border-destructive/25 bg-destructive/10 text-destructive dark:border-destructive/35\",\r\n      },\r\n    },\r\n    defaultVariants: {\r\n      variant: \"default\",\r\n    },\r\n  }\r\n)\r\n\r\ntype AlertProps =\r\n  React.ComponentProps<\"div\"> &\r\n  VariantProps<typeof alertVariants>\r\n\r\nfunction Alert({\r\n  className,\r\n  variant,\r\n  role = \"alert\",\r\n  ...props\r\n}: AlertProps) {\r\n  return (\r\n    <div\r\n      data-slot=\"alert\"\r\n      role={role}\r\n      className={cn(\r\n        alertVariants({ variant }),\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nfunction AlertTitle({\r\n  className,\r\n  ...props\r\n}: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"alert-title\"\r\n      className={cn(\r\n        \"col-start-2 font-semibold leading-none tracking-tight\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nfunction AlertDescription({\r\n  className,\r\n  ...props\r\n}: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"alert-description\"\r\n      className={cn(\r\n        \"col-start-2 text-sm leading-6 opacity-90\",\r\n        \"[&_p]:leading-relaxed\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nfunction AlertActions({\r\n  className,\r\n  ...props\r\n}: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"alert-actions\"\r\n      className={cn(\r\n        \"col-span-full mt-3 flex flex-wrap items-center gap-2\",\r\n        \"sm:col-start-2\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nexport {\r\n  Alert,\r\n  AlertActions,\r\n  AlertDescription,\r\n  AlertTitle,\r\n  alertVariants,\r\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/alert.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

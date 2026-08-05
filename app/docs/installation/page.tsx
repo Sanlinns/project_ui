@@ -55,15 +55,15 @@ const shadcnInitCode = `npx binhlaig-ui@latest init --installer shadcn`;
 
 const initYesCode = `npx binhlaig-ui@latest init --installer native --yes`;
 
-const addButtonCode = `npx binhlaig-ui@latest add button --installer native`;
+const addButtonCode = `npx binhlaig-ui@latest add button`;
 
-const addButtonShadcnCode = `npx binhlaig-ui@latest add button --installer shadcn`;
+const addButtonShadcnCode = `npx binhlaig-ui@latest add button`;
 
-const addMultipleCode = `npx binhlaig-ui@latest add button card input badge tabs --installer native`;
+const addMultipleCode = `npx binhlaig-ui@latest add button card input badge tabs`;
 
 const listCode = `npx binhlaig-ui@latest list`;
 
-const overwriteCode = `npx binhlaig-ui@latest add button --installer native --overwrite`;
+const overwriteCode = `npx binhlaig-ui@latest add button --overwrite`;
 
 const importButtonCode = `import { Button } from "@/components/ui/button";
 
@@ -168,17 +168,17 @@ export default function RootLayout({
 
 const folderStructureCode = `my-app/
 ├── app/
-│   ├── globals.css
-│   ├── layout.tsx
-│   └── page.tsx
+━E  ├── globals.css
+━E  ├── layout.tsx
+━E  └── page.tsx
 ├── components/
-│   ├── theme-provider.tsx
-│   └── ui/
-│       ├── button.tsx
-│       ├── card.tsx
-│       └── input.tsx
+━E  ├── theme-provider.tsx
+━E  └── ui/
+━E      ├── button.tsx
+━E      ├── card.tsx
+━E      └── input.tsx
 ├── lib/
-│   └── utils.ts
+━E  └── utils.ts
 ├── binhlaig.json
 ├── package.json
 └── tsconfig.json`;

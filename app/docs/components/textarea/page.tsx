@@ -24,13 +24,13 @@ type InstallerTab = "native" | "shadcn"
 const initCode = `npx binhlaig-ui@latest init`
 
 const nativeInstallCode =
-  `npx binhlaig-ui@latest add textarea --installer native`
+  `npx binhlaig-ui@latest add textarea`
 
 const shadcnInstallCode =
-  `npx binhlaig-ui@latest add textarea --installer shadcn`
+  `npx binhlaig-ui@latest add textarea`
 
 const overwriteCode =
-  `npx binhlaig-ui@latest add textarea --installer native --overwrite`
+  `npx binhlaig-ui@latest add textarea --overwrite`
 
 const importCode =
   `import { Textarea } from "@/components/ui/textarea"`

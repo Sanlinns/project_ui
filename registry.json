@@ -19,7 +19,7 @@
         {
           "path": "registry/default/button/button.tsx",
           "type": "registry:ui",
-          "target": "@ui/button.tsx"
+          "target": "components/ui/button.tsx"
         }
       ]
     },
@@ -33,7 +33,7 @@
         {
           "path": "registry/default/card/card.tsx",
           "type": "registry:ui",
-          "target": "@ui/card.tsx"
+          "target": "components/ui/card.tsx"
         }
       ]
     },
@@ -52,7 +52,7 @@
         {
           "path": "registry/default/badge/badge.tsx",
           "type": "registry:ui",
-          "target": "@ui/badge.tsx"
+          "target": "components/ui/badge.tsx"
         }
       ]
     },
@@ -69,7 +69,7 @@
         {
           "path": "registry/default/input/input.tsx",
           "type": "registry:ui",
-          "target": "@ui/input.tsx"
+          "target": "components/ui/input.tsx"
         }
       ]
     },
@@ -88,7 +88,7 @@
         {
           "path": "registry/default/tabs/tabs.tsx",
           "type": "registry:ui",
-          "target": "@ui/tabs.tsx"
+          "target": "components/ui/tabs.tsx"
         }
       ]
     },
@@ -108,7 +108,7 @@
         {
           "path": "registry/default/alert-dialog/alert-dialog.tsx",
           "type": "registry:ui",
-          "target": "@ui/alert-dialog.tsx"
+          "target": "components/ui/alert-dialog.tsx"
         }
       ]
     },
@@ -164,6 +164,120 @@
           "path": "registry/default/form/form.tsx",
           "type": "registry:ui",
           "target": "components/ui/form.tsx"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "A gesture-enabled panel that slides from an edge of the screen.",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/default/drawer/drawer.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/drawer.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A modal window for focused tasks, forms and important content.",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/default/dialog/dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A control for selecting one or more options.",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/default/checkbox/checkbox.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "A message block for status updates, notices, warnings and errors.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/default/alert/alert.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/alert.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "A profile image component with fallback, sizes and status indicators.",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/default/avatar/avatar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/avatar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "A navigation trail that shows the current page location and hierarchy.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/default/breadcrumb/breadcrumb.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/breadcrumb.tsx"
         }
       ]
     },

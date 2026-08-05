@@ -22,9 +22,9 @@ type PreviewTab = "preview" | "code"
 type InstallerTab = "native" | "shadcn"
 
 const initCode = `npx binhlaig-ui@latest init`
-const nativeInstallCode = `npx binhlaig-ui@latest add badge --installer native`
-const shadcnInstallCode = `npx binhlaig-ui@latest add badge --installer shadcn`
-const overwriteCode = `npx binhlaig-ui@latest add badge --installer native --overwrite`
+const nativeInstallCode = `npx binhlaig-ui@latest add badge`
+const shadcnInstallCode = `npx binhlaig-ui@latest add badge`
+const overwriteCode = `npx binhlaig-ui@latest add badge --overwrite`
 const importCode = `import { Badge } from "@/components/ui/badge"`
 
 const usageCode = `import { Badge } from "@/components/ui/badge"

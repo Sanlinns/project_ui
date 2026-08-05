@@ -42,13 +42,13 @@ type CodePreviewProps = {
   className?: string;
 };
 
-const nativeInstallCode = `npx binhlaig-ui@latest add card --installer native`;
+const nativeInstallCode = `npx binhlaig-ui@latest add card`;
 
-const shadcnInstallCode = `npx binhlaig-ui@latest add card --installer shadcn`;
+const shadcnInstallCode = `npx binhlaig-ui@latest add card`;
 
 const initCode = `npx binhlaig-ui@latest init`;
 
-const overwriteCode = `npx binhlaig-ui@latest add card --installer native --overwrite`;
+const overwriteCode = `npx binhlaig-ui@latest add card --overwrite`;
 
 const importCode = `import {
   Card,

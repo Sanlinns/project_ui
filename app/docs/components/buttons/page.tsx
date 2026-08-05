@@ -31,15 +31,15 @@ type CodePreviewProps = {
 };
 
 const nativeInstallCode =
-  "npx --yes binhlaig-ui@latest add button --installer native";
+  "npx binhlaig-ui@latest add button";
 
 const shadcnInstallCode =
-  "npx --yes binhlaig-ui@latest add button --installer shadcn";
+  "npx binhlaig-ui@latest add button";
 
 const initCode = "npx --yes binhlaig-ui@latest init";
 
 const overwriteCode =
-  "npx --yes binhlaig-ui@latest add button --installer native --overwrite";
+  "npx binhlaig-ui@latest add button --overwrite";
 
 const importCode = `import { Button } from "@/components/ui/button";`;
 

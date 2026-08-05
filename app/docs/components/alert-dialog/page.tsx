@@ -44,13 +44,13 @@ type CodePreviewProps = {
 const initCode = `npx binhlaig-ui@latest init`;
 
 const nativeInstallCode =
-  `npx binhlaig-ui@latest add alert-dialog --installer native`;
+  `npx binhlaig-ui@latest add alert-dialog`;
 
 const shadcnInstallCode =
-  `npx binhlaig-ui@latest add alert-dialog --installer shadcn`;
+  `npx binhlaig-ui@latest add alert-dialog`;
 
 const overwriteCode =
-  `npx binhlaig-ui@latest add alert-dialog --installer native --overwrite`;
+  `npx binhlaig-ui@latest add alert-dialog --overwrite`;
 
 const importCode = `import {
   AlertDialog,
