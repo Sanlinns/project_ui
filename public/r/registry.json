@@ -282,6 +282,70 @@
       ]
     },
     {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "A flexible date picker for single dates, ranges and multiple selections.",
+      "dependencies": [
+        "react-day-picker",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/default/calendar/calendar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/calendar.tsx"
+        }
+      ]
+    },
+    {
+  "name": "command",
+  "type": "registry:ui",
+  "title": "Command",
+  "description": "A fast searchable command menu with keyboard navigation and command palette support.",
+  "dependencies": [
+    "cmdk",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "dialog",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/default/command/command.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/command.tsx"
+    }
+  ]
+},
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "Data Table",
+      "description": "A reusable table with sorting, filtering, pagination, row selection and column visibility.",
+      "dependencies": [
+        "@tanstack/react-table",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "input",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/default/data-table/data-table.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/data-table.tsx"
+        }
+      ]
+    },
+    {
       "name": "utils",
       "type": "registry:lib",
       "title": "Utilities",
