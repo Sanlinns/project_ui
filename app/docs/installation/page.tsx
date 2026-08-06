@@ -49,17 +49,26 @@ cd my-app`;
 
 const initCode = `npx binhlaig-ui@latest init`;
 
-const nativeInitCode = `npx binhlaig-ui@latest init --installer native`
+const nativeInitCode = `npx binhlaig-ui@latest init --installer native`;
 
 const shadcnInitCode = `npx binhlaig-ui@latest init --installer shadcn`;
 
 const initYesCode = `npx binhlaig-ui@latest init --installer native --yes`;
 
+const nativeConfigCode = `{
+  "$schema": "https://ui.binhlaig.com/schema.json",
+  "installer": "native"
+}`;
+
+const shadcnConfigCode = `{
+  "$schema": "https://ui.binhlaig.com/schema.json",
+  "installer": "shadcn",
+  "base": "base"
+}`;
+
 const addButtonCode = `npx binhlaig-ui@latest add button`;
 
-const addButtonShadcnCode = `npx binhlaig-ui@latest add button`;
-
-const addMultipleCode = `npx binhlaig-ui@latest add button card input badge tabs`;
+const addMultipleCode = `npx binhlaig-ui@latest add button card input badge tabs alert avatar breadcrumb`;
 
 const listCode = `npx binhlaig-ui@latest list`;
 
@@ -104,7 +113,7 @@ export default function Page() {
         </CardContent>
 
         <CardFooter>
-          <Button fullWidth>
+          <Button className="w-full">
             Get Started
           </Button>
         </CardFooter>
@@ -168,17 +177,17 @@ export default function RootLayout({
 
 const folderStructureCode = `my-app/
 ├── app/
-━E  ├── globals.css
-━E  ├── layout.tsx
-━E  └── page.tsx
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
 ├── components/
-━E  ├── theme-provider.tsx
-━E  └── ui/
-━E      ├── button.tsx
-━E      ├── card.tsx
-━E      └── input.tsx
+│   ├── theme-provider.tsx
+│   └── ui/
+│       ├── button.tsx
+│       ├── card.tsx
+│       └── input.tsx
 ├── lib/
-━E  └── utils.ts
+│   └── utils.ts
 ├── binhlaig.json
 ├── package.json
 └── tsconfig.json`;
@@ -436,12 +445,11 @@ export default function InstallationPage() {
               </h1>
 
               <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg dark:text-slate-400">
-                Initialize with Native Beta or Shadcn Stable, then copy reusable components directly into your Next.js project.
+                Choose Native Beta or Shadcn Stable once during initialization. The CLI remembers that choice and automatically reuses it for every add command.
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-3">
                 <Button
-                  rightIcon={<ArrowRight />}
                   onClick={() => {
                     document
                       .querySelector("#create-project")
@@ -451,11 +459,11 @@ export default function InstallationPage() {
                   }}
                 >
                   Start installation
+                  <ArrowRight className="size-4" />
                 </Button>
 
                 <Button
                   variant="outline"
-                  leftIcon={<Package />}
                   onClick={() => {
                     document
                       .querySelector("#add-components")
@@ -464,6 +472,7 @@ export default function InstallationPage() {
                       });
                   }}
                 >
+                  <Package className="size-4" />
                   Add components
                 </Button>
               </div>
@@ -568,7 +577,7 @@ export default function InstallationPage() {
               <SectionTitle
                 id="initialize"
                 title="Initialize Binhlaig UI"
-                description="Choose Native Beta or Shadcn Stable and initialize the project."
+                description="Choose an installer once. Binhlaig UI saves it in binhlaig.json for future add commands."
               />
 
               <div className="mt-6 flex items-start gap-4">
@@ -593,7 +602,7 @@ export default function InstallationPage() {
                         Binhlaig Native Beta
                       </p>
                       <p className="mt-2 text-sm leading-6 text-amber-800/80 dark:text-amber-200/70">
-                        Creates the Binhlaig config, utility file, UI folder, theme CSS, and shared dependencies.
+                        Creates binhlaig.json, utility files, the UI directory, theme CSS, and required shared dependencies. The selected installer is saved automatically.
                       </p>
                       <div className="mt-4">
                         <CodeBlock code={nativeInitCode} />
@@ -605,12 +614,25 @@ export default function InstallationPage() {
                         Shadcn CLI Stable
                       </p>
                       <p className="mt-2 text-sm leading-6 text-emerald-800/80 dark:text-emerald-200/70">
-                        Uses the Shadcn initialization flow and component library selection.
+                        Uses the Shadcn initialization flow and saves "installer": "shadcn" in binhlaig.json for later add commands.
                       </p>
                       <div className="mt-4">
                         <CodeBlock code={shadcnInitCode} />
                       </div>
                     </div>
+                  </div>
+
+                  <div className="mt-5 grid gap-4 lg:grid-cols-2">
+                    <CodeBlock
+                      code={nativeConfigCode}
+                      title="binhlaig.json · Native"
+                      language="json"
+                    />
+                    <CodeBlock
+                      code={shadcnConfigCode}
+                      title="binhlaig.json · Shadcn"
+                      language="json"
+                    />
                   </div>
                 </div>
               </div>
@@ -620,11 +642,11 @@ export default function InstallationPage() {
 
                 <div className="min-w-0 flex-1">
                   <h3 className="font-semibold text-slate-950 dark:text-white">
-                    Run Native init directly
+                    Optional: initialize non-interactively
                   </h3>
 
                   <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
-                    Use the Native installer directly without opening the installer selection menu.
+                    Automation and CI workflows can explicitly select Native and skip confirmation prompts.
                   </p>
 
                   <div className="mt-5">
@@ -638,7 +660,7 @@ export default function InstallationPage() {
                   title="Initialization completed"
                   variant="success"
                 >
-                  Native init creates binhlaig.json, components/ui, lib/utils.ts, required Tailwind theme styles, and installs shared dependencies.
+                  Initialization stores the selected installer in binhlaig.json. Future add commands automatically reuse Native or Shadcn unless --installer is passed as a one-command override.
                 </InfoBox>
               </div>
             </section>
@@ -660,19 +682,22 @@ export default function InstallationPage() {
                   </h3>
 
                   <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
-                    Add the Button component with Binhlaig Native Beta.
+                    Add the Button component. The CLI reads the installer saved
+                    during initialization, so no installer option is required.
                   </p>
 
                   <div className="mt-5">
                     <CodeBlock code={addButtonCode} />
                   </div>
 
-                  <p className="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-400">
-                    Prefer the stable compatibility installer? Use:
-                  </p>
-
-                  <div className="mt-4">
-                    <CodeBlock code={addButtonShadcnCode} />
+                  <div className="mt-5">
+                    <InfoBox title="Installer selection is remembered" variant="success">
+                      Native and Shadcn projects use the same add command. Pass
+                      <code className="mx-1 rounded bg-emerald-100 px-1.5 py-0.5 text-xs dark:bg-emerald-500/20">
+                        --installer
+                      </code>
+                      only for a one-command override.
+                    </InfoBox>
                   </div>
                 </div>
               </div>
@@ -683,7 +708,7 @@ export default function InstallationPage() {
                 </h3>
 
                 <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
-                  You can install multiple components with one Native command.
+                  You can install multiple components with one command. The saved installer is applied to every component.
                 </p>
 
                 <div className="mt-5">
@@ -750,12 +775,12 @@ export default function InstallationPage() {
                   </div>
 
                   <Button
-                    rightIcon={<Rocket />}
                     onClick={() => {
                       navigator.clipboard.writeText(developmentCode);
                     }}
                   >
                     Copy dev command
+                    <Rocket className="size-4" />
                   </Button>
                 </div>
 
@@ -864,7 +889,7 @@ export default function InstallationPage() {
                   </p>
 
                   <p className="mt-1 text-sm leading-6 text-slate-500">
-                    Native installer configuration and project aliases.
+                    Saved installer selection, component paths, aliases, and project configuration.
                   </p>
                 </div>
               </div>
@@ -915,30 +940,21 @@ export default function InstallationPage() {
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {[
-                  {
-                    name: "Button",
-                    href: "/components/button",
-                  },
-                  {
-                    name: "Card",
-                    href: "/components/card",
-                  },
-                  {
-                    name: "Input",
-                    href: "/components/input",
-                  },
-                  {
-                    name: "Badge",
-                    href: "/components/badge",
-                  },
-                  {
-                    name: "Tabs",
-                    href: "/components/tabs",
-                  },
-                  {
-                    name: "Alert Dialog",
-                    href: "/components/alert-dialog",
-                  },
+                  { name: "Button", href: "/docs/components/button" },
+                  { name: "Card", href: "/docs/components/card" },
+                  { name: "Badge", href: "/docs/components/badge" },
+                  { name: "Input", href: "/docs/components/input" },
+                  { name: "Textarea", href: "/docs/components/textarea" },
+                  { name: "Tabs", href: "/docs/components/tabs" },
+                  { name: "Popover", href: "/docs/components/popover" },
+                  { name: "Form", href: "/docs/components/form" },
+                  { name: "Drawer", href: "/docs/components/drawer" },
+                  { name: "Dialog", href: "/docs/components/dialog" },
+                  { name: "Checkbox", href: "/docs/components/checkbox" },
+                  { name: "Alert", href: "/docs/components/alert" },
+                  { name: "Alert Dialog", href: "/docs/components/alert-dialog" },
+                  { name: "Avatar", href: "/docs/components/avatar" },
+                  { name: "Breadcrumb", href: "/docs/components/breadcrumb" },
                 ].map((component) => (
                   <Link
                     key={component.name}
@@ -1100,7 +1116,7 @@ export default function InstallationPage() {
               </Link>
 
               <Link
-                href="/components"
+                href="/docs/components"
                 className="group rounded-2xl border border-slate-200 p-5 text-right transition hover:border-blue-300 hover:bg-blue-50/50 dark:border-slate-800 dark:hover:border-blue-500/40 dark:hover:bg-blue-500/5"
               >
                 <div className="text-xs text-slate-500">
