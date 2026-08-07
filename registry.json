@@ -323,6 +323,26 @@
     }
   ]
 },
+{
+  "name": "combobox",
+  "type": "registry:ui",
+  "title": "ComboBox",
+  "description": "A searchable input combined with a predefined list of selectable options.",
+  "dependencies": [
+    "@base-ui/react",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/default/combobox/combobox.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/combobox.tsx"
+    }
+  ]
+},
     {
       "name": "data-table",
       "type": "registry:ui",
