@@ -55,10 +55,6 @@ const sidebarGroups: SidebarGroup[] = [
     icon: Component,
     items: [
       {
-        title: "Accordion",
-        href: "/components/accordion",
-      },
-      {
         title: "Avatar",
         href: "/docs/components/avatar",
       },
@@ -75,20 +71,8 @@ const sidebarGroups: SidebarGroup[] = [
         href: "/docs/components/card",
       },
       {
-        title: "Chip",
-        href: "/components/chip",
-      },
-      {
-        title: "Divider",
-        href: "/components/divider",
-      },
-      {
-        title: "Image",
-        href: "/components/image",
-      },
-      {
-        title: "Link",
-        href: "/components/link",
+        title:"tabs",
+        href:"/docs/components/tabs",
       },
     ],
   },
@@ -105,24 +89,21 @@ const sidebarGroups: SidebarGroup[] = [
         href: "/docs/components/input",
       },
       {
-        title: "Radio Group",
-        href: "/components/radio-group",
-      },
-      {
-        title: "Select",
-        href: "/components/select",
-      },
-      {
-        title: "Switch",
-        href: "/components/switch",
-      },
-      {
         title: "Textarea",
         href: "/docs/components/textarea",
       },
         {
         title: "Form",
         href: "/docs/components/form",
+      },
+      {
+        title:"calendar",
+        href:"/docs/components/calendar",
+
+      },
+      {
+        title:"combobox",
+        href:"/docs/components/combobox",
       },
     ],
   },
@@ -150,10 +131,7 @@ const sidebarGroups: SidebarGroup[] = [
         title: "Popover",
         href: "/docs/components/popover",
       },
-      {
-        title: "Tooltip",
-        href: "/components/tooltip",
-      },
+  
     ],
   },
   {
@@ -163,18 +141,6 @@ const sidebarGroups: SidebarGroup[] = [
       {
         title: "Alert",
         href: "/docs/components/alert",
-      },
-      {
-        title: "Progress",
-        href: "/components/progress",
-      },
-      {
-        title: "Skeleton",
-        href: "/components/skeleton",
-      },
-      {
-        title: "Spinner",
-        href: "/components/spinner",
       },
       {
         title: "Toast",

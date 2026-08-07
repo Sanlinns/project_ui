@@ -102,7 +102,7 @@ export default function Home() {
           </p>
 
           <div className="hero-actions">
-            <a className="button button-primary" href="#components">
+            <a className="button button-primary" href="/docs/components">
               Browse components
               <ArrowIcon />
             </a>
@@ -198,9 +198,9 @@ export default function Home() {
                   </div>
                 )}
               </div>
-              <div className="card-content">
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
+              <div className="card-content ">
+                <h3 className="text-amber-500">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
                 <span className="card-meta">{item.meta}</span>
               </div>
             </article>

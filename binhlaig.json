@@ -1,0 +1,5 @@
+{
+  "$schema": "https://ui.binhlaig.com/schema.json",
+  "installer": "shadcn",
+  "base": "base"
+}
