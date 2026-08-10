@@ -303,46 +303,46 @@
       ]
     },
     {
-  "name": "command",
-  "type": "registry:ui",
-  "title": "Command",
-  "description": "A fast searchable command menu with keyboard navigation and command palette support.",
-  "dependencies": [
-    "cmdk",
-    "lucide-react"
-  ],
-  "registryDependencies": [
-    "dialog",
-    "utils"
-  ],
-  "files": [
-    {
-      "path": "registry/default/command/command.tsx",
+      "name": "command",
       "type": "registry:ui",
-      "target": "components/ui/command.tsx"
-    }
-  ]
-},
-{
-  "name": "combobox",
-  "type": "registry:ui",
-  "title": "ComboBox",
-  "description": "A searchable input combined with a predefined list of selectable options.",
-  "dependencies": [
-    "@base-ui/react",
-    "lucide-react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
-  "files": [
+      "title": "Command",
+      "description": "A fast searchable command menu with keyboard navigation and command palette support.",
+      "dependencies": [
+        "cmdk",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "dialog",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/default/command/command.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/command.tsx"
+        }
+      ]
+    },
     {
-      "path": "registry/default/combobox/combobox.tsx",
+      "name": "combobox",
       "type": "registry:ui",
-      "target": "components/ui/combobox.tsx"
-    }
-  ]
-},
+      "title": "ComboBox",
+      "description": "A searchable input combined with a predefined list of selectable options.",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/default/combobox/combobox.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/combobox.tsx"
+        }
+      ]
+    },
     {
       "name": "data-table",
       "type": "registry:ui",
@@ -362,6 +362,80 @@
           "path": "registry/default/data-table/data-table.tsx",
           "type": "registry:ui",
           "target": "components/ui/data-table.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Lightweight floating notifications with success, error, loading and info states.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/default/toast/toast.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/toast.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "A flexible pagination component for navigating through pages, tables and result sets.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/default/pagination/pagination.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pagination.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navbar",
+      "type": "registry:ui",
+      "title": "Navbar",
+      "description": "A responsive navigation bar with brand, links, actions and mobile menu support.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/default/navbar/navbar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/navbar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "An accessible text label for form controls with required and optional indicators.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/default/label/label.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/label.tsx"
         }
       ]
     },

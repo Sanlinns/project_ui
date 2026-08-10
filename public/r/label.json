@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "title": "Label",
+  "description": "An accessible text label for form controls with required and optional indicators.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/default/label/label.tsx",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\n\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nfunction Label({\r\n  className,\r\n  ...props\r\n}: React.ComponentProps<\"label\">) {\r\n  return (\r\n    <label\r\n      data-slot=\"label\"\r\n      className={cn(\r\n        \"inline-flex items-center gap-2 text-sm font-medium leading-none\",\r\n        \"peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nfunction LabelRequired({\r\n  className,\r\n  children,\r\n  ...props\r\n}: React.ComponentProps<\"span\">) {\r\n  return (\r\n    <span\r\n      data-slot=\"label-required\"\r\n      aria-hidden=\"true\"\r\n      className={cn(\r\n        \"text-destructive\",\r\n        className\r\n      )}\r\n      {...props}\r\n    >\r\n      {children ?? \"*\"}\r\n    </span>\r\n  )\r\n}\r\n\r\nfunction LabelOptional({\r\n  className,\r\n  children,\r\n  ...props\r\n}: React.ComponentProps<\"span\">) {\r\n  return (\r\n    <span\r\n      data-slot=\"label-optional\"\r\n      className={cn(\r\n        \"text-xs font-normal text-muted-foreground\",\r\n        className\r\n      )}\r\n      {...props}\r\n    >\r\n      {children ?? \"Optional\"}\r\n    </span>\r\n  )\r\n}\r\n\r\nexport {\r\n  Label,\r\n  LabelOptional,\r\n  LabelRequired,\r\n}",
+      "type": "registry:ui",
+      "target": "components/ui/label.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}
