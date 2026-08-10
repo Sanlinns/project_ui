@@ -16,11 +16,13 @@ import {
   PanelBottom,
   PanelTop,
   Search,
+  StretchHorizontal,
   Table2,
   TextCursorInput,
   TextQuote,
   ToggleLeft,
 } from "lucide-react"
+
 
 import { Input } from "@/components/ui/input"
 
@@ -125,6 +127,12 @@ const componentGroups: ComponentGroup[] = [
         slug: "alert-dialog",
         description: "Confirm important actions.",
         icon: MessageSquare,
+      },
+      {
+        name:"Navbar",
+        slug:"navbar",
+        description: "show header",
+        icon: StretchHorizontal,
       },
     ],
   },
