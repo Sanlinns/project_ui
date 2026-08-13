@@ -344,12 +344,32 @@
       ]
     },
     {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "An accessible disclosure panel that expands and collapses content.",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/default/collapsible/collapsible.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/collapsible.tsx"
+        }
+      ]
+    },
+    {
       "name": "data-table",
       "type": "registry:ui",
       "title": "Data Table",
       "description": "A reusable table with sorting, filtering, pagination, row selection and column visibility.",
       "dependencies": [
-        "@tanstack/react-table",
+        "@tanstack/react-table@8.21.3",
         "lucide-react"
       ],
       "registryDependencies": [

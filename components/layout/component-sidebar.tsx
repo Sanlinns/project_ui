@@ -144,7 +144,7 @@ const sidebarGroups: SidebarGroup[] = [
       },
       {
         title: "Toast",
-        href: "/components/toast",
+        href: "/docs/components/toast",
         badge: "New",
       },
     ],

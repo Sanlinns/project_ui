@@ -614,7 +614,7 @@ export default function InstallationPage() {
                         Shadcn CLI Stable
                       </p>
                       <p className="mt-2 text-sm leading-6 text-emerald-800/80 dark:text-emerald-200/70">
-                        Uses the Shadcn initialization flow and saves "installer": "shadcn" in binhlaig.json for later add commands.
+                        Uses the Shadcn initialization flow and saves &quot;installer&quot;: &quot;shadcn&quot; in binhlaig.json for later add commands.
                       </p>
                       <div className="mt-4">
                         <CodeBlock code={shadcnInitCode} />

@@ -1450,7 +1450,7 @@ export default function TabsDocumentationPage() {
             {/* Bottom Navigation */}
             <div className="grid gap-4 border-t border-slate-200 pt-8 sm:grid-cols-2 dark:border-slate-800">
               <Link
-                href="/components/input"
+                href="/docs/components/input"
                 className="group rounded-2xl border border-slate-200 p-5 transition hover:border-blue-300 hover:bg-blue-50/50 dark:border-slate-800 dark:hover:border-blue-500/40 dark:hover:bg-blue-500/5"
               >
                 <div className="text-xs text-slate-500">
@@ -1464,7 +1464,7 @@ export default function TabsDocumentationPage() {
               </Link>
 
               <Link
-                href="/components/badge"
+                href="/docs/components/badge"
                 className="group rounded-2xl border border-slate-200 p-5 text-right transition hover:border-blue-300 hover:bg-blue-50/50 dark:border-slate-800 dark:hover:border-blue-500/40 dark:hover:bg-blue-500/5"
               >
                 <div className="text-xs text-slate-500">

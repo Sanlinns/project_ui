@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -27,17 +27,14 @@ export function ComponentsHeader() {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
 
-  const [mounted, setMounted] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
+  const [mobileOpenPath, setMobileOpenPath] = useState<string | null>(null);
+  const mobileOpen = mobileOpenPath === pathname;
   const [themeMenuOpen, setThemeMenuOpen] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
 
   const isActive = (href: string) => {
     if (href === "/docs") {
@@ -169,7 +166,11 @@ export function ComponentsHeader() {
             {/* Mobile menu */}
             <button
               type="button"
-              onClick={() => setMobileOpen((value) => !value)}
+              onClick={() =>
+                setMobileOpenPath((value) =>
+                  value === pathname ? null : pathname,
+                )
+              }
               className="inline-flex size-9 items-center justify-center rounded-lg border border-border text-foreground transition-colors hover:bg-accent lg:hidden"
               aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
               aria-expanded={mobileOpen}
