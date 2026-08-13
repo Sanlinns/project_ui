@@ -15,7 +15,7 @@ export function ComponentSearch() {
 
     if (!query) return;
 
-    router.push(`/components?search=${encodeURIComponent(query)}`);
+    router.push(`/docs/components?search=${encodeURIComponent(query)}`);
   };
 
   return (

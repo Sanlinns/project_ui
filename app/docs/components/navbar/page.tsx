@@ -67,10 +67,10 @@ export function NavbarDemo() {
           <NavbarLink href="/" active>
             Home
           </NavbarLink>
-          <NavbarLink href="/docs">
+          <NavbarLink href="/docs/installation">
             Docs
           </NavbarLink>
-          <NavbarLink href="/components">
+          <NavbarLink href="/docs/components">
             Components
           </NavbarLink>
         </NavbarNav>
@@ -110,8 +110,8 @@ export function ResponsiveNavbar() {
 
         <NavbarNav>
           <NavbarLink href="/">Home</NavbarLink>
-          <NavbarLink href="/docs">Docs</NavbarLink>
-          <NavbarLink href="/components">
+          <NavbarLink href="/docs/installation">Docs</NavbarLink>
+          <NavbarLink href="/docs/components">
             Components
           </NavbarLink>
         </NavbarNav>
@@ -126,10 +126,10 @@ export function ResponsiveNavbar() {
         <NavbarMobileLink href="/">
           Home
         </NavbarMobileLink>
-        <NavbarMobileLink href="/docs">
+        <NavbarMobileLink href="/docs/installation">
           Docs
         </NavbarMobileLink>
-        <NavbarMobileLink href="/components">
+        <NavbarMobileLink href="/docs/components">
           Components
         </NavbarMobileLink>
       </NavbarMobileMenu>
@@ -143,7 +143,7 @@ const activeCode = `import {
 
 export function ActiveNavLink() {
   return (
-    <NavbarLink href="/docs" active>
+    <NavbarLink href="/docs/installation" active>
       Docs
     </NavbarLink>
   )

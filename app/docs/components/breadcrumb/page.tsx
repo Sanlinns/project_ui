@@ -66,7 +66,7 @@ export function BreadcrumbDemo() {
         <BreadcrumbSeparator />
 
         <BreadcrumbItem>
-          <BreadcrumbLink href="/components">
+          <BreadcrumbLink href="/docs/components">
             Components
           </BreadcrumbLink>
         </BreadcrumbItem>
@@ -497,7 +497,7 @@ export default function BreadcrumbDocumentationPage() {
                       <BreadcrumbSeparator />
 
                       <BreadcrumbItem>
-                        <BreadcrumbLink href="/dashboard">
+                        <BreadcrumbLink href="#">
                           Dashboard
                         </BreadcrumbLink>
                       </BreadcrumbItem>
@@ -581,7 +581,7 @@ export default function BreadcrumbDocumentationPage() {
                       </BreadcrumbSeparator>
 
                       <BreadcrumbItem>
-                        <BreadcrumbLink href="/settings">
+                        <BreadcrumbLink href="#">
                           Settings
                         </BreadcrumbLink>
                       </BreadcrumbItem>
@@ -621,7 +621,7 @@ export default function BreadcrumbDocumentationPage() {
                       <BreadcrumbSeparator />
 
                       <BreadcrumbItem className="hidden sm:inline-flex">
-                        <BreadcrumbLink href="/docs">
+                        <BreadcrumbLink href="/docs/installation">
                           Docs
                         </BreadcrumbLink>
                       </BreadcrumbItem>

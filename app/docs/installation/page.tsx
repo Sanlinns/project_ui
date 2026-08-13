@@ -415,7 +415,7 @@ export default function InstallationPage() {
           {/* Breadcrumb */}
           <div className="mb-7 flex items-center gap-2 text-sm text-slate-500">
             <Link
-              href="/docs"
+              href="/docs/installation"
               className="transition hover:text-slate-950 dark:hover:text-white"
             >
               Docs
@@ -1102,7 +1102,7 @@ export default function InstallationPage() {
             {/* Bottom Navigation */}
             <div className="grid gap-4 border-t border-slate-200 pt-8 sm:grid-cols-2 dark:border-slate-800">
               <Link
-                href="/docs/introduction"
+                href="/"
                 className="group rounded-2xl border border-slate-200 p-5 transition hover:border-blue-300 hover:bg-blue-50/50 dark:border-slate-800 dark:hover:border-blue-500/40 dark:hover:bg-blue-500/5"
               >
                 <div className="text-xs text-slate-500">
@@ -1111,7 +1111,7 @@ export default function InstallationPage() {
 
                 <div className="mt-2 flex items-center gap-2 font-semibold text-slate-950 dark:text-white">
                   <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
-                  Introduction
+                  Home
                 </div>
               </Link>
 

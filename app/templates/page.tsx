@@ -321,7 +321,7 @@ export default function TemplatesPage() {
             <Link className="text-sm font-medium text-slate-500 dark:text-slate-400 transition hover:text-blue-600" href="/#foundations">
               Foundations
             </Link>
-            <Link className="text-sm font-medium text-slate-500 dark:text-slate-400 transition hover:text-blue-600" href="/components">
+            <Link className="text-sm font-medium text-slate-500 dark:text-slate-400 transition hover:text-blue-600" href="/docs/components">
               Components
             </Link>
             <Link className="text-sm font-semibold text-blue-600" href="/templates" aria-current="page">
@@ -344,7 +344,7 @@ export default function TemplatesPage() {
         </div>
         <nav className="flex justify-center gap-5 border-t border-slate-100 dark:border-slate-800 px-4 py-2 md:hidden" aria-label="Mobile navigation">
           <Link className="text-xs font-medium text-slate-500 dark:text-slate-400" href="/#foundations">Foundations</Link>
-          <Link className="text-xs font-medium text-slate-500 dark:text-slate-400" href="/components">Components</Link>
+          <Link className="text-xs font-medium text-slate-500 dark:text-slate-400" href="/docs/components">Components</Link>
           <Link className="text-xs font-semibold text-blue-600" href="/templates" aria-current="page">Templates</Link>
           <Link className="text-xs font-medium text-slate-500 dark:text-slate-400" href="/#roadmap">Roadmap</Link>
         </nav>

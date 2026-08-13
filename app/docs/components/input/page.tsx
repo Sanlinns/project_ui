@@ -529,7 +529,7 @@ export default function InputDocumentationPage() {
           {/* Breadcrumb */}
           <div className="mb-7 flex items-center gap-2 text-sm text-slate-500">
             <Link
-              href="/components"
+              href="/docs/components"
               className="transition hover:text-slate-950 dark:hover:text-white"
             >
               Components
@@ -1098,7 +1098,7 @@ export default function InputDocumentationPage() {
             {/* Navigation */}
             <div className="grid gap-4 border-t border-slate-200 pt-8 sm:grid-cols-2 dark:border-slate-800">
               <Link
-                href="/components/card"
+                href="/docs/components/card"
                 className="group rounded-2xl border border-slate-200 p-5 transition hover:border-blue-300 hover:bg-blue-50/50 dark:border-slate-800 dark:hover:border-blue-500/40 dark:hover:bg-blue-500/5"
               >
                 <div className="text-xs text-slate-500">
@@ -1112,7 +1112,7 @@ export default function InputDocumentationPage() {
               </Link>
 
               <Link
-                href="/components/tabs"
+                href="/docs/components/tabs"
                 className="group rounded-2xl border border-slate-200 p-5 text-right transition hover:border-blue-300 hover:bg-blue-50/50 dark:border-slate-800 dark:hover:border-blue-500/40 dark:hover:bg-blue-500/5"
               >
                 <div className="text-xs text-slate-500">

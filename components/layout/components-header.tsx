@@ -17,10 +17,9 @@ import { ComponentSearch } from "../ComponentSearch";
 import { BrandLogo } from "../brand-logo";
 
 const navItems = [
-  { label: "Docs", href: "/docs" },
+  { label: "Docs", href: "/docs/installation" },
   { label: "Components", href: "/docs/components" },
   { label: "Templates", href: "/templates" },
-  { label: "Colors", href: "/colors" },
 ];
 
 export function ComponentsHeader() {
@@ -37,7 +36,7 @@ export function ComponentsHeader() {
   const [themeMenuOpen, setThemeMenuOpen] = useState(false);
 
   const isActive = (href: string) => {
-    if (href === "/docs") {
+    if (href === "/docs/installation") {
       return pathname === href;
     }
 

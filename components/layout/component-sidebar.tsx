@@ -34,19 +34,11 @@ const sidebarGroups: SidebarGroup[] = [
     items: [
       {
         title: "Introduction",
-        href: "/components",
+        href: "/docs/components",
       },
       {
         title: "Installation",
         href: "/docs/installation",
-      },
-      {
-        title: "Theming",
-        href: "/components/theming",
-      },
-      {
-        title: "CLI",
-        href: "/components/cli",
       },
     ],
   },
@@ -64,7 +56,7 @@ const sidebarGroups: SidebarGroup[] = [
       },
       {
         title: "Button",
-        href: "/docs/components/buttons",
+        href: "/docs/components/button",
       },
       {
         title: "Card",
@@ -122,10 +114,6 @@ const sidebarGroups: SidebarGroup[] = [
       {
         title: "Drawer",
         href: "/docs/components/drawer",
-      },
-      {
-        title: "Dropdown",
-        href: "/components/dropdown",
       },
       {
         title: "Popover",
@@ -275,7 +263,7 @@ export function ComponentSidebar({
                       {group.items.map((item) => {
                         const isActive =
                           pathname === item.href ||
-                          (item.href !== "/components" &&
+                          (item.href !== "/docs/components" &&
                             pathname.startsWith(`${item.href}/`));
 
                         return (

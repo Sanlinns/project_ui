@@ -708,7 +708,7 @@ export default function TabsDocumentationPage() {
           {/* Breadcrumb */}
           <div className="mb-7 flex items-center gap-2 text-sm text-slate-500">
             <Link
-              href="/components"
+              href="/docs/components"
               className="transition hover:text-slate-950 dark:hover:text-white"
             >
               Components

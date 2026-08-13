@@ -211,7 +211,7 @@ export default function ComponentsPage() {
       <main className="min-w-0">
         <article className="mx-auto max-w-5xl">
           <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
-            <Link href="/docs" className="hover:text-foreground">
+            <Link href="/docs/installation" className="hover:text-foreground">
               Docs
             </Link>
             <span>/</span>
