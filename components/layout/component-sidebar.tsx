@@ -63,8 +63,12 @@ const sidebarGroups: SidebarGroup[] = [
         href: "/docs/components/card",
       },
       {
-        title:"tabs",
-        href:"/docs/components/tabs",
+        title: "Data Table",
+        href: "/docs/components/data-table",
+      },
+      {
+        title: "Tabs",
+        href: "/docs/components/tabs",
       },
     ],
   },
@@ -84,18 +88,25 @@ const sidebarGroups: SidebarGroup[] = [
         title: "Textarea",
         href: "/docs/components/textarea",
       },
-        {
+      {
         title: "Form",
         href: "/docs/components/form",
       },
       {
-        title:"calendar",
-        href:"/docs/components/calendar",
-
+        title: "Input OTP",
+        href: "/docs/components/input-otp",
       },
       {
-        title:"combobox",
-        href:"/docs/components/combobox",
+        title: "Label",
+        href: "/docs/components/label",
+      },
+      {
+        title: "Calendar",
+        href: "/docs/components/calendar",
+      },
+      {
+        title: "Combobox",
+        href: "/docs/components/combobox",
       },
     ],
   },
@@ -142,6 +153,8 @@ const sidebarGroups: SidebarGroup[] = [
     icon: Component,
     items: [
       { title: "Breadcrumb", href: "/docs/components/breadcrumb" },
+      { title: "Navbar", href: "/docs/components/navbar" },
+      { title: "Pagination", href: "/docs/components/pagination" },
     ],
   },
 ];
