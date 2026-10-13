@@ -1,3 +1,7 @@
+"use client";
+
+import { useLanguage } from "@/components/providers/language-provider";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,12 +12,13 @@ export function BrandLogo({
   children?: React.ReactNode;
   className?: string;
 }) {
+  const { t } = useLanguage();
   return (
-    <Link className={className} href="/" aria-label="Binhlaig home">
+    <Link className={className} href="/" aria-label={t("Binhlaig home")}>
       <Image
         className="h-10 w-auto object-contain dark:hidden"
         src="/logo/ui_icon.png"
-        alt="Binhlaig logo"
+        alt={t("Binhlaig logo")}
         width={1254}
         height={1254}
         sizes="40px"
@@ -22,7 +27,7 @@ export function BrandLogo({
       <Image
         className="hidden h-10 w-auto object-contain dark:block"
         src="/logo/ui_dark_icon.png"
-        alt="Binhlaig UI brand logo"
+        alt={t("Binhlaig UI brand logo")}
         width={1254}
         height={1254}
         sizes="40px"

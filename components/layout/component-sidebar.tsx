@@ -1,5 +1,8 @@
 "use client";
 
+import { useLanguage } from "@/components/providers/language-provider";
+import { isMessageKey, type MessageKey } from "@/lib/i18n";
+
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -18,11 +21,11 @@ import { cn } from "@/lib/utils";
 type SidebarItem = {
   title: string;
   href: string;
-  badge?: string;
+  badge?: MessageKey;
 };
 
 type SidebarGroup = {
-  title: string;
+  title: MessageKey;
   icon: React.ElementType;
   items: SidebarItem[];
 };
@@ -168,6 +171,7 @@ export function ComponentSidebar({
   mobileOpen = false,
   onMobileOpenChange,
 }: ComponentSidebarProps) {
+  const { t } = useLanguage();
   const pathname = usePathname();
   const [search, setSearch] = React.useState("");
   const [openGroups, setOpenGroups] = React.useState<string[]>(
@@ -183,11 +187,11 @@ export function ComponentSidebar({
       .map((group) => ({
         ...group,
         items: group.items.filter((item) =>
-          item.title.toLowerCase().includes(query),
+          item.title.toLowerCase().includes(query) || (isMessageKey(item.title) && t(item.title).toLowerCase().includes(query)),
         ),
       }))
       .filter((group) => group.items.length > 0);
-  }, [search]);
+  }, [search, t]);
 
   const toggleGroup = (title: string) => {
     setOpenGroups((current) =>
@@ -202,7 +206,7 @@ export function ComponentSidebar({
       {/* Mobile title */}
       <div className="flex h-16 shrink-0 items-center justify-between border-b border-border px-5 lg:hidden">
         <div>
-          <p className="text-sm font-semibold text-foreground">Components</p>
+          <p className="text-sm font-semibold text-foreground">{t("Components")}</p>
           <p className="text-xs text-muted-foreground">Binhlaig UI</p>
         </div>
 
@@ -210,7 +214,7 @@ export function ComponentSidebar({
           type="button"
           onClick={() => onMobileOpenChange?.(false)}
           className="inline-flex size-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-          aria-label="Close sidebar"
+          aria-label={t("Close sidebar")}
         >
           <X className="size-4" />
         </button>
@@ -225,25 +229,22 @@ export function ComponentSidebar({
             type="search"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
-            placeholder="Search components..."
+            placeholder={t("Search components...")}
+            aria-label={t("Search components")}
             className="h-10 w-full rounded-xl border border-border bg-muted/40 pl-9 pr-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15"
           />
         </div>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto px-3 py-4">
+      <nav aria-label={t("Components")} className="flex-1 overflow-y-auto px-3 py-4">
         {filteredGroups.length === 0 ? (
           <div className="px-3 py-10 text-center">
             <Search className="mx-auto size-5 text-muted-foreground" />
 
-            <p className="mt-3 text-sm font-medium text-foreground">
-              No component found
-            </p>
+            <p className="mt-3 text-sm font-medium text-foreground">{t("No component found")}</p>
 
-            <p className="mt-1 text-xs text-muted-foreground">
-              Try another component name.
-            </p>
+            <p className="mt-1 text-xs text-muted-foreground">{t("Try another component name.")}</p>
           </div>
         ) : (
           <div className="space-y-5">
@@ -256,12 +257,13 @@ export function ComponentSidebar({
                 <div key={group.title}>
                   <button
                     type="button"
+                    aria-expanded={isOpen}
                     onClick={() => toggleGroup(group.title)}
                     className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
                   >
                     <Icon className="size-4" />
 
-                    <span>{group.title}</span>
+                    <span>{t(group.title)}</span>
 
                     <ChevronDown
                       className={cn(
@@ -300,11 +302,11 @@ export function ComponentSidebar({
                               )}
                             />
 
-                            <span className="truncate">{item.title}</span>
+                            <span className="truncate">{isMessageKey(item.title) ? t(item.title) : item.title}</span>
 
                             {item.badge && (
                               <span className="ml-auto rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary">
-                                {item.badge}
+                                {t(item.badge)}
                               </span>
                             )}
                           </Link>
@@ -326,9 +328,7 @@ export function ComponentSidebar({
             Binhlaig UI
           </p>
 
-          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-            Reusable and accessible React components.
-          </p>
+          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{t("Reusable and accessible React components.")}</p>
         </div>
       </div>
     </div>
@@ -348,7 +348,7 @@ export function ComponentSidebar({
             type="button"
             onClick={() => onMobileOpenChange?.(false)}
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            aria-label="Close sidebar overlay"
+            aria-label={t("Close sidebar overlay")}
           />
 
           <aside className="absolute inset-y-0 left-0 w-[85%] max-w-xs border-r border-border shadow-2xl">

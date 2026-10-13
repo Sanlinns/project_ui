@@ -1,7 +1,13 @@
 "use client"
 
+import { useLanguage } from "@/components/providers/language-provider";
+import type { MessageKey } from "@/lib/i18n";
+import { COMPONENT_SEARCH_EVENT } from "@/lib/language";
+
 import * as React from "react"
 import Link from "next/link"
+import myMessages from "@/messages/my.json"
+import { useSearchParams } from "next/navigation"
 import {
   AlertCircle,
   BadgeCheck,
@@ -29,13 +35,13 @@ import { Input } from "@/components/ui/input"
 type ComponentItem = {
   name: string
   slug: string
-  description: string
+  description: MessageKey
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
 }
 
 type ComponentGroup = {
   id: string
-  title: string
+  title: MessageKey
   items: ComponentItem[]
 }
 
@@ -181,7 +187,28 @@ const componentGroups: ComponentGroup[] = [
 ]
 
 export default function ComponentsPage() {
-  const [query, setQuery] = React.useState("")
+  const { t } = useLanguage()
+  return (
+    <React.Suspense fallback={<p role="status" className="py-8 text-muted-foreground">{t("Loading components...")}</p>}>
+      <ComponentsSearchPage />
+    </React.Suspense>
+  )
+}
+
+function ComponentsSearchPage() {
+  const searchParams = useSearchParams()
+  const initialQuery = searchParams.get("search") ?? ""
+  return <ComponentsContent key={initialQuery} initialQuery={initialQuery} />
+}
+
+function ComponentsContent({ initialQuery }: { initialQuery: string }) {
+  const { t } = useLanguage()
+  const [query, setQuery] = React.useState(initialQuery)
+  React.useEffect(() => {
+    const onSearch = (event: Event) => setQuery((event as CustomEvent<string>).detail)
+    window.addEventListener(COMPONENT_SEARCH_EVENT, onSearch)
+    return () => window.removeEventListener(COMPONENT_SEARCH_EVENT, onSearch)
+  }, [])
   const normalizedQuery = query.trim().toLowerCase()
 
   const filteredGroups = React.useMemo(() => {
@@ -195,7 +222,9 @@ export default function ComponentsPage() {
         items: group.items.filter(
           (item) =>
             item.name.toLowerCase().includes(normalizedQuery) ||
-            item.description.toLowerCase().includes(normalizedQuery)
+            item.description.toLowerCase().includes(normalizedQuery) ||
+            item.slug.toLowerCase().includes(normalizedQuery) ||
+            (myMessages[item.description as keyof typeof myMessages] ?? "").toLowerCase().includes(normalizedQuery)
         ),
       }))
       .filter((group) => group.items.length > 0)
@@ -211,30 +240,26 @@ export default function ComponentsPage() {
       <main className="min-w-0">
         <article className="mx-auto max-w-5xl">
           <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
-            <Link href="/docs/installation" className="hover:text-foreground">
-              Docs
-            </Link>
+            <Link href="/docs/installation" className="hover:text-foreground">{t("Docs")}</Link>
             <span>/</span>
-            <span className="text-foreground">Components</span>
+            <span className="text-foreground">{t("Components")}</span>
           </div>
 
           <header className="border-b pb-8">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              Components
-            </h1>
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">{t("Components")}</h1>
 
-            <p className="mt-3 max-w-2xl text-base leading-7 text-muted-foreground">
-              Reusable UI components for building modern React and
-              Next.js applications.
-            </p>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-muted-foreground">{t("Reusable UI components for building modern React and Next.js applications.")}</p>
 
             <div className="relative mt-6 max-w-md">
               <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
 
               <Input
+                id="component-search"
+                type="search"
+                aria-label={t("Search components")}
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search components..."
+                placeholder={t("Search components...")}
                 className="h-10 pl-9"
               />
             </div>
@@ -248,7 +273,7 @@ export default function ComponentsPage() {
                 className="scroll-mt-24"
               >
                 <h2 className="mb-4 text-xl font-semibold tracking-tight">
-                  {group.title}
+                  {t(group.title)}
                 </h2>
 
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -276,7 +301,7 @@ export default function ComponentsPage() {
                             </div>
 
                             <p className="mt-1.5 text-sm leading-5 text-muted-foreground">
-                              {item.description}
+                              {t(item.description)}
                             </p>
                           </div>
                         </div>
@@ -288,16 +313,12 @@ export default function ComponentsPage() {
             ))}
 
             {visibleCount === 0 && (
-              <div className="rounded-xl border border-dashed p-10 text-center">
+              <div role="status" className="rounded-xl border border-dashed p-10 text-center">
                 <Search className="mx-auto size-5 text-muted-foreground" />
 
-                <h2 className="mt-3 font-medium">
-                  No components found
-                </h2>
+                <h2 className="mt-3 font-medium">{t("No components found")}</h2>
 
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Try a different search term.
-                </p>
+                <p className="mt-1 text-sm text-muted-foreground">{t("Try a different search term.")}</p>
               </div>
             )}
           </div>
@@ -306,18 +327,16 @@ export default function ComponentsPage() {
 
       <aside className="hidden xl:block">
         <div className="sticky top-24 border-l pl-5">
-          <p className="mb-3 text-sm font-medium">
-            On this page
-          </p>
+          <p className="mb-3 text-sm font-medium">{t("On this page")}</p>
 
-          <nav className="space-y-1">
-            {componentGroups.map((group) => (
+          <nav aria-label={t("On this page")} className="space-y-1">
+            {filteredGroups.map((group) => (
               <a
                 key={group.id}
                 href={`#${group.id}`}
                 className="block py-1.5 text-sm text-muted-foreground hover:text-foreground"
               >
-                {group.title}
+                {t(group.title)}
               </a>
             ))}
           </nav>

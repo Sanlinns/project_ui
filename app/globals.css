@@ -119,6 +119,7 @@ button {
   cursor: pointer;
 }
 
+
 svg {
   width: 1.1em;
   fill: none;
@@ -1507,3 +1508,55 @@ footer p {
   }
 }
 /* binhlaig-ui-theme:end */
+
+/* Myanmar typography: keep English design tokens and code fonts intact. */
+html[lang="my"] body {
+  font-family: var(--font-myanmar), var(--font-geist-sans), sans-serif;
+  line-height: 1.8;
+}
+html[lang="my"] :is(h1, h2, h3, p, button, label, nav, .card-meta, .section-kicker, .eyebrow) {
+  letter-spacing: normal;
+  line-height: 1.8;
+}
+html[lang="my"] .hero h1 {
+  font-size: clamp(32px, 4.2vw, 56px);
+  line-height: 1.65;
+}
+html[lang="my"] :is(.button, .ui-button, .header-cta, .floating-pill) {
+  height: auto;
+  min-height: 40px;
+  padding-block: 10px;
+  white-space: normal;
+}
+html[lang="my"] :is(.hero, .foundation-card, .product-card, .component-board) {
+  height: auto;
+}
+html[lang="my"] .floating-pill { font-size: 11px; }
+html[lang="my"] .product-card p { line-height: 1.85; }
+html[lang="my"] :is(.input-demo, .ui-badge) { height: auto; }
+html[lang="my"] .input-demo { min-height: 64px; }
+.language-switch { font-family: var(--font-myanmar), var(--font-geist-sans), sans-serif; }
+.language-switch { white-space: nowrap; gap: 3px; }
+.language-switch button { line-height: 1.8; }
+html[lang="my"] :is(input, .new-badge, .preview-label, .window-status, .ui-badge) {
+  line-height: 1.8;
+  letter-spacing: normal;
+}
+html[lang="my"] input { min-height: 44px; padding-block: 8px; }
+html[lang="my"] nav a { height: auto; min-height: 40px; }
+html[lang="my"] .hero h1 span { padding-block: .12em; }
+html[lang="my"] .docs-header-row { padding-block: 8px; }
+@media (max-width: 1200px) {
+  html[lang="my"] .site-header .desktop-nav { display: none; }
+  html[lang="my"] .docs-header-row .docs-nav { display: none; }
+  html[lang="my"] .docs-header-row .docs-menu-toggle { display: inline-flex; }
+  html[lang="my"] .docs-mobile-navigation { display: block; }
+}
+@media (max-width: 640px) {
+  .site-header { flex-wrap: wrap; height: auto; gap: 12px; padding-block: 14px; }
+  .site-header .header-actions { flex-wrap: wrap; gap: 8px; }
+  html[lang="my"] .floating-pill { max-width: 190px; }
+  .docs-header-row { flex-wrap: wrap; gap: 6px; padding-block: 8px; min-height: 104px; }
+  .docs-header-row > .brand { flex: 1 0 100%; }
+  body:has(.docs-header-row) .top-16 { top: 104px; }
+}

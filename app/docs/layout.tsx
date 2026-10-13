@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/components/providers/language-provider";
+
 import type { ReactNode } from "react";
 import { useState } from "react";
 import { Menu } from "lucide-react";
@@ -12,6 +14,7 @@ export default function ComponentsLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const { t } = useLanguage();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -32,10 +35,10 @@ export default function ComponentsLayout({
               type="button"
               onClick={() => setSidebarOpen(true)}
               className="inline-flex h-9 items-center gap-2 rounded-lg border border-border px-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-              aria-label="Open components sidebar"
+              aria-label={t("Open components sidebar")}
             >
               <Menu className="size-4" />
-              <span>Components</span>
+              <span>{t("Components")}</span>
             </button>
           </div>
 

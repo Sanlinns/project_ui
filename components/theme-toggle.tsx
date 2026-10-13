@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/components/providers/language-provider";
+
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 
@@ -39,6 +41,7 @@ const options = [
 ] as const;
 
 export function ThemeToggle() {
+  const { t } = useLanguage();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
@@ -104,7 +107,7 @@ export function ThemeToggle() {
       <button
         className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-500 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300"
         type="button"
-        aria-label="Choose theme"
+        aria-label={t("Choose theme")}
         aria-expanded="false"
         disabled
       >
@@ -119,7 +122,7 @@ export function ThemeToggle() {
         ref={buttonRef}
         className="flex h-10 w-10 shrink-0 touch-manipulation items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:border-blue-300 hover:text-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-100 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-700 dark:hover:text-blue-400 dark:focus:ring-blue-950"
         type="button"
-        aria-label={`Choose theme. Current theme: ${selectedTheme}`}
+        aria-label={`${t("Choose theme")}: ${t(options.find((option) => option.value === selectedTheme)?.label ?? "System")}`}
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
@@ -137,7 +140,7 @@ export function ThemeToggle() {
         <div
           className="absolute right-0 top-full z-[70] mt-2 w-40 rounded-xl border border-slate-200 bg-white p-1.5 text-slate-700 shadow-2xl shadow-slate-950/15 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
           role="menu"
-          aria-label="Theme"
+          aria-label={t("Theme")}
           onKeyDown={handleMenuKeyDown}
         >
           {options.map(({ value, label, Icon }, index) => (
@@ -153,7 +156,7 @@ export function ThemeToggle() {
               onClick={() => selectTheme(value)}
             >
               <Icon />
-              <span className="flex-1">{label}</span>
+              <span className="flex-1">{t(label)}</span>
               {selectedTheme === value && (
                 <CheckIcon className="h-4 w-4 text-blue-600 dark:text-blue-400" />
               )}
