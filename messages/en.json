@@ -110,5 +110,10 @@
   "Language": "Language",
   "Binhlaig home": "Binhlaig home",
   "Binhlaig logo": "Binhlaig logo",
-  "Binhlaig UI brand logo": "Binhlaig UI brand logo"
+  "Binhlaig UI brand logo": "Binhlaig UI brand logo",
+  "Copy command": "Copy command",
+  "View Installation Guide": "View Installation Guide",
+  "For project setup, installer selection, dependencies, and advanced installation instructions, see the Installation Guide.": "For project setup, installer selection, dependencies, and advanced installation instructions, see the Installation Guide.",
+  "Unable to copy command. Please select and copy it manually.": "Unable to copy command. Please select and copy it manually.",
+  "Update or Overwrite": "Update or Overwrite"
 }

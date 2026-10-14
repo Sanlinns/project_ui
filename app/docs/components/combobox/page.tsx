@@ -1,4 +1,5 @@
 "use client"
+import { ComponentInstallation } from "@/components/docs/component-installation";
 import * as React from "react"
 import { useLanguage } from "@/components/providers/language-provider"
 import Link from "next/link"
@@ -126,11 +127,7 @@ const groupedOptions: Option[] = [
   { value: "nuxt", label: "Nuxt", group: "Vue" },
   { value: "vite-vue", label: "Vue + Vite", group: "Vue" },
 ]
-const initCode = `npx binhlaig-ui@latest init`
-const installCode =
-  `npx binhlaig-ui@latest add combobox`
-const overwriteCode =
-  `npx binhlaig-ui@latest add combobox --overwrite`
+
 const importCode = `import {
   Combobox,
   ComboboxClear,
@@ -145,8 +142,6 @@ const importCode = `import {
   ComboboxPositioner,
   ComboboxTrigger,
 } from "@/components/ui/combobox"`
-
-
 
 function cn(
   ...classes: Array<string | false | null | undefined>
@@ -290,14 +285,10 @@ function FrameworkCombobox({
 export default function ComboboxDocumentationPage() {
   const t = useComboboxText()
   const { language } = useLanguage()
-  const [copied, setCopied] = React.useState(false)
+
   const [selected, setSelected] =
     React.useState<Option | null>(frameworks[0])
-  const copyInstall = async () => {
-    await navigator.clipboard.writeText(installCode)
-    setCopied(true)
-    window.setTimeout(() => setCopied(false), 1500)
-  }
+
   const reactItems = groupedOptions.filter(
     (item) => item.group === "React"
   )
@@ -350,41 +341,7 @@ export default function ComboboxDocumentationPage() {
             </div>
           </section>
           <div className="mt-12 space-y-16">
-            <section>
-              <SectionTitle
-                id="installation"
-                title={t("Installation")}
-                description={t("Initialize Binhlaig UI once, then install ComboBox using the saved installer.")}
-              />
-              <div className="mt-6 rounded-2xl border bg-muted/30 p-4">
-                <p className="text-sm font-medium">{t("Initialize first")}</p>
-                <pre className="mt-4 overflow-x-auto rounded-xl bg-slate-950 p-4 font-mono text-sm text-slate-300">
-                  <code>{initCode}</code>
-                </pre>
-              </div>
-              <div className="mt-5 overflow-hidden rounded-2xl border bg-slate-950">
-                <div className="flex items-center justify-between border-b border-slate-800 px-4 py-2">
-                  <span className="text-xs text-slate-500">
-                    Terminal
-                  </span>
-                  <button
-                    type="button"
-                    onClick={copyInstall}
- aria-label={copied ? t("Copied") : t("Copy install command")}
-                    className="inline-flex size-8 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-900 hover:text-white"
-                  >
-                    {copied ? (
-                      <Check className="size-4 text-emerald-400" />
-                    ) : (
-                      <Clipboard className="size-4" />
-                    )}
-                  </button>
-                </div>
-                <pre className="overflow-x-auto p-5 font-mono text-sm text-slate-300">
-                  <code>{installCode}</code>
-                </pre>
-              </div>
-            </section>
+            <ComponentInstallation componentName="Combobox" componentSlug="combobox" />
             <section>
               <SectionTitle
                 id="import"
@@ -506,18 +463,7 @@ export default function ComboboxDocumentationPage() {
                 </CodePreview>
               </div>
             </section>
-            <section>
-              <SectionTitle
-                id="overwrite"
-                title={t("Update or Overwrite")}
-                description={t("Replace an older ComboBox source with the latest registry version.")}
-              />
-              <div className="mt-6 overflow-x-auto rounded-2xl bg-slate-950 p-5">
-                <pre className="font-mono text-sm text-slate-300">
-                  <code>{overwriteCode}</code>
-                </pre>
-              </div>
-            </section>
+
             <section>
               <SectionTitle
                 id="api-reference"
@@ -592,7 +538,6 @@ export default function ComboboxDocumentationPage() {
               ["Controlled Value", "#controlled"],
               ["Grouped Options", "#grouped"],
               ["Disabled", "#disabled"],
-              ["Update or Overwrite", "#overwrite"],
               ["API Reference", "#api-reference"],
             ].map(([label, href]) => (
               <a

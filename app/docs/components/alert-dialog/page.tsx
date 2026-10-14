@@ -1,23 +1,9 @@
 "use client";
+import { ComponentInstallation } from "@/components/docs/component-installation";
 import React, { useState } from "react";
 import { useLanguage } from "@/components/providers/language-provider";
 import Link from "next/link";
-import {
-  AlertTriangle,
-  ArrowLeft,
-  ArrowRight,
-  Check,
-  Clipboard,
-  Code2,
-  ExternalLink,
-  Info,
-  LogOut,
-  Package,
-  Settings,
-  ShieldAlert,
-  Sparkles,
-  Trash2,
-} from "lucide-react";
+import { AlertTriangle, ArrowLeft, ArrowRight, Check, Clipboard, Code2, ExternalLink, LogOut, Settings, ShieldAlert, Sparkles, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   AlertDialog,
@@ -113,19 +99,13 @@ function useAlertDialogText() {
 }
 
 type PreviewTab = "preview" | "code";
-type InstallerTab = "native" | "shadcn";
+
 type CodePreviewProps = {
   children: React.ReactNode;
   code: string;
   className?: string;
 };
-const initCode = `npx binhlaig-ui@latest init`;
-const nativeInstallCode =
-  `npx binhlaig-ui@latest add alert-dialog`;
-const shadcnInstallCode =
-  `npx binhlaig-ui@latest add alert-dialog`;
-const overwriteCode =
-  `npx binhlaig-ui@latest add alert-dialog --overwrite`;
+
 const importCode = `import {
   AlertDialog,
   AlertDialogAction,
@@ -514,21 +494,10 @@ function TerminalBlock({
 }
 export default function AlertDialogDocumentationPage() {
   const t = useAlertDialogText();
-  const [installer, setInstaller] =
-    useState<InstallerTab>("native");
-  const [installCopied, setInstallCopied] =
-    useState(false);
+
   const [importCopied, setImportCopied] =
     useState(false);
-  const installCode =
-    installer === "native"
-      ? nativeInstallCode
-      : shadcnInstallCode;
-  const copyInstallCode = async () => {
-    await navigator.clipboard.writeText(installCode);
-    setInstallCopied(true);
-    window.setTimeout(() => setInstallCopied(false), 1500);
-  };
+
   const copyImportCode = async () => {
     await navigator.clipboard.writeText(importCode);
     setImportCopied(true);
@@ -580,63 +549,7 @@ export default function AlertDialogDocumentationPage() {
             </div>
           </section>
           <div className="space-y-16">
-            <section>
-              <SectionTitle
-                id="installation"
-                title={t("Installation")}
-                description={t("Initialize Binhlaig UI, then install Alert Dialog using your preferred installer.")}
-              />
-              <div className="mt-6 rounded-2xl border border-blue-200 bg-blue-50/70 p-4 text-sm text-blue-900 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-200">
-                <div className="flex items-start gap-3">
-                  <Info className="mt-0.5 size-5 shrink-0" />
-                  <div>
-                    <p className="font-semibold">{t("Initialize the project first")}</p>
-                    <p className="mt-1 leading-6 text-blue-800/80 dark:text-blue-200/70">{t("Initialization prepares the shared theme, utility file and required dependencies.")}</p>
-                    <pre className="mt-4 overflow-x-auto rounded-xl bg-slate-950 p-4 font-mono text-sm text-slate-300">
-                      <code>{initCode}</code>
-                    </pre>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
-                <div className="flex border-b border-slate-200 p-1 dark:border-slate-800">
-                  <button
-                    type="button"
-                    onClick={() => setInstaller("native")}
-                    className={cn(
-                      "flex-1 rounded-xl px-4 py-2.5 text-sm font-medium transition",
-                      installer === "native"
-                        ? "bg-blue-600 text-white"
-                        : "text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-900 dark:hover:text-white",
-                    )}
-                  >
-                    Native Beta
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setInstaller("shadcn")}
-                    className={cn(
-                      "flex-1 rounded-xl px-4 py-2.5 text-sm font-medium transition",
-                      installer === "shadcn"
-                        ? "bg-slate-950 text-white dark:bg-white dark:text-slate-950"
-                        : "text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-900 dark:hover:text-white",
-                    )}
-                  >
-                    Shadcn Stable
-                  </button>
-                </div>
-                <TerminalBlock
-                  code={installCode}
-                  copied={installCopied}
-                  onCopy={copyInstallCode}
-                />
-                <p className="p-4 text-sm leading-6 text-slate-600 dark:text-slate-400">
-                  {installer === "native"
-                    ? "Native Beta fetches Alert Dialog and its registry dependencies directly from the Binhlaig registry."
-                    : "Shadcn Stable uses the Shadcn CLI engine but installs the same Binhlaig Alert Dialog source."}
-                </p>
-              </div>
-            </section>
+            <ComponentInstallation componentName="Alert Dialog" componentSlug="alert-dialog" />
             <section>
               <SectionTitle
                 id="import"
@@ -788,23 +701,7 @@ export default function AlertDialogDocumentationPage() {
                 </CodePreview>
               </div>
             </section>
-            <section>
-              <SectionTitle
-                id="overwrite"
-                title={t("Update or Overwrite")}
-                description={t("Replace an older Alert Dialog source with the latest registry version.")}
-              />
-              <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50/70 p-4 text-sm text-amber-900 dark:border-amber-500/20 dark:bg-amber-500/10 dark:text-amber-200">{t("Save custom changes before overwriting the installed file.")}</div>
-              <div className="mt-5">
-                <TerminalBlock
-                  code={overwriteCode}
-                  copied={false}
-                  onCopy={() =>
-                    navigator.clipboard.writeText(overwriteCode)
-                  }
-                />
-              </div>
-            </section>
+
             <section>
               <SectionTitle
                 id="api-reference"
@@ -907,7 +804,6 @@ export default function AlertDialogDocumentationPage() {
               ["Sign Out", "#sign-out"],
               ["Warning Dialog", "#warning"],
               ["Controlled State", "#controlled"],
-              ["Update or Overwrite", "#overwrite"],
               ["API Reference", "#api-reference"],
             ].map(([label, href]) => (
               <a

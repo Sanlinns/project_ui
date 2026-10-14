@@ -1,4 +1,5 @@
 "use client"
+import { ComponentInstallation } from "@/components/docs/component-installation";
 
 import * as React from "react"
 import Link from "next/link"
@@ -28,11 +29,6 @@ import {
 } from "@/components/ui/navbar"
 
 type PreviewTab = "preview" | "code"
-
-const initCode = `npx binhlaig-ui@latest init`
-const installCode = `npx binhlaig-ui@latest add navbar`
-const overwriteCode =
-  `npx binhlaig-ui@latest add navbar --overwrite`
 
 const importCode = `import {
   Navbar,
@@ -332,14 +328,6 @@ function ResponsivePreview() {
 }
 
 export default function NavbarDocumentationPage() {
-  const [copied, setCopied] =
-    React.useState(false)
-
-  const copyInstall = async () => {
-    await navigator.clipboard.writeText(installCode)
-    setCopied(true)
-    window.setTimeout(() => setCopied(false), 1500)
-  }
 
   return (
     <div className="grid w-full gap-12 xl:grid-cols-[minmax(0,1fr)_220px]">
@@ -405,48 +393,7 @@ export default function NavbarDocumentationPage() {
           </section>
 
           <div className="mt-12 space-y-16">
-            <section>
-              <SectionTitle
-                id="installation"
-                title="Installation"
-                description="Initialize Binhlaig UI once, then install Navbar using the saved installer."
-              />
-
-              <div className="mt-6 rounded-2xl border bg-muted/30 p-4">
-                <p className="text-sm font-medium">
-                  Initialize first
-                </p>
-
-                <pre className="mt-4 overflow-x-auto rounded-xl bg-slate-950 p-4 font-mono text-sm text-slate-300">
-                  <code>{initCode}</code>
-                </pre>
-              </div>
-
-              <div className="mt-5 overflow-hidden rounded-2xl border bg-slate-950">
-                <div className="flex items-center justify-between border-b border-slate-800 px-4 py-2">
-                  <span className="text-xs text-slate-500">
-                    Terminal
-                  </span>
-
-                  <button
-                    type="button"
-                    onClick={copyInstall}
-                    className="inline-flex size-8 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-900 hover:text-white"
-                    aria-label="Copy install command"
-                  >
-                    {copied ? (
-                      <Check className="size-4 text-emerald-400" />
-                    ) : (
-                      <Clipboard className="size-4" />
-                    )}
-                  </button>
-                </div>
-
-                <pre className="overflow-x-auto p-5 font-mono text-sm text-slate-300">
-                  <code>{installCode}</code>
-                </pre>
-              </div>
-            </section>
+            <ComponentInstallation componentName="Navbar" componentSlug="navbar" />
 
             <section>
               <SectionTitle
@@ -582,20 +529,6 @@ export default function NavbarDocumentationPage() {
 
             <section>
               <SectionTitle
-                id="overwrite"
-                title="Update or Overwrite"
-                description="Replace an older Navbar source with the latest registry version."
-              />
-
-              <div className="mt-6 overflow-x-auto rounded-2xl bg-slate-950 p-5">
-                <pre className="font-mono text-sm text-slate-300">
-                  <code>{overwriteCode}</code>
-                </pre>
-              </div>
-            </section>
-
-            <section>
-              <SectionTitle
                 id="api-reference"
                 title="API Reference"
                 description="Main primitives available in Binhlaig UI Navbar."
@@ -687,7 +620,6 @@ export default function NavbarDocumentationPage() {
               ["Responsive", "#responsive"],
               ["Active Link", "#active-link"],
               ["With Actions", "#actions"],
-              ["Update or Overwrite", "#overwrite"],
               ["API Reference", "#api-reference"],
             ].map(([label, href]) => (
               <a

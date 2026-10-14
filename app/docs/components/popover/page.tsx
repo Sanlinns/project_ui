@@ -1,5 +1,6 @@
 
 "use client"
+import { ComponentInstallation } from "@/components/docs/component-installation";
 import * as React from "react"
 import Link from "next/link"
 import { useLanguage } from "@/components/providers/language-provider"
@@ -26,14 +27,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 type PreviewTab = "preview" | "code"
-type InstallerTab = "native" | "shadcn"
-const initCode = `npx binhlaig-ui@latest init`
-const nativeInstallCode =
-  `npx binhlaig-ui@latest add popover`
-const shadcnInstallCode =
-  `npx binhlaig-ui@latest add popover`
-const overwriteCode =
-  `npx binhlaig-ui@latest add popover --overwrite`
+
 const importCode = `import {
   Popover,
   PopoverClose,
@@ -43,9 +37,6 @@ const importCode = `import {
   PopoverTitle,
   PopoverTrigger,
 } from "@/components/ui/popover"`
-
-
-
 
 const popoverMyanmar: Record<string, string> = {
   "Copy code": "Code ကူးယူရန်",
@@ -237,24 +228,10 @@ function SectionTitle({
 }
 export default function PopoverDocumentationPage() {
   const { t, language } = usePopoverText()
-  const [installer, setInstaller] =
-    React.useState<InstallerTab>("native")
-  const [copied, setCopied] = React.useState(false)
-  const [copyFailed, setCopyFailed] = React.useState(false)
+
   const [controlledOpen, setControlledOpen] =
     React.useState(false)
-  const installCode =
-    installer === "native"
-      ? nativeInstallCode
-      : shadcnInstallCode
-  const copyInstall = async () => {
-    try {
-      await navigator.clipboard.writeText(installCode)
-      setCopyFailed(false)
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 1500)
-    } catch { setCopyFailed(true) }
-  }
+
   return (
     <div lang={language} data-language={language} className="popover-docs grid w-full gap-12 xl:grid-cols-[minmax(0,1fr)_220px]">
       <style>{popoverPageStyles}</style>
@@ -297,61 +274,7 @@ export default function PopoverDocumentationPage() {
             </div>
           </section>
           <div className="space-y-16">
-            <section>
-              <SectionTitle
-                id="installation"
-                title={t("Installation")}
-                description={t("Initialize Binhlaig UI and install Popover using your preferred installer.")}
-              />
-              <div className="mt-6 rounded-2xl border border-blue-200 bg-blue-50/70 p-4 text-sm text-blue-900 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-200">
-                <p className="font-semibold">{t("Initialize first")}</p>
-                <pre className="mt-4 overflow-x-auto rounded-xl bg-muted/60 p-4 font-mono text-sm text-foreground">
-                  <code>{initCode}</code>
-                </pre>
-              </div>
-              <div className="mt-6 overflow-hidden rounded-2xl border border-border">
-                <div className="flex border-b border-border p-1">
-                  {(["native", "shadcn"] as const).map((item) => (
-                    <button
-                      key={item}
-                      type="button"
-                      onClick={() => setInstaller(item)}
-                      className={cn(
-                        "flex-1 rounded-xl px-4 py-2.5 text-sm font-medium",
-                        installer === item
-                          ? item === "native"
-                            ? "bg-primary text-primary-foreground"
-                            : "bg-foreground text-background"
-                          : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                      )}
-                    >
-                      {t(item === "native" ? "Native Beta" : "Shadcn Stable")}
-                    </button>
-                  ))}
-                </div>
-                <div className="bg-muted/60">
-                  <div className="flex items-center justify-between border-b border-border px-4 py-2">
-                    <span className="text-xs text-muted-foreground">{t("Terminal")}</span>
-                    <button
-                      type="button"
-                      onClick={copyInstall}
-                      aria-label={t(copied ? "Copied" : "Copy code")}
-                      title={t(copyFailed ? "Copy failed" : copied ? "Copied" : "Copy code")}
-                      className="inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground hover:bg-accent hover:text-foreground"
-                    >
-                      {copied ? (
-                        <Check className="size-4 text-emerald-400" />
-                      ) : (
-                        <Clipboard className="size-4" />
-                      )}
-                    </button>
-                  </div>
-                  <pre className="overflow-x-auto p-5 font-mono text-sm text-foreground">
-                    <code>{installCode}</code>
-                  </pre>
-                </div>
-              </div>
-            </section>
+            <ComponentInstallation componentName="Popover" componentSlug="popover" />
             <section>
               <SectionTitle
                 id="import"
@@ -461,18 +384,7 @@ export default function PopoverDocumentationPage() {
                 </CodePreview>
               </div>
             </section>
-            <section>
-              <SectionTitle
-                id="overwrite"
-                title={t("Update or Overwrite")}
-                description={t("Replace an older Popover source with the latest registry version.")}
-              />
-              <div className="mt-6 overflow-x-auto rounded-2xl bg-muted/60 p-5">
-                <pre className="font-mono text-sm text-foreground">
-                  <code>{overwriteCode}</code>
-                </pre>
-              </div>
-            </section>
+
             <section>
               <SectionTitle
                 id="api-reference"
@@ -544,7 +456,6 @@ export default function PopoverDocumentationPage() {
               ["Form Popover", "#form"],
               ["Open on Hover", "#hover"],
               ["Controlled State", "#controlled"],
-              ["Update or Overwrite", "#overwrite"],
               ["API Reference", "#api-reference"],
             ].map(([label, href]) => (
               <a

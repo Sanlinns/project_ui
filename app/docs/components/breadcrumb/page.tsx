@@ -1,19 +1,9 @@
 "use client"
+import { ComponentInstallation } from "@/components/docs/component-installation";
 import * as React from "react"
 import { useLanguage } from "@/components/providers/language-provider"
 import Link from "next/link"
-import {
-  ArrowLeft,
-  ArrowRight,
-  Check,
-  ChevronRight,
-  Clipboard,
-  Code2,
-  ExternalLink,
-  Home,
-  Slash,
-  Sparkles,
-} from "lucide-react"
+import { ArrowLeft, ArrowRight, Check, Clipboard, Code2, ExternalLink, Home, Slash, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button"
 import {
   Breadcrumb,
@@ -104,11 +94,7 @@ const breadcrumbExamples = {
 };
 
 type PreviewTab = "preview" | "code"
-const initCode = `npx binhlaig-ui@latest init`
-const installCode =
-  `npx binhlaig-ui@latest add breadcrumb`
-const overwriteCode =
-  `npx binhlaig-ui@latest add breadcrumb --overwrite`
+
 const importCode = `import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -118,9 +104,6 @@ const importCode = `import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"`
-
-
-
 
 function cn(
   ...classes: Array<string | false | null | undefined>
@@ -218,12 +201,7 @@ function CodePreview({
 export default function BreadcrumbDocumentationPage() {
   const t = useBreadcrumbText()
   const { language } = useLanguage()
-  const [copied, setCopied] = React.useState(false)
-  const copyInstall = async () => {
-    await navigator.clipboard.writeText(installCode)
-    setCopied(true)
-    window.setTimeout(() => setCopied(false), 1500)
-  }
+
   return (
     <div className="grid w-full gap-12 xl:grid-cols-[minmax(0,1fr)_220px]">
       <main className="min-w-0">
@@ -274,41 +252,7 @@ export default function BreadcrumbDocumentationPage() {
             </div>
           </section>
           <div className="space-y-16">
-            <section>
-              <SectionTitle
-                id="installation"
-                title={t("Installation")}
-                description={t("Initialize Binhlaig UI once, then install Breadcrumb using the saved installer.")}
-              />
-              <div className="mt-6 rounded-2xl border border-blue-200 bg-blue-50/70 p-4 text-sm text-blue-900 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-200">
-                <p className="font-semibold">{t("Initialize first")}</p>
-                <pre className="mt-4 overflow-x-auto rounded-xl bg-slate-950 p-4 font-mono text-sm text-slate-300">
-                  <code>{initCode}</code>
-                </pre>
-              </div>
-              <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-slate-950">
-                <div className="flex items-center justify-between border-b border-slate-800 px-4 py-2">
-                  <span className="text-xs text-slate-500">
-                    Terminal
-                  </span>
-                  <button
-                    type="button"
-                    onClick={copyInstall}
-                    className="inline-flex size-8 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-900 hover:text-white"
-                    aria-label={copied ? t("Copied") : t("Copy install command")}
-                  >
-                    {copied ? (
-                      <Check className="size-4 text-emerald-400" />
-                    ) : (
-                      <Clipboard className="size-4" />
-                    )}
-                  </button>
-                </div>
-                <pre className="overflow-x-auto p-5 font-mono text-sm text-slate-300">
-                  <code>{installCode}</code>
-                </pre>
-              </div>
-            </section>
+            <ComponentInstallation componentName="Breadcrumb" componentSlug="breadcrumb" />
             <section>
               <SectionTitle
                 id="import"
@@ -474,18 +418,7 @@ export default function BreadcrumbDocumentationPage() {
                 </CodePreview>
               </div>
             </section>
-            <section>
-              <SectionTitle
-                id="overwrite"
-                title={t("Update or Overwrite")}
-                description={t("Replace an older Breadcrumb source with the latest registry version.")}
-              />
-              <div className="mt-6 overflow-x-auto rounded-2xl bg-slate-950 p-5">
-                <pre className="font-mono text-sm text-slate-300">
-                  <code>{overwriteCode}</code>
-                </pre>
-              </div>
-            </section>
+
             <section>
               <SectionTitle
                 id="api-reference"
@@ -579,7 +512,6 @@ export default function BreadcrumbDocumentationPage() {
               ["Collapsed", "#ellipsis"],
               ["Custom Separator", "#custom-separator"],
               ["Responsive", "#responsive"],
-              ["Update or Overwrite", "#overwrite"],
               ["API Reference", "#api-reference"],
             ].map(([label, href]) => (
               <a

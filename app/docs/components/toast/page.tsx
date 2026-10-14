@@ -1,4 +1,5 @@
 "use client"
+import { ComponentInstallation } from "@/components/docs/component-installation";
 import * as React from "react"
 import Link from "next/link"
 import { useLanguage } from "@/components/providers/language-provider"
@@ -18,17 +19,13 @@ import {
   useToast,
 } from "@/components/ui/toast"
 type PreviewTab = "preview" | "code"
-const initCode = `npx binhlaig-ui@latest init`
-const installCode = `npx binhlaig-ui@latest add toast`
-const overwriteCode =
-  `npx binhlaig-ui@latest add toast --overwrite`
+
 const importCode = `import {
   ToastProvider,
   Toaster,
   useToast,
 } from "@/components/ui/toast"`
 const setupCode = "import type { ReactNode } from \"react\"\nimport { ToastProvider, Toaster } from \"@/components/ui/toast\"\n\nexport default function RootLayout({ children }: { children: ReactNode }) {\n  return (\n    <html lang=\"my\">\n      <body>\n        <ToastProvider>\n          {children}\n          <Toaster position=\"top-center\" className=\"[&_.leading-5]:leading-8\" />\n        </ToastProvider>\n      </body>\n    </html>\n  )\n}"
-
 
 const positionCode = "import { Toaster } from \"@/components/ui/toast\"\n\nexport function PositionedToaster() {\n  return <Toaster position=\"top-right\" />\n}\n\n// Alternative positions: bottom-center, bottom-right, top-left, top-center, bottom-left"
 
@@ -301,16 +298,7 @@ function DismissPreview() {
 }
 function ToastDocsContent() {
   const { t, language } = useToastText()
-  const [copied, setCopied] = React.useState(false)
-  const [copyFailed, setCopyFailed] = React.useState(false)
-  const copyInstall = async () => {
-    try {
-      await navigator.clipboard.writeText(installCode)
-      setCopyFailed(false)
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 1500)
-    } catch { setCopyFailed(true) }
-  }
+
   return (
     <div lang={language} data-language={language} className="toast-docs grid w-full gap-12 xl:grid-cols-[minmax(0,1fr)_220px]">
       <style>{toastPageStyles}</style>
@@ -358,40 +346,7 @@ function ToastDocsContent() {
             </div>
           </section>
           <div className="mt-12 space-y-16">
-            <section>
-              <SectionTitle
-                id="installation"
-                title={t("Installation")}
-                description={t("Initialize Binhlaig UI once, then install Toast using the saved installer.")}
-              />
-              <div className="mt-6 rounded-2xl border bg-muted/30 p-4">
-                <p className="text-sm font-medium">{t("Initialize first")}</p>
-                <pre className="mt-4 overflow-x-auto rounded-xl bg-muted/60 p-4 font-mono text-sm text-foreground">
-                  <code>{initCode}</code>
-                </pre>
-              </div>
-              <div className="mt-5 overflow-hidden rounded-2xl border bg-muted/60">
-                <div className="flex items-center justify-between border-b border-border px-4 py-2">
-                  <span className="text-xs text-muted-foreground">{t("Terminal")}</span>
-                  <button
-                    type="button"
-                    onClick={copyInstall}
-                      aria-label={t(copied ? "Copied" : "Copy code")}
-                      title={t(copyFailed ? "Copy failed" : copied ? "Copied" : "Copy code")}
-                    className="inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground hover:bg-accent hover:text-foreground"
-                  >
-                    {copied ? (
-                      <Check className="size-4 text-emerald-400" />
-                    ) : (
-                      <Clipboard className="size-4" />
-                    )}
-                  </button>
-                </div>
-                <pre className="overflow-x-auto p-5 font-mono text-sm text-foreground">
-                  <code>{installCode}</code>
-                </pre>
-              </div>
-            </section>
+            <ComponentInstallation componentName="Toast" componentSlug="toast" />
             <section>
               <SectionTitle
                 id="setup"
@@ -463,17 +418,7 @@ function ToastDocsContent() {
                 </CodePreview>
               </div>
             </section>
-            <section>
-              <SectionTitle
-                id="overwrite"
-                title={t("Update or Overwrite")}
-              />
-              <div className="mt-6 overflow-x-auto rounded-2xl bg-muted/60 p-5">
-                <pre className="font-mono text-sm text-foreground">
-                  <code>{overwriteCode}</code>
-                </pre>
-              </div>
-            </section>
+
             <section>
               <SectionTitle
                 id="api-reference"
@@ -549,7 +494,6 @@ function ToastDocsContent() {
               [t("Variants"), "#variants"],
               [t("Position"), "#position"],
               [t("Loading and Dismiss"), "#dismiss"],
-              [t("Update or Overwrite"), "#overwrite"],
               [t("API Reference"), "#api-reference"],
             ].map(([label, href]) => (
               <a

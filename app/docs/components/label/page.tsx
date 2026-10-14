@@ -1,4 +1,5 @@
 "use client"
+import { ComponentInstallation } from "@/components/docs/component-installation";
 import * as React from "react"
 import Link from "next/link"
 import { useLanguage } from "@/components/providers/language-provider"
@@ -20,18 +21,12 @@ import {
   LabelRequired,
 } from "@/components/ui/label"
 type PreviewTab = "preview" | "code"
-const initCode = `npx binhlaig-ui@latest init`
-const installCode = `npx binhlaig-ui@latest add label`
-const overwriteCode = `npx binhlaig-ui@latest add label --overwrite`
+
 const importCode = `import {
   Label,
   LabelOptional,
   LabelRequired,
 } from "@/components/ui/label"`
-
-
-
-
 
 const labelMyanmar: Record<string, string> = {
   "Copy code": "Code ကူးယူရန်",
@@ -222,16 +217,7 @@ function CodePreview({
 }
 export default function LabelDocumentationPage() {
   const { t, language } = useLabelText()
-  const [copied, setCopied] = React.useState(false)
-  const [copyFailed, setCopyFailed] = React.useState(false)
-  const copyInstall = async () => {
-    try {
-      await navigator.clipboard.writeText(installCode)
-      setCopyFailed(false)
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 1500)
-    } catch { setCopyFailed(true) }
-  }
+
   return (
     <div lang={language} data-language={language} className="label-docs grid w-full gap-12 xl:grid-cols-[minmax(0,1fr)_220px]">
       <style>{labelPageStyles}</style>
@@ -270,39 +256,7 @@ export default function LabelDocumentationPage() {
             </div>
           </section>
           <div className="mt-12 space-y-16">
-            <section>
-              <SectionTitle
-                id="installation"
-                title={t("Installation")}
-                description={t("Initialize Binhlaig UI once, then install Label using the saved installer.")}
-              />
-              <div className="mt-6 rounded-2xl border bg-muted/30 p-4">
-                <p className="text-sm font-medium">{t("Initialize first")}</p>
-                <pre className="mt-4 overflow-x-auto rounded-xl bg-muted/60 p-4 font-mono text-sm text-foreground">
-                  <code>{initCode}</code>
-                </pre>
-              </div>
-              <div className="mt-5 overflow-hidden rounded-2xl border bg-muted/60">
-                <div className="flex items-center justify-between border-b border-border px-4 py-2">
-                  <span className="text-xs text-muted-foreground">{t("Terminal")}</span>
-                  <button
-                    type="button"
-                    onClick={copyInstall}
-                    className="inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground hover:bg-accent hover:text-foreground"
-                    aria-label={t(copied ? "Copied" : "Copy install command")} title={t(copyFailed ? "Copy failed" : copied ? "Copied" : "Copy install command")}
-                  >
-                    {copied ? (
-                      <Check className="size-4 text-emerald-400" />
-                    ) : (
-                      <Clipboard className="size-4" />
-                    )}
-                  </button>
-                </div>
-                <pre className="overflow-x-auto p-5 font-mono text-sm text-foreground">
-                  <code>{installCode}</code>
-                </pre>
-              </div>
-            </section>
+            <ComponentInstallation componentName="Label" componentSlug="label" />
             <section>
               <SectionTitle
                 id="import"
@@ -408,18 +362,7 @@ export default function LabelDocumentationPage() {
                 </CodePreview>
               </div>
             </section>
-            <section>
-              <SectionTitle
-                id="overwrite"
-                title={t("Update or Overwrite")}
-                description={t("Replace an older Label source with the latest registry version.")}
-              />
-              <div className="mt-6 overflow-x-auto rounded-2xl bg-muted/60 p-5">
-                <pre className="font-mono text-sm text-foreground">
-                  <code>{overwriteCode}</code>
-                </pre>
-              </div>
-            </section>
+
             <section>
               <SectionTitle
                 id="api-reference"
@@ -490,7 +433,6 @@ export default function LabelDocumentationPage() {
               ["Optional", "#optional"],
               ["With Checkbox", "#checkbox"],
               ["Disabled Control", "#disabled"],
-              ["Update or Overwrite", "#overwrite"],
               ["API Reference", "#api-reference"],
             ].map(([label, href]) => (
               <a

@@ -1,4 +1,5 @@
 "use client";
+import { ComponentInstallation } from "@/components/docs/component-installation";
 import React, { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/components/providers/language-provider";
@@ -26,17 +27,8 @@ type CodePreviewProps = {
   code: string;
   className?: string;
 };
-const installCode = `npx binhlaig-ui@latest add input`;
+
 const importCode = `import { Input } from "@/components/ui/input";`;
-
-
-
-
-
-
-
-
-
 
 const tableOfContents = [
   ["Installation", "#installation"],
@@ -519,19 +511,7 @@ export default function InputDocumentationPage() {
           </section>
           <div className="space-y-16">
             {/* Installation */}
-            <section>
-              <SectionTitle
-                id="installation"
-                title={t("Installation")}
-                description={t("Add the Input component using the Binhlaig UI CLI.")}
-              />
-              <div className="mt-6">
-                <CopyCodeBlock
-                  code={installCode}
-                  title={t("Terminal")}
-                />
-              </div>
-            </section>
+            <ComponentInstallation componentName="Input" componentSlug="input" />
             {/* Import */}
             <section>
               <SectionTitle

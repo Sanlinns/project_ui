@@ -1,4 +1,5 @@
 "use client";
+import { ComponentInstallation } from "@/components/docs/component-installation";
 import React, { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/components/providers/language-provider";
@@ -31,21 +32,13 @@ type CodePreviewProps = {
   code: string;
   className?: string;
 };
-const installCode = `npx binhlaig-ui@latest add tabs`;
+
 const importCode = `import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";`;
-
-
-
-
-
-
-
-
 
 const tableOfContents = [
   ["Installation", "#installation"],
@@ -582,19 +575,7 @@ export default function TabsDocumentationPage() {
           </section>
           <div className="space-y-16">
             {/* Installation */}
-            <section>
-              <SectionTitle
-                id="installation"
-                title={t("Installation")}
-                description={t("Add the Tabs component using the Binhlaig UI CLI.")}
-              />
-              <div className="mt-6">
-                <CopyCodeBlock
-                  code={installCode}
-                  title={t("Terminal")}
-                />
-              </div>
-            </section>
+            <ComponentInstallation componentName="Tabs" componentSlug="tabs" />
             {/* Import */}
             <section>
               <SectionTitle

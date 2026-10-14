@@ -1,23 +1,9 @@
 "use client";
+import { ComponentInstallation } from "@/components/docs/component-installation";
 import React, { useState } from "react";
 import { useLanguage } from "@/components/providers/language-provider";
 import Link from "next/link";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Check,
-  CircleAlert,
-  Clipboard,
-  Code2,
-  ExternalLink,
-  Package,
-  Plus,
-  Search,
-  Sparkles,
-  Terminal,
-  Trash2,
-  UserPlus,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Clipboard, Code2, ExternalLink, Plus, Search, Sparkles, Terminal, Trash2, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 const buttonMyanmar: Record<string, string> = {
   "Copy code": "Code ကူးယူရန်",
@@ -154,28 +140,14 @@ const buttonExamples = {
 };
 
 type PreviewTab = "preview" | "code";
-type InstallerTab = "native" | "shadcn";
+
 type CodePreviewProps = {
   children: React.ReactNode;
   code: string;
   className?: string;
 };
-const nativeInstallCode =
-  "npx binhlaig-ui@latest add button";
-const shadcnInstallCode =
-  "npx binhlaig-ui@latest add button";
-const initCode = "npx --yes binhlaig-ui@latest init";
-const overwriteCode =
-  "npx binhlaig-ui@latest add button --overwrite";
+
 const importCode = `import { Button } from "@/components/ui/button";`;
-
-
-
-
-
-
-
-
 
 const tableOfContents = [
   ["Installation", "#installation"],
@@ -189,7 +161,6 @@ const tableOfContents = [
   ["Loading State", "#loading"],
   ["Full Width", "#full-width"],
   ["Disabled State", "#disabled"],
-  ["Overwrite", "#overwrite"],
   ["API Reference", "#api-reference"],
 ];
 function cn(...classes: Array<string | undefined | false | null>) {
@@ -314,8 +285,7 @@ function SectionTitle({
 export default function ButtonDocumentationPage() {
   const t = useButtonText()
   const { language } = useLanguage()
-  const [installer, setInstaller] = useState<InstallerTab>("native");
-  const installCommand = installer === "native" ? nativeInstallCode : shadcnInstallCode;
+
   return (
     <div className="grid w-full gap-12 xl:grid-cols-[minmax(0,1fr)_220px]">
       <main className="min-w-0">
@@ -349,60 +319,7 @@ export default function ButtonDocumentationPage() {
             </div>
           </section>
           <div className="space-y-16">
-            <section>
-              <SectionTitle
-                id="installation"
-                title={t("Installation")}
-                description={t("Initialize Binhlaig UI once, then install Button with Native Beta or Shadcn Stable.")}
-              />
-              <div className="mt-6 rounded-2xl border border-blue-200 bg-blue-50/70 p-4 dark:border-blue-500/20 dark:bg-blue-500/10">
-                <div className="flex items-start gap-3">
-                  <CircleAlert className="mt-0.5 size-5 shrink-0 text-blue-600 dark:text-blue-400" />
-                  <div>
-                    <p className="text-sm font-semibold text-blue-900 dark:text-blue-200">{t("Initialize your project first")}</p>
-                    <p className="mt-1 text-sm leading-6 text-blue-800/80 dark:text-blue-200/70">{t("Native initialization creates")}<code>binhlaig.json</code>, <code>lib/utils.ts</code>{t(", the UI directory, required CSS and dependencies.")}</p>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-5">
-                <TerminalBlock code={initCode} />
-              </div>
-              <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
-                <div className="flex border-b border-slate-200 p-2 dark:border-slate-800">
-                  <button
-                    type="button"
-                    onClick={() => setInstaller("native")}
-                    className={cn(
-                      "rounded-xl px-4 py-2 text-sm font-medium transition",
-                      installer === "native"
-                        ? "bg-blue-600 text-white"
-                        : "text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-900",
-                    )}
-                  >
-                    Native Beta
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setInstaller("shadcn")}
-                    className={cn(
-                      "rounded-xl px-4 py-2 text-sm font-medium transition",
-                      installer === "shadcn"
-                        ? "bg-blue-600 text-white"
-                        : "text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-900",
-                    )}
-                  >
-                    Shadcn Stable
-                  </button>
-                </div>
-                <div className="p-5">
-                  <div className="mb-4 flex items-center gap-2 text-sm font-medium text-slate-950 dark:text-white">
-                    <Package className="size-4 text-blue-600 dark:text-blue-400" />
-                    {installer === "native" ? "Recommended native installer" : "Shadcn compatibility installer"}
-                  </div>
-                  <TerminalBlock code={installCommand} />
-                </div>
-              </div>
-            </section>
+            <ComponentInstallation componentName="Button" componentSlug="button" />
             <section>
               <SectionTitle id="import" title={t("Import")} description={t("Import Button from your project UI directory.")} />
               <div className="mt-6"><TerminalBlock code={importCode} title="TypeScript" /></div>
@@ -515,14 +432,7 @@ export default function ButtonDocumentationPage() {
                 </CodePreview>
               </div>
             </section>
-            <section>
-              <SectionTitle id="overwrite" title={t("Update or Overwrite")} description={t("Replace an existing local Button file with the latest registry version.")} />
-              <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50/70 p-4 dark:border-amber-500/20 dark:bg-amber-500/10">
-                <p className="text-sm font-semibold text-amber-900 dark:text-amber-200">{t("Back up custom changes first")}</p>
-                <p className="mt-1 text-sm leading-6 text-amber-800/80 dark:text-amber-200/70">{t("The overwrite option replaces your current component source file.")}</p>
-              </div>
-              <div className="mt-5"><TerminalBlock code={overwriteCode} /></div>
-            </section>
+
             <section>
               <SectionTitle id="api-reference" title={t("API Reference")} description={t("Properties available on the Binhlaig UI Button component.")} />
               <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800">

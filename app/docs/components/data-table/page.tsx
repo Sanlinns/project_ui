@@ -1,4 +1,5 @@
 "use client"
+import { ComponentInstallation } from "@/components/docs/component-installation";
 
 import type { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown } from "lucide-react"
@@ -61,10 +62,7 @@ export default function DataTablePage() {
       <section className="rounded-2xl border p-5">
         <DataTable columns={columns} data={payments} filterColumn="email" filterPlaceholder="Filter emails..." getRowId={(row) => row.id} />
       </section>
-      <section className="space-y-3">
-        <h2 className="text-2xl font-semibold">Installation</h2>
-        <pre className="overflow-x-auto rounded-xl bg-slate-950 p-4 text-sm text-slate-100"><code>npx binhlaig-ui@latest add data-table</code></pre>
-      </section>
+      <ComponentInstallation componentName="Data Table" componentSlug="data-table" />
     </article>
   )
 }

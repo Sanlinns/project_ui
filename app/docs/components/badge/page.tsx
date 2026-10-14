@@ -1,4 +1,5 @@
 "use client"
+import { ComponentInstallation } from "@/components/docs/component-installation";
 import * as React from "react"
 import { useLanguage } from "@/components/providers/language-provider"
 import Link from "next/link"
@@ -91,15 +92,8 @@ const badgeExamples = {
 };
 
 type PreviewTab = "preview" | "code"
-type InstallerTab = "native" | "shadcn"
-const initCode = `npx binhlaig-ui@latest init`
-const nativeInstallCode = `npx binhlaig-ui@latest add badge`
-const shadcnInstallCode = `npx binhlaig-ui@latest add badge`
-const overwriteCode = `npx binhlaig-ui@latest add badge --overwrite`
+
 const importCode = `import { Badge } from "@/components/ui/badge"`
-
-
-
 
 function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ")
@@ -192,14 +186,7 @@ function CodePreview({
 export default function BadgeDocumentationPage() {
   const t = useBadgeText()
   const { language } = useLanguage()
-  const [installer, setInstaller] = React.useState<InstallerTab>("native")
-  const [copied, setCopied] = React.useState(false)
-  const installCode = installer === "native" ? nativeInstallCode : shadcnInstallCode
-  const copyInstall = async () => {
-    await navigator.clipboard.writeText(installCode)
-    setCopied(true)
-    window.setTimeout(() => setCopied(false), 1500)
-  }
+
   return (
     <div className="grid w-full gap-12 xl:grid-cols-[minmax(0,1fr)_220px]">
       <main className="min-w-0">
@@ -237,67 +224,7 @@ export default function BadgeDocumentationPage() {
             </div>
           </section>
           <div className="space-y-16">
-            <section>
-              <SectionTitle
-                id="installation"
-                title={t("Installation")}
-                description={t("Initialize Binhlaig UI and install Badge with your preferred installer.")}
-              />
-              <div className="mt-6 rounded-2xl border border-blue-200 bg-blue-50/70 p-4 text-sm text-blue-900 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-200">
-                <p className="font-semibold">{t("Initialize first")}</p>
-                <pre className="mt-4 overflow-x-auto rounded-xl bg-slate-950 p-4 font-mono text-sm text-slate-300">
-                  <code>{initCode}</code>
-                </pre>
-              </div>
-              <div className="mt-6 overflow-hidden rounded-2xl border border-border">
-                <div className="flex border-b border-border p-1">
-                  <button
-                    type="button"
-                    onClick={() => setInstaller("native")}
-                    className={cn(
-                      "flex-1 rounded-xl px-4 py-2.5 text-sm font-medium transition",
-                      installer === "native"
-                        ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                    )}
-                  >
-                    Native Beta
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setInstaller("shadcn")}
-                    className={cn(
-                      "flex-1 rounded-xl px-4 py-2.5 text-sm font-medium transition",
-                      installer === "shadcn"
-                        ? "bg-foreground text-background"
-                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                    )}
-                  >
-                    Shadcn Stable
-                  </button>
-                </div>
-                <div className="bg-slate-950">
-                  <div className="flex items-center justify-between border-b border-slate-800 px-4 py-2">
-                    <span className="text-xs text-slate-500">Terminal</span>
-                    <button
-                      type="button"
-                      onClick={copyInstall}
-                      aria-label={copied ? t("Copied") : t("Copy install command")}
-                      className="inline-flex size-8 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-900 hover:text-white"
-                    >
-                      {copied ? (
-                        <Check className="size-4 text-emerald-400" />
-                      ) : (
-                        <Clipboard className="size-4" />
-                      )}
-                    </button>
-                  </div>
-                  <pre className="overflow-x-auto p-5 font-mono text-sm text-slate-300">
-                    <code>{installCode}</code>
-                  </pre>
-                </div>
-              </div>
-            </section>
+            <ComponentInstallation componentName="Badge" componentSlug="badge" />
             <section>
               <SectionTitle
                 id="import"
@@ -360,14 +287,7 @@ export default function BadgeDocumentationPage() {
                 </CodePreview>
               </div>
             </section>
-            <section>
-              <SectionTitle id="overwrite" title={t("Update or Overwrite")} description={t("Replace an older Badge source with the latest registry version.")} />
-              <div className="mt-6 overflow-x-auto rounded-2xl bg-slate-950 p-5">
-                <pre className="font-mono text-sm text-slate-300">
-                  <code>{overwriteCode}</code>
-                </pre>
-              </div>
-            </section>
+
             <section>
               <SectionTitle id="api-reference" title={t("API Reference")} description={t("Supported Badge variants and sizes.")} />
               <div className="mt-6 overflow-x-auto rounded-2xl border border-border">
@@ -424,7 +344,6 @@ export default function BadgeDocumentationPage() {
               ["Variants", "#variants"],
               ["Sizes", "#sizes"],
               ["With Icons", "#icons"],
-              ["Update or Overwrite", "#overwrite"],
               ["API Reference", "#api-reference"],
             ].map(([label, href]) => (
               <a key={href} href={href} className="block rounded-md py-1.5 text-[13px] text-muted-foreground transition hover:text-primary">

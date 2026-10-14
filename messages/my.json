@@ -110,5 +110,10 @@
   "Language": "ဘာသာစကား",
   "Binhlaig home": "Binhlaig ပင်မစာမျက်နှာ",
   "Binhlaig logo": "Binhlaig အမှတ်တံဆိပ်",
-  "Binhlaig UI brand logo": "Binhlaig UI အမှတ်တံဆိပ်"
+  "Binhlaig UI brand logo": "Binhlaig UI အမှတ်တံဆိပ်",
+  "Copy command": "Command ကူးယူရန်",
+  "View Installation Guide": "ထည့်သွင်းနည်း အသေးစိတ် ကြည့်ရန်",
+  "For project setup, installer selection, dependencies, and advanced installation instructions, see the Installation Guide.": "Project စတင်ပြင်ဆင်ခြင်း၊ Installer ရွေးချယ်ခြင်း၊ Dependencies နှင့် အသေးစိတ် ထည့်သွင်းနည်းများကို ထည့်သွင်းနည်း လမ်းညွှန်တွင် ကြည့်ရှုနိုင်ပါသည်။",
+  "Unable to copy command. Please select and copy it manually.": "Command ကို ကူးယူ၍ မရပါ။ ကိုယ်တိုင် ရွေးချယ်ပြီး ကူးယူပါ။",
+  "Update or Overwrite": "Update သို့မဟုတ် အစားထိုးခြင်း"
 }

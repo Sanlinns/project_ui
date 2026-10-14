@@ -1,4 +1,5 @@
 "use client";
+import { ComponentInstallation } from "@/components/docs/component-installation";
 import React, { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/components/providers/language-provider";
@@ -28,19 +29,13 @@ type CodePreviewProps = {
   code: string;
   className?: string;
 };
-const installCode = `npx binhlaig-ui@latest add input-otp`;
+
 const importCode = `import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";`;
-
-
-
-
-
-
 
 const tableOfContents = [
   ["Installation", "#installation"],
@@ -534,19 +529,7 @@ export default function InputOTPDocumentationPage() {
           </section>
           <div className="space-y-16">
             {/* Installation */}
-            <section>
-              <SectionTitle
-                id="installation"
-                title={t("Installation")}
-                description={t("Add Input OTP to your project using the Binhlaig UI CLI.")}
-              />
-              <div className="mt-6">
-                <CopyCodeBlock
-                  code={installCode}
-                  title={t("Terminal")}
-                />
-              </div>
-            </section>
+            <ComponentInstallation componentName="Input OTP" componentSlug="input-otp" />
             {/* Import */}
             <section>
               <SectionTitle

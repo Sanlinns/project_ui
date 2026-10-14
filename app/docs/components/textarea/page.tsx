@@ -1,4 +1,5 @@
 "use client"
+import { ComponentInstallation } from "@/components/docs/component-installation";
 import * as React from "react"
 import Link from "next/link"
 import { useLanguage } from "@/components/providers/language-provider"
@@ -16,22 +17,9 @@ import {
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 type PreviewTab = "preview" | "code"
-type InstallerTab = "native" | "shadcn"
-const initCode = `npx binhlaig-ui@latest init`
-const nativeInstallCode =
-  `npx binhlaig-ui@latest add textarea`
-const shadcnInstallCode =
-  `npx binhlaig-ui@latest add textarea`
-const overwriteCode =
-  `npx binhlaig-ui@latest add textarea --overwrite`
+
 const importCode =
   `import { Textarea } from "@/components/ui/textarea"`
-
-
-
-
-
-
 
 const textareaMyanmar: Record<string, string> = {
   "Copy code": "Code ကူးယူရန်",
@@ -248,26 +236,12 @@ function SectionTitle({
 }
 export default function TextareaDocumentationPage() {
   const { t, language } = useTextareaText()
-  const [installer, setInstaller] =
-    React.useState<InstallerTab>("native")
-  const [installCopied, setInstallCopied] = React.useState(false)
-  const [installCopyFailed, setInstallCopyFailed] = React.useState(false)
+
   const [countValue, setCountValue] =
     React.useState("")
   const [feedback, setFeedback] =
     React.useState("")
-  const installCode =
-    installer === "native"
-      ? nativeInstallCode
-      : shadcnInstallCode
-  const copyInstall = async () => {
-    try {
-      await navigator.clipboard.writeText(installCode)
-      setInstallCopyFailed(false)
-      setInstallCopied(true)
-      window.setTimeout(() => setInstallCopied(false), 1500)
-    } catch { setInstallCopyFailed(true) }
-  }
+
   return (
     <div lang={language} data-language={language} className="textarea-docs grid w-full gap-12 xl:grid-cols-[minmax(0,1fr)_220px]">
       <style>{textareaPageStyles}</style>
@@ -319,63 +293,7 @@ export default function TextareaDocumentationPage() {
             </div>
           </section>
           <div className="space-y-16">
-            <section>
-              <SectionTitle
-                id="installation"
-                title={t("Installation")}
-                description={t("Initialize Binhlaig UI and install Textarea with your preferred installer.")}
-              />
-              <div className="mt-6 rounded-2xl border border-blue-200 bg-blue-50/70 p-4 text-sm text-blue-900 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-200">
-                <p className="font-semibold">{t("Initialize first")}</p>
-                <pre className="mt-4 overflow-x-auto rounded-xl bg-muted/60 p-4 font-mono text-sm text-foreground">
-                  <code>{initCode}</code>
-                </pre>
-              </div>
-              <div className="mt-6 overflow-hidden rounded-2xl border border-border">
-                <div className="flex border-b border-border p-1">
-                  <button
-                    type="button"
-                    onClick={() => setInstaller("native")}
-                    className={cn(
-                      "flex-1 rounded-xl px-4 py-2.5 text-sm font-medium transition",
-                      installer === "native"
-                        ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                    )}
-                  >{t("Native Beta")}</button>
-                  <button
-                    type="button"
-                    onClick={() => setInstaller("shadcn")}
-                    className={cn(
-                      "flex-1 rounded-xl px-4 py-2.5 text-sm font-medium transition",
-                      installer === "shadcn"
-                        ? "bg-foreground text-background"
-                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                    )}
-                  >{t("Shadcn Stable")}</button>
-                </div>
-                <div className="bg-muted/60">
-                  <div className="flex items-center justify-between border-b border-border px-4 py-2">
-                    <span className="text-xs text-muted-foreground">{t("Terminal")}</span>
-                    <button
-                      type="button"
-                      onClick={copyInstall}
-                      className="inline-flex size-8 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-900 hover:text-white"
-                      aria-label={t(installCopied ? "Copied" : "Copy install command")} title={t(installCopyFailed ? "Copy failed" : installCopied ? "Copied" : "Copy install command")}
-                    >
-                      {installCopied ? (
-                        <Check className="size-4 text-emerald-400" />
-                      ) : (
-                        <Clipboard className="size-4" />
-                      )}
-                    </button>
-                  </div>
-                  <pre className="overflow-x-auto p-5 font-mono text-sm text-foreground">
-                    <code>{installCode}</code>
-                  </pre>
-                </div>
-              </div>
-            </section>
+            <ComponentInstallation componentName="Textarea" componentSlug="textarea" />
             <section>
               <SectionTitle
                 id="import"
@@ -556,18 +474,7 @@ export default function TextareaDocumentationPage() {
                 </CodePreview>
               </div>
             </section>
-            <section>
-              <SectionTitle
-                id="overwrite"
-                title={t("Update or Overwrite")}
-                description={t("Replace an older Textarea source with the latest registry version.")}
-              />
-              <div className="mt-6 overflow-x-auto rounded-2xl bg-muted/60 p-5">
-                <pre className="font-mono text-sm text-foreground">
-                  <code>{overwriteCode}</code>
-                </pre>
-              </div>
-            </section>
+
             <section>
               <SectionTitle
                 id="api-reference"
@@ -647,7 +554,6 @@ export default function TextareaDocumentationPage() {
               ["Resize", "#resize"],
               ["Character Count", "#character-count"],
               ["Form Example", "#form"],
-              ["Update or Overwrite", "#overwrite"],
               ["API Reference", "#api-reference"],
             ].map(([label, href]) => (
               <a
