@@ -3,16 +3,10 @@ import { ComponentInstallation } from "@/components/docs/component-installation"
 import * as React from "react"
 import Link from "next/link"
 import { useLanguage } from "@/components/providers/language-provider"
-<<<<<<< HEAD
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { z } from "zod"
-=======
 import { Controller, useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from "@/components/ui/input"
->>>>>>> 94a0d7b (update Form UI)
 import {
   ArrowLeft,
   ArrowRight,
@@ -68,10 +62,6 @@ const importCode = `import {
 
 } from "@/components/ui/form"`
 const formMyanmar: Record<string, string> = {
-  "Five interactive examples, all using React Hook Form + Zod with Binhlaig UI Form primitives.": "Binhlaig UI Form၊ React Hook Form နှင့် Zod အသုံးပြုထားသော နမူနာ ၅ ခု။",
-  "Preview the validation and view the complete copyable source code.": "Validation ကို စမ်းသပ်ပြီး Code အပြည့်အစုံကို ကူးယူနိုင်ပါတယ်။",
-  "All examples below use useForm with zodResolver(schema), handleSubmit, register, and FormMessage.": "အောက်ပါနမူနာအားလုံးတွင် useForm၊ zodResolver(schema)၊ handleSubmit၊ register နှင့် FormMessage တို့ကို အသုံးပြုထားပါတယ်။",
-
   "Copy code": "Code ကူးယူရန်",
   Copied: "ကူးယူပြီးပါပြီ",
   "Copy failed": "ကူးယူ၍ မရပါ",
@@ -246,34 +236,9 @@ const formMyanmar: Record<string, string> = {
     "အပိုင်း၏ ခေါင်းစဉ်နှင့် ရှင်းလင်းချက်ကို စုစည်းပါတယ်။",
   "Section heading.": "အပိုင်း၏ ခေါင်းစဉ်။",
   "Section supporting text.": "အပိုင်းအတွက် ဖြည့်စွက်ရှင်းလင်းချက်။",
-<<<<<<< HEAD
-  "Aligns submit and cancel actions.": "ပေးပို့ရန်နှင့် မလုပ်တော့ရန် ခလုတ်များကို စီထားပါတယ်။",
-  "Copy install command": "Install command ကူးယူရန်",
-  "Install form validation packages": "Form Validation Packages ထည့်သွင်းရန်",
-  "What each package does": "Package တစ်ခုချင်းစီ၏ လုပ်ဆောင်ချက်",
-  "Creates and manages field values, touched state, errors and form submission.": "Field တန်ဖိုး၊ touched state၊ error နှင့် submit အခြေအနေကို ထိန်းချုပ်ပေးပါတယ်။",
-  "Defines a typed validation schema and meaningful field error messages.": "Type-safe Validation Schema နှင့် Field Error Message များ သတ်မှတ်ပေးပါတယ်။",
-  "Connects Zod validation to React Hook Form through zodResolver.": "zodResolver မှတစ်ဆင့် Zod ကို React Hook Form နဲ့ ချိတ်ဆက်ပေးပါတယ်။",
-  "Binhlaig UI provides the visual form layout, labels and validation-message components.": "Binhlaig UI က Form Layout၊ Label နဲ့ Validation Message UI ကို ပံ့ပိုးပေးပါတယ်။",
-  "Validated sign-in example": "Validation ပါသော Login နမူနာ",
-  "Try leaving the fields blank, using an invalid email or entering a short password.": "Field မဖြည့်ဘဲ၊ Email မှားထည့်ပြီး သို့မဟုတ် Password တိုတိုထည့်ကာ စမ်းသပ်ကြည့်ပါ။",
-  "Email address": "အီးမေးလ်လိပ်စာ",
-  "Password": "စကားဝှက်",
-  "Sign in": "ဝင်ရောက်ရန်",
-  "Valid form data (demo only). No login request was sent.": "Form Validation အောင်မြင်ပါပြီ (Demo သာဖြစ်ပြီး Login API မခေါ်ထားပါ)။",
-  "Enter a valid email.": "မှန်ကန်သော အီးမေးလ်လိပ်စာ ထည့်ပါ။",
-  "Password is required.": "စကားဝှက် ဖြည့်ရန် လိုအပ်ပါတယ်။",
-  "Password must be at least 8 characters.": "စကားဝှက် အနည်းဆုံး ၈ လုံး ရှိရပါမယ်။",
-  "How validation works": "Validation အလုပ်လုပ်ပုံ",
-  "Zod checks email format and password length before onSubmit runs.": "onSubmit မလုပ်ဆောင်ခင် Zod က Email Format နဲ့ Password အရှည်ကို စစ်ဆေးပါတယ်။",
-  "Errors are shown below their inputs with FormMessage; invalid inputs use aria-invalid.": "Error တွေကို FormMessage နဲ့ Input အောက်မှာ ပြပြီး မမှန်တဲ့ Input တွေမှာ aria-invalid ကို သတ်မှတ်ထားပါတယ်။",
-  "The submit button is disabled while the form is submitting.": "Submit လုပ်နေစဉ် Button ကို Disabled လုပ်ထားပါတယ်။",
-  "This is a validation demo, not an authentication service.": "ဒီဥပမာက Validation Demo ဖြစ်ပြီး Authentication Service မဟုတ်ပါ။"
-=======
   "Aligns submit and cancel actions.":
     "ပေးပို့ရန်နှင့် မလုပ်တော့ရန် ခလုတ်များကို စီထားပါတယ်။",
   "Copy install command": "Install command ကူးယူရန်",
->>>>>>> 94a0d7b (update Form UI)
 }
 function useFormText() {
   const { language } = useLanguage()
@@ -306,17 +271,6 @@ const formExamples = {
     en: '"use client"\n\nimport * as React from "react"\nimport { useForm } from "react-hook-form"\nimport { z } from "zod"\nimport { zodResolver } from "@hookform/resolvers/zod"\nimport { Loader2 } from "lucide-react"\nimport { Button } from "@/components/ui/button"\nimport { Input } from "@/components/ui/input"\nimport {\n  Form,\n  FormField,\n  FormLabel,\n  FormControl,\n  FormDescription,\n  FormMessage,\n  FormSection,\n  FormSectionHeader,\n  FormSectionTitle,\n  FormSectionDescription,\n  FormActions,\n} from "@/components/ui/form"\n\nexport function LoadingForm() {\n  const formId = React.useId()\n  const schema = z.object({\n    project: z.string().trim().min(2, "Enter at least 2 characters.").max(100),\n  })\n  type Values = z.infer<typeof schema>\n  const form = useForm<Values>({\n    resolver: zodResolver(schema),\n    defaultValues: { project: "" },\n    mode: "onTouched",\n  })\n  const [success, setSuccess] = React.useState(false)\n  const submitting = React.useRef(false)\n  async function onSubmit(_values: Values) {\n    if (submitting.current) return\n    submitting.current = true\n    setSuccess(false)\n    try {\n      // Demo only. Replace with your authenticated API request.\n      await new Promise<void>((resolve) => setTimeout(resolve, 700))\n      setSuccess(true)\n    } finally {\n      submitting.current = false\n    }\n  }\n  return (\n    <Form\n      noValidate\n      onSubmit={form.handleSubmit(onSubmit)}\n      onChange={() => setSuccess(false)}\n      className="space-y-5"\n    >\n      <FormField>\n        <FormLabel htmlFor={`${formId}-project`}>Project name</FormLabel>\n        <FormControl>\n          <Input\n            id={`${formId}-project`}\n            aria-invalid={Boolean(form.formState.errors.project)}\n            aria-describedby={`${formId}-project-error`}\n            {...form.register("project")}\n            placeholder="Binhlaig UI"\n          />\n        </FormControl>\n\n        {form.formState.errors.project && (\n          <FormMessage id={`${formId}-project-error`}>\n            {form.formState.errors.project.message}\n          </FormMessage>\n        )}\n      </FormField>\n      {success && (\n        <p\n          role="status"\n          className="text-sm leading-7 text-emerald-700 dark:text-emerald-400"\n        >\n          Demo submitted successfully. No data was sent to a server.\n        </p>\n      )}\n      <FormActions>\n        <Button\n          type="submit"\n          disabled={form.formState.isSubmitting}\n          className="min-h-11 h-auto whitespace-normal px-4 py-2 text-sm leading-7"\n        >\n          {form.formState.isSubmitting && (\n            <Loader2 className="size-4 animate-spin" aria-hidden="true" />\n          )}\n          {form.formState.isSubmitting ? "Submitting..." : "Submit"}\n        </Button>\n      </FormActions>\n    </Form>\n  )\n}\n',
     my: '"use client"\n\nimport * as React from "react"\nimport { useForm } from "react-hook-form"\nimport { z } from "zod"\nimport { zodResolver } from "@hookform/resolvers/zod"\nimport { Loader2 } from "lucide-react"\nimport { Button } from "@/components/ui/button"\nimport { Input } from "@/components/ui/input"\nimport {\n  Form,\n  FormField,\n  FormLabel,\n  FormControl,\n  FormDescription,\n  FormMessage,\n  FormSection,\n  FormSectionHeader,\n  FormSectionTitle,\n  FormSectionDescription,\n  FormActions,\n} from "@/components/ui/form"\n\nexport function LoadingForm() {\n  const formId = React.useId()\n  const schema = z.object({\n    project: z\n      .string()\n      .trim()\n      .min(2, "အနည်းဆုံး စာလုံး ၂ လုံး ဖြည့်ပါ။")\n      .max(100),\n  })\n  type Values = z.infer<typeof schema>\n  const form = useForm<Values>({\n    resolver: zodResolver(schema),\n    defaultValues: { project: "" },\n    mode: "onTouched",\n  })\n  const [success, setSuccess] = React.useState(false)\n  const submitting = React.useRef(false)\n  async function onSubmit(_values: Values) {\n    if (submitting.current) return\n    submitting.current = true\n    setSuccess(false)\n    try {\n      // Demo only. Replace with your authenticated API request.\n      await new Promise<void>((resolve) => setTimeout(resolve, 700))\n      setSuccess(true)\n    } finally {\n      submitting.current = false\n    }\n  }\n  return (\n    <Form\n      noValidate\n      onSubmit={form.handleSubmit(onSubmit)}\n      onChange={() => setSuccess(false)}\n      className="space-y-5"\n    >\n      <FormField>\n        <FormLabel htmlFor={`${formId}-project`}>Project အမည်</FormLabel>\n        <FormControl>\n          <Input\n            id={`${formId}-project`}\n            aria-invalid={Boolean(form.formState.errors.project)}\n            aria-describedby={`${formId}-project-error`}\n            {...form.register("project")}\n            placeholder="Binhlaig UI"\n          />\n        </FormControl>\n\n        {form.formState.errors.project && (\n          <FormMessage id={`${formId}-project-error`}>\n            {form.formState.errors.project.message}\n          </FormMessage>\n        )}\n      </FormField>\n      {success && (\n        <p\n          role="status"\n          className="text-sm leading-7 text-emerald-700 dark:text-emerald-400"\n        >\n          နမူနာကို ပေးပို့ပြီးပါပြီ။ Server သို့ အချက်အလက် မပို့ပါ။\n        </p>\n      )}\n      <FormActions>\n        <Button\n          type="submit"\n          disabled={form.formState.isSubmitting}\n          className="min-h-11 h-auto whitespace-normal px-4 py-2 text-sm leading-7"\n        >\n          {form.formState.isSubmitting && (\n            <Loader2 className="size-4 animate-spin" aria-hidden="true" />\n          )}\n          {form.formState.isSubmitting ? "ပေးပို့နေသည်..." : "ပေးပို့ရန်"}\n        </Button>\n      </FormActions>\n    </Form>\n  )\n}\n',
   },
-<<<<<<< HEAD
-  "zodCode": {
-    "en": "\"use client\"\nimport { useForm } from \"react-hook-form\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { z } from \"zod\"\nimport { Button } from \"@/components/ui/button\"\nimport { Form, FormField, FormLabel, FormControl, FormMessage, FormActions } from \"@/components/ui/form\"\n\nconst schema = z.object({\n  email: z.string().trim().min(1, \"Email is required.\").email(\"Enter a valid email.\"),\n  password: z.string().min(1, \"Password is required.\").min(8, \"Password must be at least 8 characters.\"),\n})\ntype Values = z.infer<typeof schema>\n\nexport function ZodLoginExample() {\n  const { register, handleSubmit, formState: { errors, isSubmitting, isSubmitSuccessful } } =\n    useForm<Values>({\n      resolver: zodResolver(schema),\n      mode: \"onTouched\",\n      defaultValues: { email: \"\", password: \"\" },\n    })\n\n  async function onSubmit(_values: Values) {\n    // Demo only: connect your authentication service here.\n    await Promise.resolve()\n  }\n\n  return (\n    <Form noValidate onSubmit={handleSubmit(onSubmit)}>\n      <FormField>\n        <FormLabel htmlFor=\"zod-email\">Email address</FormLabel>\n        <FormControl>\n          <input id=\"zod-email\" type=\"email\" autoComplete=\"email\"\n            placeholder=\"you@example.com\" aria-invalid={!!errors.email}\n            className=\"h-11 w-full rounded-xl border border-border bg-background px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring/30 aria-invalid:border-destructive\"\n            {...register(\"email\")} />\n        </FormControl>\n        {errors.email && <FormMessage role=\"alert\">{errors.email.message}</FormMessage>}\n      </FormField>\n      <FormField>\n        <FormLabel htmlFor=\"zod-password\">Password</FormLabel>\n        <FormControl>\n          <input id=\"zod-password\" type=\"password\" autoComplete=\"current-password\"\n            placeholder=\"At least 8 characters\" aria-invalid={!!errors.password}\n            className=\"h-11 w-full rounded-xl border border-border bg-background px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring/30 aria-invalid:border-destructive\"\n            {...register(\"password\")} />\n        </FormControl>\n        {errors.password && <FormMessage role=\"alert\">{errors.password.message}</FormMessage>}\n      </FormField>\n      {isSubmitSuccessful && <p role=\"status\" className=\"text-sm text-emerald-600 dark:text-emerald-400\">Valid form data (demo only). No login request was sent.</p>}\n      <FormActions>\n        <Button type=\"submit\" disabled={isSubmitting}>\n          {isSubmitting ? \"Submitting...\" : \"Sign in\"}\n        </Button>\n      </FormActions>\n    </Form>\n  )\n}",
-    "my": "\"use client\"\nimport { useForm } from \"react-hook-form\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { z } from \"zod\"\nimport { Button } from \"@/components/ui/button\"\nimport { Form, FormField, FormLabel, FormControl, FormMessage, FormActions } from \"@/components/ui/form\"\n\nconst schema = z.object({\n  email: z.string().trim().min(1, \"အီးမေးလ် ဖြည့်ရန် လိုအပ်ပါတယ်။\").email(\"မှန်ကန်သော အီးမေးလ်လိပ်စာ ထည့်ပါ။\"),\n  password: z.string().min(1, \"စကားဝှက် ဖြည့်ရန် လိုအပ်ပါတယ်။\").min(8, \"စကားဝှက် အနည်းဆုံး ၈ လုံး ရှိရပါမယ်။\"),\n})\ntype Values = z.infer<typeof schema>\n\nexport function ZodLoginExample() {\n  const { register, handleSubmit, formState: { errors, isSubmitting, isSubmitSuccessful } } =\n    useForm<Values>({\n      resolver: zodResolver(schema),\n      mode: \"onTouched\",\n      defaultValues: { email: \"\", password: \"\" },\n    })\n\n  async function onSubmit(_values: Values) {\n    // Demo only: connect your authentication service here.\n    await Promise.resolve()\n  }\n\n  return (\n    <Form noValidate onSubmit={handleSubmit(onSubmit)}>\n      <FormField>\n        <FormLabel htmlFor=\"zod-email\">အီးမေးလ်လိပ်စာ</FormLabel>\n        <FormControl>\n          <input id=\"zod-email\" type=\"email\" autoComplete=\"email\"\n            placeholder=\"you@example.com\" aria-invalid={!!errors.email}\n            className=\"h-11 w-full rounded-xl border border-border bg-background px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring/30 aria-invalid:border-destructive\"\n            {...register(\"email\")} />\n        </FormControl>\n        {errors.email && <FormMessage role=\"alert\">{errors.email.message}</FormMessage>}\n      </FormField>\n      <FormField>\n        <FormLabel htmlFor=\"zod-password\">စကားဝှက်</FormLabel>\n        <FormControl>\n          <input id=\"zod-password\" type=\"password\" autoComplete=\"current-password\"\n            placeholder=\"At least 8 characters\" aria-invalid={!!errors.password}\n            className=\"h-11 w-full rounded-xl border border-border bg-background px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring/30 aria-invalid:border-destructive\"\n            {...register(\"password\")} />\n        </FormControl>\n        {errors.password && <FormMessage role=\"alert\">{errors.password.message}</FormMessage>}\n      </FormField>\n      {isSubmitSuccessful && <p role=\"status\" className=\"text-sm text-emerald-600 dark:text-emerald-400\">Form Validation အောင်မြင်ပါပြီ (Demo သာဖြစ်ပြီး Login API မခေါ်ထားပါ)။</p>}\n      <FormActions>\n        <Button type=\"submit\" disabled={isSubmitting}>\n          {isSubmitting ? \"Submitting...\" : \"ဝင်ရောက်ရန်\"}\n        </Button>\n      </FormActions>\n    </Form>\n  )\n}"
-  },
-  "loadingCode": {
-    "en": "\"use client\"\nimport * as React from \"react\"\nimport { Button } from \"@/components/ui/button\"\nimport { Form, FormField, FormLabel, FormControl, FormActions } from \"@/components/ui/form\"\nimport { Loader2, CheckCircle2 } from \"lucide-react\"\n\nexport function LoadingForm() {\n  const [loading, setLoading] = React.useState(false)\n  return (\n<Form\n                    onSubmit={(event) => {\n                      event.preventDefault()\n                      setLoading(true)\n                      window.setTimeout(() => setLoading(false), 1200)\n                    }}\n                  >\n                    <FormField>\n                      <FormLabel htmlFor=\"docs-project-name\">{\"Project name\"}</FormLabel>\n                      <FormControl>\n                        <input\n                          id=\"docs-project-name\"\n                          className=\"h-10 w-full rounded-xl border bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring/20\"\n                          placeholder=\"Binhlaig UI\"\n                        />\n                      </FormControl>\n                    </FormField>\n                    <FormActions className=\"flex-wrap gap-3 [&>button]:h-auto [&>button]:min-h-10 [&>button]:w-auto [&>button]:shrink-0 [&>button]:whitespace-nowrap [&>button]:px-4 [&>button]:py-2 [&>button]:leading-7\">\n                      <Button type=\"submit\" disabled={loading}>\n                        {loading ? (\n                          <Loader2 className=\"size-4 animate-spin\" />\n                        ) : (\n                          <CheckCircle2 className=\"size-4\" />\n                        )}\n                        {loading ? \"Saving...\" : \"Save project\"}\n                      </Button>\n                    </FormActions>\n                  </Form>\n  )\n}",
-    "my": "\"use client\"\nimport * as React from \"react\"\nimport { Button } from \"@/components/ui/button\"\nimport { Form, FormField, FormLabel, FormControl, FormActions } from \"@/components/ui/form\"\nimport { Loader2, CheckCircle2 } from \"lucide-react\"\n\nexport function LoadingForm() {\n  const [loading, setLoading] = React.useState(false)\n  return (\n<Form\n                    onSubmit={(event) => {\n                      event.preventDefault()\n                      setLoading(true)\n                      window.setTimeout(() => setLoading(false), 1200)\n                    }}\n                  >\n                    <FormField>\n                      <FormLabel htmlFor=\"docs-project-name\">{\"Project အမည်\"}</FormLabel>\n                      <FormControl>\n                        <input\n                          id=\"docs-project-name\"\n                          className=\"h-10 w-full rounded-xl border bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring/20\"\n                          placeholder=\"Binhlaig UI\"\n                        />\n                      </FormControl>\n                    </FormField>\n                    <FormActions className=\"flex-wrap gap-3 [&>button]:h-auto [&>button]:min-h-10 [&>button]:w-auto [&>button]:shrink-0 [&>button]:whitespace-nowrap [&>button]:px-4 [&>button]:py-2 [&>button]:leading-7\">\n                      <Button type=\"submit\" disabled={loading}>\n                        {loading ? (\n                          <Loader2 className=\"size-4 animate-spin\" />\n                        ) : (\n                          <CheckCircle2 className=\"size-4\" />\n                        )}\n                        {loading ? \"သိမ်းဆည်းနေသည်…\" : \"Project သိမ်းရန်\"}\n                      </Button>\n                    </FormActions>\n                  </Form>\n  )\n}"
-  }
-=======
->>>>>>> 94a0d7b (update Form UI)
 } as const
 const formPageStyles = `
 
@@ -437,119 +391,6 @@ function CodePreview({
     </div>
   )
 }
-<<<<<<< HEAD
-const rhfZodUsageCodes = {
-  "basic": {
-    "en": "\"use client\"\nimport { useForm } from \"react-hook-form\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { z } from \"zod\"\nimport { Button } from \"@/components/ui/button\"\nimport { Form, FormField, FormLabel, FormControl, FormMessage, FormActions, FormDescription, FormSection, FormSectionHeader, FormSectionTitle } from \"@/components/ui/form\"\nimport { Textarea } from \"@/components/ui/textarea\"\n\nconst schema = z.object({\n  name: z.string().trim().min(2, \"Name must have at least 2 characters.\"),\n})\ntype Values = z.infer<typeof schema>\n\nexport function BasicForm() {\n  const { register, handleSubmit, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm<Values>({\n    resolver: zodResolver(schema),\n    mode: \"onTouched\",\n    defaultValues: { name: \"\" },\n  })\n  async function onSubmit(_values: Values) {\n    // Demo only: send validated values to your real API here.\n    await Promise.resolve()\n  }\n  return (\n    <Form noValidate onSubmit={handleSubmit(onSubmit)}>\n      <FormField>\n        <FormLabel htmlFor=\"basic-name\">Name</FormLabel>\n        <FormControl>\n          <input id=\"basic-name\" type=\"text\" aria-invalid={!!errors.name} className=\"h-11 w-full rounded-xl border border-border bg-background px-3 text-foreground aria-invalid:border-destructive\" {...register(\"name\")} />\n        </FormControl>\n        {errors.name && <FormMessage>{errors.name.message}</FormMessage>}\n      </FormField>\n      {isSubmitSuccessful && <p role=\"status\">Validation passed (demo only).</p>}\n      <FormActions><Button type=\"submit\" disabled={isSubmitting}>{isSubmitting ? \"Submitting...\" : \"Submit\"}</Button></FormActions>\n    </Form>\n  )\n}\n",
-    "my": "\"use client\"\nimport { useForm } from \"react-hook-form\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { z } from \"zod\"\nimport { Button } from \"@/components/ui/button\"\nimport { Form, FormField, FormLabel, FormControl, FormMessage, FormActions, FormDescription, FormSection, FormSectionHeader, FormSectionTitle } from \"@/components/ui/form\"\nimport { Textarea } from \"@/components/ui/textarea\"\n\nconst schema = z.object({\n  name: z.string().trim().min(2, \"Name must have at least 2 characters.\"),\n})\ntype Values = z.infer<typeof schema>\n\nexport function BasicForm() {\n  const { register, handleSubmit, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm<Values>({\n    resolver: zodResolver(schema),\n    mode: \"onTouched\",\n    defaultValues: { name: \"\" },\n  })\n  async function onSubmit(_values: Values) {\n    // Demo only: send validated values to your real API here.\n    await Promise.resolve()\n  }\n  return (\n    <Form noValidate onSubmit={handleSubmit(onSubmit)}>\n      <FormField>\n        <FormLabel htmlFor=\"basic-name\">အမည်</FormLabel>\n        <FormControl>\n          <input id=\"basic-name\" type=\"text\" aria-invalid={!!errors.name} className=\"h-11 w-full rounded-xl border border-border bg-background px-3 text-foreground aria-invalid:border-destructive\" {...register(\"name\")} />\n        </FormControl>\n        {errors.name && <FormMessage>{errors.name.message}</FormMessage>}\n      </FormField>\n      {isSubmitSuccessful && <p role=\"status\">Validation passed (demo only).</p>}\n      <FormActions><Button type=\"submit\" disabled={isSubmitting}>{isSubmitting ? \"Submitting...\" : \"Submit\"}</Button></FormActions>\n    </Form>\n  )\n}\n"
-  },
-  "validation": {
-    "en": "\"use client\"\nimport { useForm } from \"react-hook-form\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { z } from \"zod\"\nimport { Button } from \"@/components/ui/button\"\nimport { Form, FormField, FormLabel, FormControl, FormMessage, FormActions, FormDescription, FormSection, FormSectionHeader, FormSectionTitle } from \"@/components/ui/form\"\nimport { Textarea } from \"@/components/ui/textarea\"\n\nconst schema = z.object({\n  email: z.string().trim().email(\"Enter a valid email address.\"),\n})\ntype Values = z.infer<typeof schema>\n\nexport function EmailValidationForm() {\n  const { register, handleSubmit, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm<Values>({\n    resolver: zodResolver(schema),\n    mode: \"onTouched\",\n    defaultValues: { email: \"\" },\n  })\n  async function onSubmit(_values: Values) {\n    // Demo only: send validated values to your real API here.\n    await Promise.resolve()\n  }\n  return (\n    <Form noValidate onSubmit={handleSubmit(onSubmit)}>\n      <FormField>\n        <FormLabel htmlFor=\"validation-email\">Email</FormLabel>\n        <FormControl>\n          <input id=\"validation-email\" type=\"email\" aria-invalid={!!errors.email} className=\"h-11 w-full rounded-xl border border-border bg-background px-3 text-foreground aria-invalid:border-destructive\" {...register(\"email\")} />\n        </FormControl>\n        <FormDescription>Validated with Zod.</FormDescription>\n        {errors.email && <FormMessage>{errors.email.message}</FormMessage>}\n      </FormField>\n      {isSubmitSuccessful && <p role=\"status\">Validation passed (demo only).</p>}\n      <FormActions><Button type=\"submit\" disabled={isSubmitting}>{isSubmitting ? \"Submitting...\" : \"Submit\"}</Button></FormActions>\n    </Form>\n  )\n}\n",
-    "my": "\"use client\"\nimport { useForm } from \"react-hook-form\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { z } from \"zod\"\nimport { Button } from \"@/components/ui/button\"\nimport { Form, FormField, FormLabel, FormControl, FormMessage, FormActions, FormDescription, FormSection, FormSectionHeader, FormSectionTitle } from \"@/components/ui/form\"\nimport { Textarea } from \"@/components/ui/textarea\"\n\nconst schema = z.object({\n  email: z.string().trim().email(\"Enter a valid email address.\"),\n})\ntype Values = z.infer<typeof schema>\n\nexport function EmailValidationForm() {\n  const { register, handleSubmit, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm<Values>({\n    resolver: zodResolver(schema),\n    mode: \"onTouched\",\n    defaultValues: { email: \"\" },\n  })\n  async function onSubmit(_values: Values) {\n    // Demo only: send validated values to your real API here.\n    await Promise.resolve()\n  }\n  return (\n    <Form noValidate onSubmit={handleSubmit(onSubmit)}>\n      <FormField>\n        <FormLabel htmlFor=\"validation-email\">အီးမေးလ်</FormLabel>\n        <FormControl>\n          <input id=\"validation-email\" type=\"email\" aria-invalid={!!errors.email} className=\"h-11 w-full rounded-xl border border-border bg-background px-3 text-foreground aria-invalid:border-destructive\" {...register(\"email\")} />\n        </FormControl>\n        <FormDescription>Validated with Zod.</FormDescription>\n        {errors.email && <FormMessage>{errors.email.message}</FormMessage>}\n      </FormField>\n      {isSubmitSuccessful && <p role=\"status\">Validation passed (demo only).</p>}\n      <FormActions><Button type=\"submit\" disabled={isSubmitting}>{isSubmitting ? \"Submitting...\" : \"Submit\"}</Button></FormActions>\n    </Form>\n  )\n}\n"
-  },
-  "profile": {
-    "en": "\"use client\"\nimport { useForm } from \"react-hook-form\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { z } from \"zod\"\nimport { Button } from \"@/components/ui/button\"\nimport { Form, FormField, FormLabel, FormControl, FormMessage, FormActions, FormDescription, FormSection, FormSectionHeader, FormSectionTitle } from \"@/components/ui/form\"\nimport { Textarea } from \"@/components/ui/textarea\"\n\nconst schema = z.object({\n  name: z.string().trim().min(2, \"Name is required.\"),\n  bio: z.string().trim().min(10, \"Bio must have at least 10 characters.\"),\n})\ntype Values = z.infer<typeof schema>\n\nexport function ProfileForm() {\n  const { register, handleSubmit, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm<Values>({\n    resolver: zodResolver(schema),\n    mode: \"onTouched\",\n    defaultValues: { name: \"\", bio: \"\" },\n  })\n  async function onSubmit(_values: Values) {\n    // Demo only: send validated values to your real API here.\n    await Promise.resolve()\n  }\n  return (\n    <Form noValidate onSubmit={handleSubmit(onSubmit)}>\n      <FormSection><FormSectionHeader><FormSectionTitle>Profile information</FormSectionTitle></FormSectionHeader></FormSection>\n      <FormField>\n        <FormLabel htmlFor=\"profile-name\">Display name</FormLabel>\n        <FormControl>\n          <input id=\"profile-name\" type=\"text\" aria-invalid={!!errors.name} className=\"h-11 w-full rounded-xl border border-border bg-background px-3 text-foreground aria-invalid:border-destructive\" {...register(\"name\")} />\n        </FormControl>\n        {errors.name && <FormMessage>{errors.name.message}</FormMessage>}\n      </FormField>\n      <FormField>\n        <FormLabel htmlFor=\"profile-bio\">Bio</FormLabel>\n        <FormControl>\n          <Textarea id=\"profile-bio\" aria-invalid={!!errors.bio} {...register(\"bio\")} />\n        </FormControl>\n        {errors.bio && <FormMessage>{errors.bio.message}</FormMessage>}\n      </FormField>\n      {isSubmitSuccessful && <p role=\"status\">Validation passed (demo only).</p>}\n      <FormActions><Button type=\"submit\" disabled={isSubmitting}>{isSubmitting ? \"Submitting...\" : \"Submit\"}</Button></FormActions>\n    </Form>\n  )\n}\n",
-    "my": "\"use client\"\nimport { useForm } from \"react-hook-form\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { z } from \"zod\"\nimport { Button } from \"@/components/ui/button\"\nimport { Form, FormField, FormLabel, FormControl, FormMessage, FormActions, FormDescription, FormSection, FormSectionHeader, FormSectionTitle } from \"@/components/ui/form\"\nimport { Textarea } from \"@/components/ui/textarea\"\n\nconst schema = z.object({\n  name: z.string().trim().min(2, \"Name is required.\"),\n  bio: z.string().trim().min(10, \"Bio must have at least 10 characters.\"),\n})\ntype Values = z.infer<typeof schema>\n\nexport function ProfileForm() {\n  const { register, handleSubmit, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm<Values>({\n    resolver: zodResolver(schema),\n    mode: \"onTouched\",\n    defaultValues: { name: \"\", bio: \"\" },\n  })\n  async function onSubmit(_values: Values) {\n    // Demo only: send validated values to your real API here.\n    await Promise.resolve()\n  }\n  return (\n    <Form noValidate onSubmit={handleSubmit(onSubmit)}>\n      <FormSection><FormSectionHeader><FormSectionTitle>Profile information</FormSectionTitle></FormSectionHeader></FormSection>\n      <FormField>\n        <FormLabel htmlFor=\"profile-name\">ပြသမည့်အမည်</FormLabel>\n        <FormControl>\n          <input id=\"profile-name\" type=\"text\" aria-invalid={!!errors.name} className=\"h-11 w-full rounded-xl border border-border bg-background px-3 text-foreground aria-invalid:border-destructive\" {...register(\"name\")} />\n        </FormControl>\n        {errors.name && <FormMessage>{errors.name.message}</FormMessage>}\n      </FormField>\n      <FormField>\n        <FormLabel htmlFor=\"profile-bio\">မိမိအကြောင်း</FormLabel>\n        <FormControl>\n          <Textarea id=\"profile-bio\" aria-invalid={!!errors.bio} {...register(\"bio\")} />\n        </FormControl>\n        {errors.bio && <FormMessage>{errors.bio.message}</FormMessage>}\n      </FormField>\n      {isSubmitSuccessful && <p role=\"status\">Validation passed (demo only).</p>}\n      <FormActions><Button type=\"submit\" disabled={isSubmitting}>{isSubmitting ? \"Submitting...\" : \"Submit\"}</Button></FormActions>\n    </Form>\n  )\n}\n"
-  },
-  "settings": {
-    "en": "\"use client\"\nimport { useForm } from \"react-hook-form\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { z } from \"zod\"\nimport { Button } from \"@/components/ui/button\"\nimport { Form, FormField, FormLabel, FormControl, FormMessage, FormActions, FormDescription, FormSection, FormSectionHeader, FormSectionTitle } from \"@/components/ui/form\"\nimport { Textarea } from \"@/components/ui/textarea\"\n\nconst schema = z.object({\n  role: z.enum([\"Developer\", \"Designer\", \"Manager\"]),\n  notifications: z.boolean(),\n})\ntype Values = z.infer<typeof schema>\n\nexport function SettingsForm() {\n  const { register, handleSubmit, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm<Values>({\n    resolver: zodResolver(schema),\n    mode: \"onTouched\",\n    defaultValues: { role: \"Developer\", notifications: false },\n  })\n  async function onSubmit(_values: Values) {\n    // Demo only: send validated values to your real API here.\n    await Promise.resolve()\n  }\n  return (\n    <Form noValidate onSubmit={handleSubmit(onSubmit)}>\n      <FormField>\n        <FormLabel htmlFor=\"settings-role\">Role</FormLabel>\n        <FormControl>\n          <select id=\"settings-role\" className=\"h-11 w-full rounded-xl border border-border bg-background px-3\" {...register(\"role\")}>\n            <option value=\"Developer\">Developer</option><option value=\"Designer\">Designer</option><option value=\"Manager\">Manager</option>\n          </select>\n        </FormControl>\n        {errors.role && <FormMessage>{errors.role.message}</FormMessage>}\n      </FormField>\n      <FormField>\n        <FormControl>\n          <input id=\"settings-notifications\" type=\"checkbox\" {...register(\"notifications\")} />\n        </FormControl>\n        <FormLabel htmlFor=\"settings-notifications\">Email notifications</FormLabel>\n        {errors.notifications && <FormMessage>{errors.notifications.message}</FormMessage>}\n      </FormField>\n      {isSubmitSuccessful && <p role=\"status\">Validation passed (demo only).</p>}\n      <FormActions><Button type=\"submit\" disabled={isSubmitting}>{isSubmitting ? \"Submitting...\" : \"Submit\"}</Button></FormActions>\n    </Form>\n  )\n}\n",
-    "my": "\"use client\"\nimport { useForm } from \"react-hook-form\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { z } from \"zod\"\nimport { Button } from \"@/components/ui/button\"\nimport { Form, FormField, FormLabel, FormControl, FormMessage, FormActions, FormDescription, FormSection, FormSectionHeader, FormSectionTitle } from \"@/components/ui/form\"\nimport { Textarea } from \"@/components/ui/textarea\"\n\nconst schema = z.object({\n  role: z.enum([\"Developer\", \"Designer\", \"Manager\"]),\n  notifications: z.boolean(),\n})\ntype Values = z.infer<typeof schema>\n\nexport function SettingsForm() {\n  const { register, handleSubmit, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm<Values>({\n    resolver: zodResolver(schema),\n    mode: \"onTouched\",\n    defaultValues: { role: \"Developer\", notifications: false },\n  })\n  async function onSubmit(_values: Values) {\n    // Demo only: send validated values to your real API here.\n    await Promise.resolve()\n  }\n  return (\n    <Form noValidate onSubmit={handleSubmit(onSubmit)}>\n      <FormField>\n        <FormLabel htmlFor=\"settings-role\">တာဝန်</FormLabel>\n        <FormControl>\n          <select id=\"settings-role\" className=\"h-11 w-full rounded-xl border border-border bg-background px-3\" {...register(\"role\")}>\n            <option value=\"Developer\">Developer</option><option value=\"Designer\">Designer</option><option value=\"Manager\">Manager</option>\n          </select>\n        </FormControl>\n        {errors.role && <FormMessage>{errors.role.message}</FormMessage>}\n      </FormField>\n      <FormField>\n        <FormControl>\n          <input id=\"settings-notifications\" type=\"checkbox\" {...register(\"notifications\")} />\n        </FormControl>\n        <FormLabel htmlFor=\"settings-notifications\">အီးမေးလ်အသိပေးချက်</FormLabel>\n        {errors.notifications && <FormMessage>{errors.notifications.message}</FormMessage>}\n      </FormField>\n      {isSubmitSuccessful && <p role=\"status\">Validation passed (demo only).</p>}\n      <FormActions><Button type=\"submit\" disabled={isSubmitting}>{isSubmitting ? \"Submitting...\" : \"Submit\"}</Button></FormActions>\n    </Form>\n  )\n}\n"
-  },
-  "login": {
-    "en": "\"use client\"\nimport { useForm } from \"react-hook-form\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { z } from \"zod\"\nimport { Button } from \"@/components/ui/button\"\nimport { Form, FormField, FormLabel, FormControl, FormMessage, FormActions, FormDescription, FormSection, FormSectionHeader, FormSectionTitle } from \"@/components/ui/form\"\nimport { Textarea } from \"@/components/ui/textarea\"\n\nconst schema = z.object({\n  email: z.string().trim().email(\"Enter a valid email address.\"),\n  password: z.string().min(8, \"At least 8 characters required.\"),\n})\ntype Values = z.infer<typeof schema>\n\nexport function LoginForm() {\n  const { register, handleSubmit, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm<Values>({\n    resolver: zodResolver(schema),\n    mode: \"onTouched\",\n    defaultValues: { email: \"\", password: \"\" },\n  })\n  async function onSubmit(_values: Values) {\n    // Demo only: send validated values to your real API here.\n    await Promise.resolve()\n  }\n  return (\n    <Form noValidate onSubmit={handleSubmit(onSubmit)}>\n      <FormField>\n        <FormLabel htmlFor=\"login-email\">Email</FormLabel>\n        <FormControl>\n          <input id=\"login-email\" type=\"email\" aria-invalid={!!errors.email} className=\"h-11 w-full rounded-xl border border-border bg-background px-3 text-foreground aria-invalid:border-destructive\" {...register(\"email\")} />\n        </FormControl>\n        {errors.email && <FormMessage>{errors.email.message}</FormMessage>}\n      </FormField>\n      <FormField>\n        <FormLabel htmlFor=\"login-password\">Password</FormLabel>\n        <FormControl>\n          <input id=\"login-password\" type=\"password\" aria-invalid={!!errors.password} className=\"h-11 w-full rounded-xl border border-border bg-background px-3 text-foreground aria-invalid:border-destructive\" {...register(\"password\")} />\n        </FormControl>\n        {errors.password && <FormMessage>{errors.password.message}</FormMessage>}\n      </FormField>\n      {isSubmitSuccessful && <p role=\"status\">Validation passed (demo only).</p>}\n      <FormActions><Button type=\"submit\" disabled={isSubmitting}>{isSubmitting ? \"Submitting...\" : \"Submit\"}</Button></FormActions>\n    </Form>\n  )\n}\n",
-    "my": "\"use client\"\nimport { useForm } from \"react-hook-form\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { z } from \"zod\"\nimport { Button } from \"@/components/ui/button\"\nimport { Form, FormField, FormLabel, FormControl, FormMessage, FormActions, FormDescription, FormSection, FormSectionHeader, FormSectionTitle } from \"@/components/ui/form\"\nimport { Textarea } from \"@/components/ui/textarea\"\n\nconst schema = z.object({\n  email: z.string().trim().email(\"Enter a valid email address.\"),\n  password: z.string().min(8, \"At least 8 characters required.\"),\n})\ntype Values = z.infer<typeof schema>\n\nexport function LoginForm() {\n  const { register, handleSubmit, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm<Values>({\n    resolver: zodResolver(schema),\n    mode: \"onTouched\",\n    defaultValues: { email: \"\", password: \"\" },\n  })\n  async function onSubmit(_values: Values) {\n    // Demo only: send validated values to your real API here.\n    await Promise.resolve()\n  }\n  return (\n    <Form noValidate onSubmit={handleSubmit(onSubmit)}>\n      <FormField>\n        <FormLabel htmlFor=\"login-email\">အီးမေးလ်</FormLabel>\n        <FormControl>\n          <input id=\"login-email\" type=\"email\" aria-invalid={!!errors.email} className=\"h-11 w-full rounded-xl border border-border bg-background px-3 text-foreground aria-invalid:border-destructive\" {...register(\"email\")} />\n        </FormControl>\n        {errors.email && <FormMessage>{errors.email.message}</FormMessage>}\n      </FormField>\n      <FormField>\n        <FormLabel htmlFor=\"login-password\">စကားဝှက်</FormLabel>\n        <FormControl>\n          <input id=\"login-password\" type=\"password\" aria-invalid={!!errors.password} className=\"h-11 w-full rounded-xl border border-border bg-background px-3 text-foreground aria-invalid:border-destructive\" {...register(\"password\")} />\n        </FormControl>\n        {errors.password && <FormMessage>{errors.password.message}</FormMessage>}\n      </FormField>\n      {isSubmitSuccessful && <p role=\"status\">Validation passed (demo only).</p>}\n      <FormActions><Button type=\"submit\" disabled={isSubmitting}>{isSubmitting ? \"Submitting...\" : \"Submit\"}</Button></FormActions>\n    </Form>\n  )\n}\n"
-  }
-} as const
-
-
-type DemoFieldKind = "text" | "email" | "password" | "textarea" | "select" | "checkbox";
-type DemoKind = "basic" | "validation" | "profile" | "settings" | "login";
-type DemoValues = { name?: string; email?: string; password?: string; bio?: string; role?: string; notifications?: boolean };
-
-const demoSchemas = {
-  basic: z.object({ name: z.string().trim().min(2, "Name must have at least 2 characters.") }),
-  validation: z.object({ email: z.string().trim().email("Enter a valid email address.") }),
-  profile: z.object({
-    name: z.string().trim().min(2, "Name must have at least 2 characters."),
-    bio: z.string().trim().min(10, "Bio must have at least 10 characters."),
-  }),
-  settings: z.object({
-    role: z.enum(["Developer", "Designer", "Manager"]),
-    notifications: z.boolean(),
-  }),
-  login: z.object({
-    email: z.string().trim().email("Enter a valid email address."),
-    password: z.string().min(8, "Password must have at least 8 characters."),
-  }),
-};
-const demoFields: Record<DemoKind, { name: keyof DemoValues; kind: DemoFieldKind; title: string; my: string; placeholder?: string }[]> = {
-  basic: [{ name: "name", kind: "text", title: "Name", my: "အမည်", placeholder: "Your name" }],
-  validation: [{ name: "email", kind: "email", title: "Email", my: "အီးမေးလ်", placeholder: "you@example.com" }],
-  profile: [
-    { name: "name", kind: "text", title: "Display name", my: "ပြသမည့်အမည်", placeholder: "Your name" },
-    { name: "bio", kind: "textarea", title: "Bio", my: "မိမိအကြောင်း", placeholder: "Tell us about yourself..." },
-  ],
-  settings: [
-    { name: "role", kind: "select", title: "Role", my: "တာဝန်", },
-    { name: "notifications", kind: "checkbox", title: "Email notifications", my: "အီးမေးလ်အသိပေးချက်" },
-  ],
-  login: [
-    { name: "email", kind: "email", title: "Email", my: "အီးမေးလ်", placeholder: "you@example.com" },
-    { name: "password", kind: "password", title: "Password", my: "စကားဝှက်", placeholder: "At least 8 characters" },
-  ],
-};
-function ZodUsagePreview({ kind }: { kind: DemoKind }) {
-  const { language } = useFormText();
-  // All five examples use the same React Hook Form + Zod resolver workflow.
-  const schema = demoSchemas[kind];
-  const { register, handleSubmit, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm<DemoValues>({
-    resolver: zodResolver(schema) as any,
-    mode: "onTouched",
-    defaultValues: { name: "", email: "", password: "", bio: "", role: "Developer", notifications: false },
-  });
-  async function onSubmit(_values: DemoValues) {
-    // UI demonstration only. Never log passwords or pretend API success.
-    await Promise.resolve();
-  }
-  return (
-    <Form noValidate onSubmit={handleSubmit(onSubmit)}>
-      {kind === "profile" && <FormSection><FormSectionHeader>
-        <FormSectionTitle>{language === "my" ? "ကိုယ်ရေးအချက်အလက်" : "Profile information"}</FormSectionTitle>
-        <FormSectionDescription>{language === "my" ? "ကိုယ်ရေးအချက်အလက်များကို ဖြည့်ပါ" : "Fill in your profile details"}</FormSectionDescription>
-      </FormSectionHeader></FormSection>}
-      {demoFields[kind].map((field) => {
-        const id = `example-${kind}-${field.name}`;
-        const message = errors[field.name]?.message;
-        return (
-          <FormField key={id} className={field.kind === "checkbox" ? "grid-cols-[auto_1fr] items-center gap-x-3" : undefined}>
-            {field.kind !== "checkbox" && <FormLabel htmlFor={id}>{language === "my" ? field.my : field.title}</FormLabel>}
-            <FormControl>
-              {field.kind === "textarea" ? (
-                <Textarea id={id} placeholder={field.placeholder} aria-invalid={!!message} {...register(field.name)} />
-              ) : field.kind === "select" ? (
-                <select id={id} className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm text-foreground" {...register(field.name)}>
-                  <option value="Developer">Developer</option><option value="Designer">Designer</option><option value="Manager">Manager</option>
-                </select>
-              ) : field.kind === "checkbox" ? (
-                <input id={id} type="checkbox" className="size-4" {...register(field.name)} />
-              ) : (
-                <input id={id} type={field.kind} placeholder={field.placeholder} aria-invalid={!!message}
-                  className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring/30 aria-invalid:border-destructive"
-                  {...register(field.name)} />
-              )}
-            </FormControl>
-            {field.kind === "checkbox" && <FormLabel htmlFor={id}>{language === "my" ? field.my : field.title}</FormLabel>}
-            {kind === "validation" && <FormDescription>{language === "my" ? "မှန်ကန်သော အီးမေးလ်ထည့်ပါ" : "We validate the email format with Zod."}</FormDescription>}
-            {message && <FormMessage role="alert">{String(message)}</FormMessage>}
-          </FormField>
-        );
-      })}
-      {isSubmitSuccessful && <p role="status" className="text-sm text-emerald-600 dark:text-emerald-400">{language === "my" ? "Validation အောင်မြင်ပါသည် (Demo သာဖြစ်သည်)။" : "Validation passed (demo only)."}</p>}
-      <FormActions><Button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? <Loader2 className="size-4 animate-spin" /> : <CheckCircle2 className="size-4" />}
-        {language === "my" ? "ပေးပို့ရန်" : "Submit"}
-      </Button></FormActions>
-=======
 function BasicEnPreview() {
   const formId = React.useId()
   const schema = z.object({
@@ -621,17 +462,9 @@ function BasicEnPreview() {
           {form.formState.isSubmitting ? "Submitting..." : "Submit"}
         </Button>
       </FormActions>
->>>>>>> 94a0d7b (update Form UI)
     </Form>
-  );
+  )
 }
-<<<<<<< HEAD
-
-export default function FormDocumentationPage() {
-  const { t, language } = useFormText()
-  const [loading, setLoading] = React.useState(false)
-
-=======
 function BasicMyPreview() {
   const formId = React.useId()
   const schema = z.object({
@@ -2025,7 +1858,6 @@ function FormIntegrationGuide() {
 
 export default function FormDocumentationPage() {
   const { t, language } = useFormText()
->>>>>>> 94a0d7b (update Form UI)
   return (
     <div
       lang={language}
@@ -2115,31 +1947,6 @@ export default function FormDocumentationPage() {
 
             <FormIntegrationGuide />
             <section>
-<<<<<<< HEAD
-              <SectionTitle id="react-hook-form" title="React Hook Form + Zod" description={t("Connect Binhlaig Form layout primitives to React Hook Form for typed values, validation errors and submission state.")} />
-              <div className="mt-6 space-y-6">
-                <div className="rounded-2xl border border-border bg-background p-5 sm:p-6">
-                  <h3 className="text-base font-semibold">{t("Install form validation packages")}</h3>
-                  <div className="mt-3 overflow-x-auto rounded-xl bg-muted/70 p-4">
-                    <code className="whitespace-nowrap font-mono text-sm text-foreground">npm install react-hook-form zod @hookform/resolvers</code>
-                  </div>
-                  <h3 className="mt-6 text-base font-semibold">{t("What each package does")}</h3>
-                  <div className="mt-4 grid gap-3">
-                    {[
-                      ["react-hook-form", "Creates and manages field values, touched state, errors and form submission."],
-                      ["zod", "Defines a typed validation schema and meaningful field error messages."],
-                      ["@hookform/resolvers", "Connects Zod validation to React Hook Form through zodResolver."],
-                      ["Binhlaig UI Form", "Binhlaig UI provides the visual form layout, labels and validation-message components."],
-                    ].map(([name, description]) => (
-                      <div key={name} className="grid gap-1 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-4">
-                        <code className="text-sm font-semibold text-foreground">{name}</code>
-                        <p className="text-sm leading-7 text-muted-foreground">{t(description)}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <p className="text-sm leading-7 text-muted-foreground">{t("All examples below use useForm with zodResolver(schema), handleSubmit, register, and FormMessage.")}</p>
-=======
               <SectionTitle
                 id="usage"
                 title={t("Usage")}
@@ -2206,40 +2013,10 @@ export default function FormDocumentationPage() {
                     <SettingsEnPreview />
                   )}
                 </CodePreview>
->>>>>>> 94a0d7b (update Form UI)
               </div>
             </section>
 
             <section>
-<<<<<<< HEAD
-              <SectionTitle id="usage" title={t("Usage")} description={t("Five interactive examples, all using React Hook Form + Zod with Binhlaig UI Form primitives.")} />
-              <div className="mt-6 space-y-10">
-                <div id="usage-basic" className="scroll-mt-28">
-                  <h3 className="mb-2 text-lg font-semibold">1. {language === "my" ? "အခြေခံ Form" : "Basic Form"}</h3>
-                  <p className="mb-4 text-sm leading-7 text-muted-foreground">{t("Preview the validation and view the complete copyable source code.")}</p>
-                  <CodePreview code={rhfZodUsageCodes.basic[language]}><ZodUsagePreview kind="basic" /></CodePreview>
-                </div>
-                <div id="usage-validation" className="scroll-mt-28">
-                  <h3 className="mb-2 text-lg font-semibold">2. {language === "my" ? "အီးမေးလ် စစ်ဆေးခြင်း" : "Email Validation"}</h3>
-                  <p className="mb-4 text-sm leading-7 text-muted-foreground">{t("Preview the validation and view the complete copyable source code.")}</p>
-                  <CodePreview code={rhfZodUsageCodes.validation[language]}><ZodUsagePreview kind="validation" /></CodePreview>
-                </div>
-                <div id="usage-profile" className="scroll-mt-28">
-                  <h3 className="mb-2 text-lg font-semibold">3. {language === "my" ? "ကိုယ်ရေးအချက်အလက် Form" : "Profile Form"}</h3>
-                  <p className="mb-4 text-sm leading-7 text-muted-foreground">{t("Preview the validation and view the complete copyable source code.")}</p>
-                  <CodePreview code={rhfZodUsageCodes.profile[language]}><ZodUsagePreview kind="profile" /></CodePreview>
-                </div>
-                <div id="usage-settings" className="scroll-mt-28">
-                  <h3 className="mb-2 text-lg font-semibold">4. {language === "my" ? "ဆက်တင် / Checkbox နှင့် Select" : "Settings / Checkbox & Select"}</h3>
-                  <p className="mb-4 text-sm leading-7 text-muted-foreground">{t("Preview the validation and view the complete copyable source code.")}</p>
-                  <CodePreview code={rhfZodUsageCodes.settings[language]}><ZodUsagePreview kind="settings" /></CodePreview>
-                </div>
-                <div id="usage-login" className="scroll-mt-28">
-                  <h3 className="mb-2 text-lg font-semibold">5. {language === "my" ? "Login Form" : "Login Form"}</h3>
-                  <p className="mb-4 text-sm leading-7 text-muted-foreground">{t("Preview the validation and view the complete copyable source code.")}</p>
-                  <CodePreview code={rhfZodUsageCodes.login[language]}><ZodUsagePreview kind="login" /></CodePreview>
-                </div>
-=======
               <SectionTitle
                 id="react-hook-form"
                 title="React Hook Form"
@@ -2256,7 +2033,6 @@ export default function FormDocumentationPage() {
                     <ContactEnPreview />
                   )}
                 </CodePreview>
->>>>>>> 94a0d7b (update Form UI)
               </div>
             </section>
 
@@ -2369,17 +2145,12 @@ export default function FormDocumentationPage() {
             {[
               ["Installation", "#installation"],
               ["Import", "#import"],
-<<<<<<< HEAD
-              ["React Hook Form + Zod", "#react-hook-form"],
-=======
               ["React Hook Form + Zod", "#validation-tools"],
->>>>>>> 94a0d7b (update Form UI)
               ["Usage", "#usage"],
-              ["Basic Form", "#usage-basic"],
-              ["Email Validation", "#usage-validation"],
-              ["Profile Form", "#usage-profile"],
-              ["Settings", "#usage-settings"],
-              ["Login Form", "#usage-login"],
+              ["Validation", "#validation"],
+              ["Form Sections", "#sections"],
+              ["Checkbox and Select", "#settings"],
+              ["React Hook Form", "#react-hook-form"],
               ["Submit State", "#loading"],
               ["API Reference", "#api-reference"],
             ].map(([label, href]) => (
